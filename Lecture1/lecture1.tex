@@ -1,0 +1,320 @@
+% 1. Hafta 
+% -> Neden Python?
+% -> Program Introduction
+% -> IDE kurulumu
+% -> Programlama ve Pythona giriş
+% 	- Variables
+% 	- Console input output
+
+\input{../KU-Beamer-Template/style/template.tex}
+\usepackage{../KU-Beamer-Template/style/koc}
+\usepackage{minted}
+\usepackage{upquote}
+
+
+\title{KOLT Python}
+\subtitle{Introduction}
+\newdate{date}{11}{02}{2019}
+\date{\displaydate{date}}
+\author{Ahmet Uysal}
+
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+
+\setbeamercovered{invisible} % transparent
+
+\begin{document}
+  \maketitle
+
+\frame{\frametitle{Agenda}\tableofcontents}
+
+	\section{Program Information}
+
+	\begin{frame}{Course Outcomes}
+		\LARGE
+		\begin{itemize}
+			\item Apply basic programming concepts using Python
+			%pause
+			\item Demonstrate how Python can be used in different areas or disciplines
+			%pause
+			\item Create code that are easy to understand
+			%pause
+			\item \textbf{Implement practical challenges} by gaining experience in Python
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Why Python?}
+		\vspace{-3mm}
+		\inputminted[frame=single,framesep=2pt]{python3}{code-examples/io.py}
+		%pause
+		\inputminted[frame=single,framesep=2pt]{java}{code-examples/io.java}
+	\end{frame}
+
+	\begin{frame}{Why Python?}
+		\begin{itemize}
+			\LARGE
+			\item Easy Syntax
+			%pause
+			\item Beginner Friendly
+			%pause
+			-most popular language for introductory CS courses in top universities\cite{guo1}- 
+			%pause
+			\item Wide usage area
+			%pause
+			\item Large and growing community
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Some of the Usage Areas\cite{survey_jetbrains2018}}
+		\begin{itemize}
+			\LARGE
+			\item Data Analysis
+			\item Web Development
+			\item System Administration
+			\item Machine Learning
+			\item Web Parsers/Scrawlers
+			\item Testing
+			\item Education
+			\item Network Programming
+			\item ...
+		\end{itemize}	
+	\end{frame}
+	
+	\begin{frame}{Python at Koç University}
+		\begin{itemize}
+			\LARGE
+			\item COMP341: Introduction to Artificial Intelligence
+			\item COMP421/521: Introduction to Machine Learning
+			\item ENGR350(Selected Topics - Summer 19): Introduction to Programming for Data Science  
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Python at Industry}
+		\begin{table}[]
+			\resizebox{\textwidth}{!}{
+			\begin{tabular}{lll}
+				\includegraphics[width=2cm]{images/firefox.png}& \includegraphics[width=3cm]{images/google.png} & \includegraphics[width=2cm]{images/nasa.png} \\
+				\includegraphics[width=2cm]{images/instagram.png}& \includegraphics[width=3cm]{images/youtube.png} & \includegraphics[width=2cm]{images/reddit.png}\\
+			\end{tabular}}
+		\end{table}
+	\end{frame}
+
+	\section{Logistics}
+		\begin{frame}{Team}
+			\begin{columns}
+				\column{5cm}
+				\centering 
+					\includegraphics[width=4.0cm]{images/ahmet.png}\\
+					Ahmet Uysal\\
+					auysal16@ku.edu.tr
+				\column{5cm}
+				\centering
+					\includegraphics[width=4.0cm]{images/ipek.jpeg}\\
+					İpek Köprülülü\\
+					ikoprululu16@ku.edu.tr
+			\end{columns}
+		\end{frame}
+
+		\begin{frame}{Weekly Schedule}
+			\LARGE
+			\texttt{Monday 17:30-18:45 \textbf{Lecture}}\\
+			\texttt{Wednesday 17:30-18:45 \textbf{Contest/Review}}\\  
+			\texttt{Every Week \textbf{HackerRank Contest}}\\
+			\vspace{4mm}
+			\centering
+			\includegraphics[width=6cm]{images/hackerrank.png}\\
+			We will use HackerRank a lot this semester, create your account if you have not already!
+		\end{frame}
+
+		\begin{frame}{Programming Assignments}
+			\begin{itemize}
+				\LARGE
+				\item 4-6 Programming Assignments
+				\item Review sessions will be conducted to \textbf{help you}
+				\item Some assignments will have \textbf{autograders} to help you find your mistakes and test your code.
+				\item Later assignments will be based on \textbf{your interests!}
+				\item We can also organize hackathons if requested :)
+			\end{itemize}
+			\LARGE
+			
+		\end{frame}
+
+		\begin{frame}{Programming Contests}
+			\begin{itemize}
+				\LARGE
+				\item Weekly Online Contests
+					\begin{itemize}
+						\Large
+						\item 5-10 Programming questions related to topic we have seen
+						\item Duration: 1 week (Starts after the lecture on Monday, ends before next lecture)
+						
+					\end{itemize}
+				\item Biweekly Onsite Contests
+					\begin{itemize}
+						\Large
+						\item Wednesdays, on weeks which you don't have an assignment
+						\item 2-3 Programming questions related to Monday's lecture
+						\item Duration: 50 minutes
+						\item Questions will be solved in remaining 25 minutes
+						\item Surprize gifts to first three places and problem solvers!
+					\end{itemize}
+			\end{itemize}
+		\end{frame}
+
+		\begin{frame}{Certificate Requirements}
+			\begin{itemize}
+				\LARGE
+				\item At most \textbf{3 unexcused absences}, including onsite contests and review sessions.
+				\item Working on and submitting all homework assignments. Submissions that do not pass the autograders will be examined by us.
+				\item We do not expect that you ace all programming assignments. But, we expect that you \textbf{spend time} on it!
+				\item Complying to \href{https://vpaa.ku.edu.tr/academic/student-code-of-conduct}{\underline{\textit{Koç University Code of Conduct}}}. 
+			\end{itemize}
+		\end{frame}
+
+	\section{Installations}
+
+	 	\begin{frame}{Installing Python}
+			\LARGE
+			\begin{itemize}
+				\item Go to \href{https://www.python.org/downloads/}{\underline{\textit{python.org/downloads}}}
+				\item Install the Python 3.7.2 for your operating system
+				\item (Windows only) Make sure to add python to the \texttt{environment variables} by checking the corresponding permission on the installation or by hand
+				\item Check the installation by running \textbf{\texttt{python}}(Windows)/\textbf{\texttt{python3}}(macOS/Linux) in terminal.
+			\end{itemize}
+			\includegraphics[width=\textwidth]{images/cmd_helloworld.PNG}
+		\end{frame}
+		 
+		\begin{frame}[t]{Installing an Editor/IDE(Integrated Development Environment)}
+			\vspace{-4mm}
+			\begin{columns}[t] 
+				\begin{column}[t]{0.66\linewidth}
+					\LARGE
+					\begin{itemize}
+						\item Although you can edit Python(.py) files with any text editor and run them directly through terminal, having a specialized editor/IDE can help a lot. 
+						\item We will use Visual Studio Code in lectures but you are free to use any editor/IDE of your choice.
+						\item Get Visual Studio Code from \href{https://code.visualstudio.com/Download}{\underline{\textit{code.visualstudio.com/Download}}}
+					\end{itemize}
+				\end{column}
+				
+				\begin{column}{0.33\linewidth}
+					\begin{center}
+						\includegraphics[width=0.8\linewidth]{images/vscode.png}						
+					\end{center}
+				\end{column}
+			\end{columns}
+	 	\end{frame}
+
+	 	\begin{frame}{Configuring Visual Studio Code for Python}
+			\LARGE
+			\begin{itemize}
+				\item Install Python extension for VS Code.
+				\item Select the Python(3.7.2) Interpreter in VS Code.
+				\item For more information, visit \href{https://code.visualstudio.com/docs/python/python-tutorial}{\underline{\textit{VS Code Python Tutorial}}}.
+			\end{itemize}
+			\centering
+			\includegraphics[width=0.75\linewidth]{images/extension_python.PNG}						
+	 	\end{frame}
+
+	\section{Introduction}
+		\begin{frame}{Interactive Interpreter}
+			\LARGE
+			You can instantly run code on terminal!
+			\includegraphics[width=\textwidth]{images/cmd_python.png}
+			You can also open a terminal inside VS Code
+			\centering
+			\includegraphics[width=0.5\textwidth]{images/vscode_python.png}
+		\end{frame}
+
+		\begin{frame}{Why It Matters?}
+			\begin{itemize}
+				\LARGE
+				\item Immediate gratification :)
+				\item Provides a sandboxed environment to experiment
+				\item You are not sure what something does, \textbf{try it!}
+				\item Shortens code-test-debug cycle and speeds up learning 
+			\end{itemize}
+		\end{frame}
+		
+		\begin{frame}{Comments}
+			\inputminted[frame=single,framesep=2pt]{python3}{code-examples/comments.py}
+			\LARGE
+			Python will basically ignore comments, they are purely written \textbf{for humans}!
+		\end{frame}
+
+		\begin{frame}{Variables}
+			\LARGE
+			\begin{itemize}
+				\item How to represent/store values in Python?
+				\item Which kind of values we need to represent?
+					\begin{itemize}
+						\Large
+						\item Numbers?
+						\item Texts?
+						\item Individual Characters?
+						\item Starting time of the class?
+						\item Colors?
+						\item Truth Values?
+						\item People?
+					\end{itemize} 
+			\end{itemize}
+		\end{frame}
+
+		\begin{frame}{Variables}
+			\begin{table}[]
+				\resizebox{\textwidth}{!}{
+				\begin{tabular}{|l|l|l|}
+				\hline
+				\textcolor{koc}{\textbf{Type}} &\textcolor{koc}{\textbf{Explanation}} & \textcolor{koc}{\textbf{Examples}} \\ \hline
+				\textbf{\texttt{int}}  & represent \textbf{integers} & 3, 4, 17, -10 \\ \hline 
+				\textbf{\texttt{float}} & represent \textbf{real numbers} & 3.0, 1.11, -109.123123 \\ \hline
+				\textbf{\texttt{bool}} & represent \textbf{boolean} truth values & \texttt{True}, \texttt{False} \\ \hline
+				\textbf{\texttt{str}} & A sequence of characters. & \textquotesingle Hello\textquotesingle, \textquotesingle \textquotesingle, \textquotesingle 3\textquotesingle \\ \hline
+				\textbf{\texttt{NoneType}}& special and has one value, None & \texttt{None} \\ \hline
+				\end{tabular}}
+			\end{table}
+
+			\LARGE
+			OK, but how do we create one?
+		\end{frame}
+
+		\begin{frame}{Variables}
+			\inputminted[frame=single,framesep=2pt]{python3}{code-examples/variables.py}
+		\end{frame}
+		
+		\begin{frame}{How about type of variables?}
+			\LARGE
+			Special method called \texttt{\textbf{type()}} 
+			\inputminted[frame=single,framesep=2pt]{python3}{code-examples/types.py}
+			Python knows variables' type even if you don't know it!
+		\end{frame}
+
+		\begin{frame}{Console I/O(Input/Output)}
+			
+		\end{frame}
+
+  	% 	\begin{frame}{First Frame}
+	% 		\frametitle{Optional Frame Title} % Default is frame name
+	% 		\vskip5mm
+	% 		\vspace{-0.4cm} % for vertical positioning
+	% 		\begin{itemize}
+	% 			\itemsep1.2em
+	% 			\item Bulletpoint
+	% 			\item To do list:
+	% 			\begin{itemize}
+	% 				\itemsep1.2em
+	% 				\item[\done] Done
+	% 				\item[\wontfix] Wontfix
+	% 				\item[\open] Open
+	% 			\end{itemize}
+	% 		\end{itemize}
+	% 	\end{frame}
+
+%arg1: frame title / arg2: bibstyle / arg3: bibtex file
+%\insertReferenceFrame{References}{IEEETran}{references}
+
+\section{References}
+	\begin{frame}{References}
+		\bibliographystyle{IEEETran}
+		\bibliography{references}
+	\end{frame}
+
+\end{document}
