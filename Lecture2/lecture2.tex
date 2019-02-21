@@ -1,0 +1,85 @@
+\input{../KU-Beamer-Template/style/template.tex}
+\usepackage{../KU-Beamer-Template/style/koc} 
+\usepackage{minted}
+\usepackage{upquote}
+ 
+\title{KOLT Python} 
+\subtitle{Basic Operators \& Branching} 
+\newdate{date}{25}{02}{2019}
+\date{\displaydate{date}}
+\author{Ahmet Uysal}
+
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+
+\setbeamercovered{invisible} % transparent
+
+\begin{document}
+    \maketitle
+    \frame{\frametitle{Agenda}\tableofcontents}
+
+    \section{Recap}
+
+        \begin{frame}{Comments}
+            \LARGE
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture1/code-examples/comments.py}
+            Python will basically ignore comments, they are purely written \textbf{for humans}!
+        \end{frame}
+
+        \begin{frame}{Variables}
+            \LARGE
+            \begin{table}[]
+                \resizebox{0.8\textwidth}{!}{
+                \begin{tabular}{|l|l|l|}
+                \hline
+                \textcolor{koc}{\textbf{Type}} &\textcolor{koc}{\textbf{Explanation}} & \textcolor{koc}{\textbf{Examples}} \\ \hline
+                \textbf{\texttt{int}}  & represent \textbf{integers} & 3, 4, 17, -10 \\ \hline 
+                \textbf{\texttt{float}} & represent \textbf{real numbers} & 3.0, 1.11, -109.123123 \\ \hline
+                \textbf{\texttt{bool}} & represent \textbf{boolean} truth values & \texttt{True}, \texttt{False} \\ \hline
+                \textbf{\texttt{str}} & A sequence of characters. & \textquotesingle Hello\textquotesingle, \textquotesingle \textquotesingle, \textquotesingle 3\textquotesingle \\ \hline
+                \textbf{\texttt{NoneType}}& special and has one value, None & \texttt{None} \\ \hline
+                \end{tabular}}
+            \end{table}
+
+            \begin{itemize}
+                \item How to create a variable?        
+                \texttt{variable\_name = value}
+                \item How about types?
+                use \texttt{type()}
+                \item Can a variable change type?
+                \textbf{Yes!} Just assing a new value with any type.
+                \item What if we if want to convert a value between types, i.e, \textquotesingle 2\textquotesingle $\to$ 2
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Casting}
+            \LARGE
+            \begin{itemize}
+                \item \texttt{int(\textquotesingle 2\textquotesingle)} $\to$ 2
+                \item Any possible reasons for casting?
+                -taking user input
+                -reading numbers from a file?
+                \item Can we cast every value to every type?
+                \textbf{NO!} try \texttt{int(\textquotesingle hello\textquotesingle)}
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Console I/O(Input/Output)}
+            \huge
+            \textbf{\texttt{print(*args, sep=\textquotesingle \ \textquotesingle, end=\textquotesingle \textbackslash n\textquotesingle )}}
+            \begin{itemize}
+                \LARGE
+                \item Can take arbitrary number of arguments
+                \item Separates elements with space by default
+                \item Adds newline character \texttt{\textquotesingle \textbackslash n\textquotesingle} to end by default
+            \end{itemize}
+            
+            \textbf{\texttt{input([prompt])}}
+            \begin{itemize}
+                \LARGE
+                \item Prints the prompt to Console
+                \item Program is paused until user enters something
+                \item \textbf{returns an \texttt{str} object!} 
+            \end{itemize}
+        \end{frame}
+
+\end{document}
