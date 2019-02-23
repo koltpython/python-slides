@@ -1,3 +1,8 @@
+% 2. Hafta
+% -> Scalar Objects - Variables (int, float, bool, NoneType, str)
+% -> Printing, numeric operators, bool operators, operator precedence, type conversion
+% -> if-else, elif
+
 \input{../KU-Beamer-Template/style/template.tex}
 \usepackage{../KU-Beamer-Template/style/koc} 
 \usepackage{minted}
@@ -79,6 +84,135 @@
                 \item Prints the prompt to Console
                 \item Program is paused until user enters something
                 \item \textbf{returns an \texttt{str} object!} 
+            \end{itemize}
+        \end{frame}
+
+    \section{Basic Operators}
+        \begin{frame}{Truthy \& Falsy Values}
+            \LARGE
+            Last week, we tried to cast some values to \texttt{bool}, let's look at them in detail.
+            \pause
+            \begin{columns}
+                \column{0.45\textwidth}
+                    \inputminted[firstline=1, lastline=8, frame=single,framesep=2pt]{python3}{code-examples/truthy-falsy.py}
+                \pause
+                \column{0.54\textwidth}
+                    \inputminted[firstline=9, lastline=16, frame=single,framesep=2pt]{python3}{code-examples/truthy-falsy.py}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{\texttt{bool} Operators}
+            \LARGE
+            How to represent logical operations in Python? (and, or, not)
+            \begin{table}[]
+                \resizebox{0.45\textwidth}{!}{
+                \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                \textcolor{koc}{\textbf{A}} &\textcolor{koc}{\textbf{B}} & \textcolor{koc}{\textbf{A or B}} & \textcolor{koc}{\textbf{A and B}} & \textcolor{koc}{\textbf{not A}}\\ \hline
+                \textbf{\texttt{True}}  & \textbf{\texttt{True}}  & \textbf{\texttt{True}}  & \textbf{\texttt{True}} & \textbf{\texttt{False}} \\ \hline
+                \textbf{\texttt{True}} & \textbf{\texttt{False}}  & \textbf{\texttt{True}} & \textbf{\texttt{False}} & \textbf{\texttt{False}} \\ \hline
+                \textbf{\texttt{False}} & \textbf{\texttt{True}}  & \textbf{\texttt{True}} & \textbf{\texttt{False}} & \textbf{\texttt{True}} \\ \hline
+                \textbf{\texttt{False}} & \textbf{\texttt{False}} & \textbf{\texttt{False}} & \textbf{\texttt{False}} & \textbf{\texttt{True}} \\ \hline
+                \end{tabular}}
+            \end{table}
+            \pause
+            \begin{columns}
+                \column{0.25\textwidth}
+                    \begin{itemize}
+                        \item \textbf{\texttt{and}}
+                        \pause
+                        \item \textbf{\texttt{or}}
+                        \pause
+                        \item \textbf{\texttt{not}}
+                    \end{itemize}
+                \pause
+                \column{0.75\textwidth}
+                    \texttt{True or False and False} $\Rightarrow$ 
+                    \pause
+                    \textbf{\texttt{True}} \\
+                    \pause
+                    \Huge
+                    \textbf{WHY?}
+            \end{columns}
+            
+        \end{frame}
+
+        \begin{frame}{Operator Precedence}
+            \LARGE
+            Logical operators are evaluated in this order:
+            \begin{enumerate}
+                \item \texttt{not}
+                \item \texttt{and}
+                \item \texttt{or}
+            \end{enumerate}
+            You can override this order with parentheses\\
+            \pause
+            \texttt{(True or False) and False} $\Rightarrow$ 
+            \pause
+            \textbf{\texttt{False}} \\
+        \end{frame}
+
+        \begin{frame}{Short-Circuit Evaluation}
+            \LARGE
+            \texttt{X}: Any boolean value\\
+            \texttt{True or X} $\Rightarrow$ 
+            \pause
+            \textbf{\texttt{True}}\\
+            \pause
+            \texttt{False and X} $\Rightarrow$ 
+            \pause
+            \textbf{\texttt{False}}\\
+            \pause
+            Python is smart enough to take advantage of this!
+            \pause
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/short_circuit.py}
+        \end{frame}
+
+        \begin{frame}{Arithmetic Operators}
+            \LARGE
+            These operations are applicable on Numeric types: \texttt{int} and \texttt{float}
+            \pause
+            \begin{columns}
+               \begin{column}{0.35\textwidth}
+                \vspace{-5mm}
+                \begin{itemize}
+                    \item \texttt{+}: Addition
+                    \pause
+                    \item \texttt{-}: Subtraction
+                    \pause
+                    \item \texttt{*}: Multiplication
+                    \pause
+                    \item \texttt{/}: Division
+                    \pause
+                    \item \texttt{//}: Floor(integer) Division
+                    \pause
+                    \item \texttt{\%}: Modulo
+                    \pause
+                    \item \texttt{**}: Power 
+                \end{itemize}
+               \end{column}
+               \pause
+               \begin{column}{0.65\textwidth}
+                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/numeric_operators.py}
+               \end{column} 
+            \end{columns}
+        \end{frame}
+
+
+
+    \section{Branching}
+        \begin{frame}{Branching}
+            \vspace{-3mm}
+            \begin{columns}
+                \column{0.5\textwidth}
+                \inputminted[firstline=1, lastline=4, frame=single,framesep=2pt]{python3}{code-examples/branching.py}
+                \inputminted[firstline=6, lastline=13, frame=single,framesep=2pt]{python3}{code-examples/branching.py}
+                \column{0.5\textwidth}
+                \inputminted[firstline=15, lastline=27, frame=single,framesep=2pt]{python3}{code-examples/branching.py}
+            \end{columns}
+            \begin{itemize}
+                \item \texttt{<condition>} has a \textbf{\texttt{bool}} value (\texttt{True} or \texttt{False})
+                \item Which expressions will be evaluated in which conditions?
             \end{itemize}
         \end{frame}
 
