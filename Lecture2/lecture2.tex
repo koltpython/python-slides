@@ -198,7 +198,56 @@
             \end{columns}
         \end{frame}
 
+        \begin{frame}{Comparison Operators}
+            \LARGE
+            \begin{columns}
+                \begin{column}{0.4\textwidth}
+                    \begin{itemize}
+                        \item \texttt{<}: Strictly less than
+                        \pause
+                        \item \texttt{<=}: Less than or equal
+                        \pause
+                        \item \texttt{>}: Strictly greater than
+                        \pause
+                        \item \texttt{>=}: Greater than or equal
+                        \pause
+                        \item \texttt{==}: Equal
+                        \pause
+                        \item \texttt{!=}: Not equal
+                    \end{itemize}
+                \end{column}
+                \pause
+                \begin{column}{0.6\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/comparison.py}
+                \end{column}
+            \end{columns}
+        \end{frame}
 
+        \begin{frame}{Chained Comparisons}
+            \LARGE  
+            \texttt{1 < 2 < 3} $\Rightarrow$ 
+            \pause
+            \textbf{\texttt{True}}\\
+            \pause
+            You can chain arbitrarily many comparison operations together.\\
+            \pause
+            $v_{i}$: variables/values, $op_{i}$: comparison operators\\
+            \pause
+            \texttt{$v_{1}\ op_{1}\ v_{2}\ op_{2}\ v_{3}\ ...\ op_{n-1}\ v_{n}$} is equivalent to:\\
+            \texttt{$v_{1}\ op_{1}\ v_{2}$ \textbf{and} $v_{2}\ op_{2}\ v_{3}$ \textbf{and} ...$v_{n-1}\ op_{n-1}\ v_{2}$}\\
+            \pause
+            \vspace{-4mm}
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/chained.py}
+        \end{frame}
+
+        \begin{frame}{Assignment Operators}
+            \LARGE
+            We have already seen \texttt{\textquotesingle=\textquotesingle}: 
+            \pause
+            \texttt{variable\_name = value}
+
+
+        \end{frame}
 
     \section{Branching}
         \begin{frame}{Branching}
