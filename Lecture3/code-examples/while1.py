@@ -1,0 +1,4 @@
+while <condition>:
+    <expression>
+    <expression>
+    ...

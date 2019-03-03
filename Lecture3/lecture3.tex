@@ -1,0 +1,302 @@
+\input{../KU-Beamer-Template/style/template.tex}
+\usepackage{../KU-Beamer-Template/style/koc} 
+\usepackage{minted}
+\usepackage{upquote}
+\usepackage{graphicx}
+
+\title{KOLT Python} 
+\subtitle{Lists, Strings \& Loops} 
+\newdate{date}{04}{03}{2019}
+\date{\displaydate{date}}
+\author{İpek Köprülülü}
+
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+
+\setbeamercovered{invisible} % transparent
+
+\begin{document}
+    \maketitle
+
+    \frame{\frametitle{Agenda}\tableofcontents}
+
+    \section{Recap}
+
+        \begin{frame}{\texttt{bool} Operators}
+         \LARGE
+            How to represent logical operations in Python? (and, or, not)
+            \begin{table}[]
+              \resizebox{0.45\textwidth}{!}{
+              \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                \textcolor{koc}{\textbf{A}} &\textcolor{koc}{\textbf{B}} & \textcolor{koc}{\textbf{A or B}} & \textcolor{koc}{\textbf{A and B}} & \textcolor{koc}{\textbf{not A}}\\ \hline
+                \textbf{\texttt{True}}  & \textbf{\texttt{True}}  & \textbf{\texttt{True}}  & \textbf{\texttt{True}} & \textbf{\texttt{False}} \\ \hline
+                \textbf{\texttt{True}} & \textbf{\texttt{False}}  & \textbf{\texttt{True}} & \textbf{\texttt{False}} & \textbf{\texttt{False}} \\ \hline
+                \textbf{\texttt{False}} & \textbf{\texttt{True}}  & \textbf{\texttt{True}} & \textbf{\texttt{False}} & \textbf{\texttt{True}} \\ \hline
+                \textbf{\texttt{False}} & \textbf{\texttt{False}} & \textbf{\texttt{False}} & \textbf{\texttt{False}} & \textbf{\texttt{True}} \\ \hline
+                \end{tabular}}
+            \end{table}
+            \begin{columns}
+                \column{0.25\textwidth}
+                    \begin{itemize}
+                        \item \textbf{\texttt{and}}
+                        \item \textbf{\texttt{or}}
+                        \item \textbf{\texttt{not}}
+                    \end{itemize}
+                \column{0.75\textwidth}
+                   \texttt{True or False and False} $\Rightarrow$ 
+                   \textbf{\texttt{True}} \\
+                   \Huge
+                   \textbf{WHY?}
+             \end{columns}
+        
+        \end{frame}
+
+        \begin{frame}{Short-Circuit Evaluation}
+            \LARGE
+            \texttt{X}: Any boolean value\\
+            \texttt{True or X} $\Rightarrow$ 
+            \textbf{\texttt{True}}\\
+            \texttt{False and X} $\Rightarrow$
+            \textbf{\texttt{False}}\\
+            Python is smart enough to take advantage of this!
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/short_circuit.py}
+        \end{frame}
+
+        \begin{frame}{Arithmetic Operators}
+            \LARGE
+            These operations are applicable on Numeric types: \texttt{int} and \texttt{float}
+            \begin{columns}
+               \begin{column}{0.35\textwidth}
+                \vspace{-5mm}
+                \begin{itemize}
+                    \item \texttt{+}: Addition
+                    \item \texttt{-}: Subtraction
+                    \item \texttt{*}: Multiplication
+                    \item \texttt{/}: Division
+                    \item \texttt{//}: Floor(integer) Division
+                    \item \texttt{\%}: Modulo
+                    \item \texttt{**}: Power 
+                \end{itemize}
+               \end{column}
+               \begin{column}{0.65\textwidth}
+                \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/numeric_operators.py}
+               \end{column} 
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Comparison Operators}
+            \LARGE
+            \begin{columns}
+                \begin{column}{0.4\textwidth}
+                    \begin{itemize}
+                        \item \texttt{<}: Strictly less than
+                        \item \texttt{<=}: Less than or equal
+                        \item \texttt{>}: Strictly greater than
+                        \item \texttt{>=}: Greater than or equal
+                        \item \texttt{==}: Equal
+                        \item \texttt{!=}: Not equal
+                    \end{itemize}
+                \end{column}
+                \begin{column}{0.6\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/comparison.py}
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Assignment Operators}
+            \LARGE
+			\begin{table}[]
+				\resizebox{0.7\textwidth}{!}{
+				\begin{tabular}{|l|l|l|}
+				\hline
+				\textcolor{koc}{\textbf{Operator}} &\textcolor{koc}{\textbf{Usage}} & \textcolor{koc}{\textbf{Equivalent}} \\ \hline
+				\textbf{\texttt{+=}} & \texttt{val += 3} & \texttt{val = val + 3} \\ \hline 
+				\textbf{\texttt{-=}} & \texttt{val -= 3} & \texttt{val = val - 3} \\ \hline
+				\textbf{\texttt{*=}} & \texttt{val *= 3} & \texttt{val = val * 3} \\ \hline
+				\textbf{\texttt{/=}} & \texttt{val /= 3} & \texttt{val = val / 3} \\ \hline
+                \textbf{\texttt{\%=}}& \texttt{val \%= 3} & \texttt{val = val \% 3} \\ \hline
+                \textbf{\texttt{**=}} & \texttt{val **= 3} & \texttt{val = val ** 3} \\ \hline
+				\textbf{\texttt{//=}} & \texttt{val //= 3} & \texttt{val = val // 3} \\ \hline
+				\end{tabular}}
+			\end{table}
+        \end{frame}
+
+        \begin{frame}{Branching}
+            \vspace{-3mm}
+            \begin{columns}
+                \column{0.5\textwidth}
+                \inputminted[firstline=1, lastline=4, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+                \inputminted[firstline=6, lastline=13, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+                \column{0.5\textwidth}
+                \inputminted[firstline=15, lastline=27, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+            \end{columns}
+            \begin{itemize}
+                \item \texttt{<condition>} has a \textbf{\texttt{bool}} value (\texttt{True} or \texttt{False})
+                \item Which expressions will be evaluated in which conditions?
+            \end{itemize}
+        \end{frame}
+
+    \section{Introduction to Data Structures}
+        \begin{frame}{Lists}
+                \Huge {\textbf{myList = [1, 2, 3]}}
+                \pause  
+                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/intro_lists.py}
+                \pause  
+                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/mixed_list.py}
+        \end{frame}
+        \begin{frame}{Appending}
+            Append elements at the end of a list by \textbf{append()}
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/append_list.py}
+            \pause  
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/append_list2.py}
+        \end{frame}
+        \begin{frame}{Removing An Element}
+            Remove elements in a list by \textbf{remove()}
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/remove.py}
+            \pause  
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/remove2.py}
+        \end{frame}
+        \begin{frame}{Inspecting List Elements}
+            Access elements at a particular index
+            \begin{columns}
+               \begin{column}{0.5\textwidth}
+                \vspace{-5mm}
+                \begin{figure}[H]
+                    \bigskip
+                    \includegraphics[width=70mm]{code-examples/index.png}
+                    \end{figure}    
+               \end{column}
+              \pause 
+               \begin{column}{0.5\textwidth}
+                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/index.py}
+               \end{column} 
+            \end{columns}
+        \end{frame}
+        \begin{frame}{Inspecting List Elements}
+            Slice lists by using \texttt{\textbf{[start:stop:step]}}
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing.py} 
+                \end{column}
+               \pause 
+                \begin{column}{0.5\textwidth}
+                 \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing2.py}
+                \end{column} 
+             \end{columns}
+        \end{frame}
+        \begin{frame}{Inspecting List Elements}
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing3.py}
+            \pause 
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing4.py}
+        \end{frame}
+        \begin{frame}{Nested Lists}
+            Lists can contain lists
+            \bigskip
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/nestedlists.py}
+        \end{frame}
+
+    \section{Strings}
+        \begin{frame}{Strings}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=80mm]{code-examples/string.png}
+                \end{figure}
+        \end{frame}
+
+        \begin{frame}{Indexing \& Slicing}
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/string_index.py}
+                \end{column}
+               \pause 
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/string_index2.py}
+                \end{column} 
+            \end{columns}
+        \end{frame}
+
+    \section{Loops}
+        \begin{frame}{in Operator}
+            Search an operand in the specified sequence by using \textbf{in}
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/in_operator.py}
+            \begin{itemize}
+                \item Works with lists and strings
+                \item Works with ranges
+            \end{itemize}
+        \end{frame}
+        \begin{frame}{range() Function}
+            \texttt{range(\textbf{start, stop, step})} is a function to create ranges
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/range.py}
+        \end{frame}
+        \begin{frame}{len() Function}
+            \texttt{len()} is an operator to determine the size of lists, strings, etc.
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/length.py}
+        \end{frame}
+        \begin{frame}{For Loops}
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for1.py}
+                \end{column}
+               \pause 
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for2.py}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for3.py}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for4.py}
+                \end{column} 
+            \end{columns}
+        \end{frame}
+        \begin{frame}{While Loops}
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while1.py}
+                \end{column}
+               \pause 
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while2.py}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while3.py}
+                \end{column} 
+            \end{columns}
+        \end{frame}
+        \begin{frame}{Break, Continue \& Pass}
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    \textbf{Break}
+                    terminates the closest for or while loop
+                    \bigskip  
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/break1.py}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/break2.py}
+                \end{column}
+               \pause 
+                \begin{column}{0.5\textwidth}
+                    \textbf{Continue}
+                    continues with the next iteration of the loop
+                    \bigskip  
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/continue1.py}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/continue2.py}
+                \end{column} 
+            \end{columns}
+        \end{frame}
+        
+        \begin{frame}{Break, Continue \& Pass}
+            \textbf{Pass}
+            does not have an effect
+            \bigskip  
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/pass.py}
+            \begin{itemize}
+                \item Loops, conditional statements, functions etc. cannot be empty 
+                \item Use when you have to create one
+            \end{itemize}
+        \end{frame}
+
+\end{document}
