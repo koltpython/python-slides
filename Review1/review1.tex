@@ -1,0 +1,446 @@
+\input{../KU-Beamer-Template/style/template.tex}
+\usepackage{../KU-Beamer-Template/style/koc} 
+\usepackage{minted}
+\usepackage{upquote}
+
+\title{KOLT Python} 
+\subtitle{Review 1: Connect Four} 
+\newdate{date}{06}{03}{2019}
+\date{\displaydate{date}}
+\author{Ahmet Uysal}
+
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+
+\setbeamercovered{invisible} % transparent
+
+\begin{document}
+    \maketitle
+    \frame{\frametitle{Agenda}\tableofcontents}
+
+    \section{Variables \& I/O}
+
+        \begin{frame}{Comments}
+            \LARGE
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture1/code-examples/comments.py}
+            Python will basically ignore comments, they are purely written \textbf{for humans}!
+        \end{frame}
+
+        \begin{frame}{Variables}
+            \LARGE
+            \begin{table}[]
+                \resizebox{0.8\textwidth}{!}{
+                \begin{tabular}{|l|l|l|}
+                \hline
+                \textcolor{koc}{\textbf{Type}} &\textcolor{koc}{\textbf{Explanation}} & \textcolor{koc}{\textbf{Examples}} \\ \hline
+                \textbf{\texttt{int}}  & represent \textbf{integers} & 3, 4, 17, -10 \\ \hline 
+                \textbf{\texttt{float}} & represent \textbf{real numbers} & 3.0, 1.11, -109.123123 \\ \hline
+                \textbf{\texttt{bool}} & represent \textbf{boolean} truth values & \texttt{True}, \texttt{False} \\ \hline
+                \textbf{\texttt{str}} & A sequence of characters. & \textquotesingle Hello\textquotesingle, \textquotesingle \textquotesingle, \textquotesingle 3\textquotesingle \\ \hline
+                \textbf{\texttt{NoneType}}& special and has one value, None & \texttt{None} \\ \hline
+                \end{tabular}}
+            \end{table}
+            \begin{itemize}
+                \item How to create a variable?        
+                \texttt{variable\_name = value}
+                \item How about types?
+                use \texttt{type()}
+                \item Can a variable change type?
+                \textbf{Yes!} Just assing a new value with any type.
+                \item What if we if want to convert a value between types, i.e, \textquotesingle 2\textquotesingle $\to$ 2
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Casting}
+            \LARGE
+            \begin{itemize}
+                \item \texttt{int(\textquotesingle 2\textquotesingle)} $\to$ 2
+                \item Any possible reasons for casting?
+                -taking user input
+                -reading numbers from a file?
+                \item Can we cast every value to every type?
+                \textbf{NO!} try \texttt{int(\textquotesingle hello\textquotesingle)}
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Console I/O(Input/Output)}
+            \huge
+            \textbf{\texttt{print(*args, sep=\textquotesingle \ \textquotesingle, end=\textquotesingle \textbackslash n\textquotesingle )}}
+            \begin{itemize}
+                \LARGE
+                \item Can take arbitrary number of arguments
+                \item Separates elements with space by default
+                \item Adds newline character \texttt{\textquotesingle \textbackslash n\textquotesingle} to end by default
+            \end{itemize}
+            \textbf{\texttt{input([prompt])}}
+            \begin{itemize}
+                \LARGE
+                \item Prints the prompt to Console
+                \item Program is paused until user enters something
+                \item \textbf{returns an \texttt{str} object!} 
+            \end{itemize}
+        \end{frame}
+
+    \section{Basic Operators}
+        
+        \begin{frame}{\texttt{bool} Operators}
+            \LARGE
+            How to represent logical operations in Python? (and, or, not)
+            \begin{table}[]
+                \resizebox{0.45\textwidth}{!}{
+                \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                \textcolor{koc}{\textbf{A}} &\textcolor{koc}{\textbf{B}} & \textcolor{koc}{\textbf{A or B}} & \textcolor{koc}{\textbf{A and B}} & \textcolor{koc}{\textbf{not A}}\\ \hline
+                \textbf{\texttt{True}}  & \textbf{\texttt{True}}  & \textbf{\texttt{True}}  & \textbf{\texttt{True}} & \textbf{\texttt{False}} \\ \hline
+                \textbf{\texttt{True}} & \textbf{\texttt{False}}  & \textbf{\texttt{True}} & \textbf{\texttt{False}} & \textbf{\texttt{False}} \\ \hline
+                \textbf{\texttt{False}} & \textbf{\texttt{True}}  & \textbf{\texttt{True}} & \textbf{\texttt{False}} & \textbf{\texttt{True}} \\ \hline
+                \textbf{\texttt{False}} & \textbf{\texttt{False}} & \textbf{\texttt{False}} & \textbf{\texttt{False}} & \textbf{\texttt{True}} \\ \hline
+                \end{tabular}}
+            \end{table}
+            
+            \begin{columns}
+                \column{0.25\textwidth}
+                    \begin{itemize}
+                        \item \textbf{\texttt{and}}
+                        \item \textbf{\texttt{or}}
+                        \item \textbf{\texttt{not}}
+                    \end{itemize}
+                \column{0.75\textwidth}
+                    \texttt{True or False and False} $\Rightarrow$ \textbf{\texttt{True}} \\
+                    \Huge
+                    \centering
+                    \textbf{WHY?}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Operator Precedence}
+            \LARGE
+            Logical operators are evaluated in this order:
+            \begin{enumerate}
+                \item \texttt{not}
+                \item \texttt{and}
+                \item \texttt{or}
+            \end{enumerate}
+            You can override this order with parentheses\\
+            \texttt{(True or False) and False} $\Rightarrow$ \textbf{\texttt{False}} \\
+        \end{frame}
+
+        \begin{frame}{Short-Circuit Evaluation}
+            \LARGE
+            \texttt{X}: Any boolean value\\
+            \texttt{True or X} $\Rightarrow$ \textbf{\texttt{True}}\\
+            \texttt{False and X} $\Rightarrow$ \textbf{\texttt{False}}\\
+            Python is smart enough to take advantage of this!
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/short_circuit.py}
+        \end{frame}
+
+        \begin{frame}{Arithmetic Operators}
+            \LARGE
+            These operations are applicable on Numeric types: \texttt{int} and \texttt{float}
+            \begin{columns}
+               \begin{column}{0.35\textwidth}
+                \vspace{-5mm}
+                \begin{itemize}
+                    \item \texttt{+}: Addition
+                    \item \texttt{-}: Subtraction
+                    \item \texttt{*}: Multiplication
+                    \item \texttt{/}: Division
+                    \item \texttt{//}: Floor(integer) Division
+                    \item \texttt{\%}: Modulo
+                    \item \texttt{**}: Power 
+                \end{itemize}
+               \end{column}
+               
+               \begin{column}{0.65\textwidth}
+                \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/numeric_operators.py}
+               \end{column} 
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Comparison Operators}
+            \LARGE
+            \begin{columns}
+                \begin{column}{0.4\textwidth}
+                    \begin{itemize}
+                        \item \texttt{<}: Strictly less than
+                        \item \texttt{<=}: Less than or equal
+                        \item \texttt{>}: Strictly greater than
+                        \item \texttt{>=}: Greater than or equal
+                        \item \texttt{==}: Equal
+                        \item \texttt{!=}: Not equal
+                    \end{itemize}
+                \end{column}
+                
+                \begin{column}{0.6\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/comparison.py}
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Chained Comparisons}
+            \LARGE  
+            \texttt{1 < 2 < 3} $\Rightarrow$ \textbf{\texttt{True}}\\
+            You can chain arbitrarily many comparison operations together.\\
+            $v_{i}$: variables/values, $op_{i}$: comparison operators\\
+            \texttt{$v_{1}\ op_{1}\ v_{2}\ op_{2}\ v_{3}\ ...\ op_{n-1}\ v_{n}$} is equivalent to:\\
+            \texttt{$v_{1}\ op_{1}\ v_{2}$ \textbf{and} $v_{2}\ op_{2}\ v_{3}$ \textbf{and} ...$v_{n-1}\ op_{n-1}\ v_{n}$}\\
+            \vspace{-4mm}
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/chained.py}
+        \end{frame}
+
+        \begin{frame}{Assignment Operators}
+            \LARGE
+            We have already seen \texttt{\textquotesingle=\textquotesingle}: \texttt{variable\_name = value}\\
+            Frequently we will update variables' values based on their \textbf{old value}.\\
+            \textbf{Ex:} Increment a number: \texttt{num = num + 1}\\
+            Python has shorthand representations for these updates with arithmetic operators.\\
+            \texttt{num += 1} is equivalent to \texttt{num = num + 1}\\
+            \texttt{result *= 2} is equivalent to \texttt{result = result * 2}\\
+        \end{frame}
+
+        \begin{frame}{Assignment Operators}
+            \LARGE
+			\begin{table}[]
+				\resizebox{0.7\textwidth}{!}{
+				\begin{tabular}{|l|l|l|}
+				\hline
+				\textcolor{koc}{\textbf{Operator}} &\textcolor{koc}{\textbf{Usage}} & \textcolor{koc}{\textbf{Equivalent}} \\ \hline
+				\textbf{\texttt{+=}} & \texttt{val += 3} & \texttt{val = val + 3} \\ \hline 
+				\textbf{\texttt{-=}} & \texttt{val -= 3} & \texttt{val = val - 3} \\ \hline
+				\textbf{\texttt{*=}} & \texttt{val *= 3} & \texttt{val = val * 3} \\ \hline
+				\textbf{\texttt{/=}} & \texttt{val /= 3} & \texttt{val = val / 3} \\ \hline
+                \textbf{\texttt{\%=}}& \texttt{val \%= 3} & \texttt{val = val \% 3} \\ \hline
+                \textbf{\texttt{**=}} & \texttt{val **= 3} & \texttt{val = val ** 3} \\ \hline
+				\textbf{\texttt{//=}} & \texttt{val //= 3} & \texttt{val = val // 3} \\ \hline
+				\end{tabular}}
+			\end{table}
+        \end{frame}
+
+    \section{Branching}
+
+        \begin{frame}{Branching}
+            \vspace{-3mm}
+            \begin{columns}
+                \column{0.5\textwidth}
+                \inputminted[firstline=1, lastline=4, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+                \inputminted[firstline=6, lastline=13, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+                \column{0.5\textwidth}
+                \inputminted[firstline=15, lastline=27, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+            \end{columns}
+            \begin{itemize}
+                \item \texttt{<condition>} has a \textbf{\texttt{bool}} value (\texttt{True} or \texttt{False})
+                \item Which expressions will be evaluated in which conditions?
+            \end{itemize}
+        \end{frame}
+
+    \section{Lists}
+        \begin{frame}{Lists}
+            \begin{itemize}
+                \LARGE
+                \item Group values together.
+                \pause 
+                 \texttt{my\_values = [1, \textquotesingle a\textquotesingle, None]}
+                \pause
+                \item You can think of each element as a variable, accessed by \textbf{indexing}
+                \pause
+                \item You can do everything you do to variables to list elements:
+                \pause
+                    \begin{itemize}
+                        \Large
+                        \item Assign new values: \texttt{my\_values[0] = 3}
+                        \pause
+                        \item Use shorthand assignment operators: \texttt{my\_values[1] += \textquotesingle bc\textquotesingle}
+                        \pause
+                        \item Learn their type: \texttt{type(my\_values[2]) \# => <class \textquotesingle NoneType\textquotesingle>}
+                        \pause
+                        \item Change their type: \texttt{my\_values[2] = True}
+                        \pause
+                        \item Compare their value: \texttt{if my\_values[0] == my\_values[1]: ...}
+                    \end{itemize}
+                \pause
+                \item What happens when we call \texttt{my\_values[3] = 3}?
+                \pause
+                 \texttt{\# => \textbf{IndexError}}
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{List Indexing}
+            \LARGE
+            Access elements at a particular index
+            \begin{columns}
+               \begin{column}{0.5\textwidth}
+                \vspace{-5mm}
+                \begin{figure}[H]
+                    \bigskip
+                    \includegraphics[width=70mm]{../Lecture3/code-examples/index.png}
+                    \end{figure}    
+               \end{column}
+               \begin{column}{0.5\textwidth}
+                \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{../Lecture3/code-examples/index.py}
+               \end{column} 
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{List Slicing}
+            \LARGE
+            Access collection of elements by specifying \textbf{\texttt{[start:stop:step]}}\\
+            \pause
+            Gives a list, even when number of elements is not bigger than 1.
+            \pause
+            \normalsize
+            \vspace{-2mm}
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt,lastline=9]{python3}{code-examples/slicing.py}                        
+                \end{column}                
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt,firstline=10]{python3}{code-examples/slicing.py}                                
+                \end{column}
+            \end{columns}
+            \pause
+            \vspace{2mm}
+            \LARGE
+            Slices with \texttt{step} = 1 are called \textbf{Basic Slice}.\\
+            Slices with \texttt{step != 1} are called \textbf{Extended Slice}.
+        \end{frame}
+
+
+        \begin{frame}{List Mutation}
+            \LARGE
+            \pause
+            \textbf{\texttt{list.append(x)}}: Append x to end of the sequence\\
+            \pause
+            \textbf{\texttt{list.insert(i, x)}}: Insert x to index i\\
+            \pause
+            \textbf{\texttt{list.pop(i=-1)}}: Remove and return element at index i\\
+            \pause
+            \textbf{\texttt{list.remove(x)}}: Remove first occurrence of x\\
+            \pause
+            \textbf{\texttt{list.extend(iterable)}}: Add all elements in iterable to end of list\\
+            \pause
+            \textbf{\texttt{list[i] = new\_value}}: Update value of index i with new value\\
+            \pause
+            \textbf{\texttt{list[basic\_slice] = iterable}}: Change elements in basic slice with elements in iterable, sizes can be different: \texttt{numbers[:] = []}\\
+            \pause
+            \textbf{\texttt{list[extended\_slice] = iterable}}: Change elements in extended slice with elements in iterable 1-1, sizes must be equal.\\
+        \end{frame}
+
+        \begin{frame}{Some Other List Operations}
+            \LARGE
+            \textbf{\texttt{in}} operator: Check whether an element is in list. \texttt{3 in numbers} $\Rightarrow$ \texttt{True}\\
+            \textbf{\texttt{len(list)}}: Returns the length of list(and other collections).\\
+            \textbf{\texttt{list.index(value, start=0, stop=len(list))}}: Return first index of value.\\
+            \textbf{\texttt{list.count(value)}}: Count number of occurrences of value in list.\\
+            \textbf{\texttt{list.reverse()}}: Reverse the list (in-place)\\
+            \textbf{\texttt{list.sort()}}: Sort list elements (in-place)\\
+            For more, type \texttt{help(list)} in your interactive interpreter.
+        \end{frame}
+    
+    \section{Strings}
+        \begin{frame}{Strings}
+            \LARGE
+            Special kind of \textbf{lists}!
+            \pause
+             \texttt{name = \textquotesingle Ahmet\textquotesingle\\}
+            \pause
+            You can do:
+            \begin{itemize}
+                \item Indexing: \texttt{name[2]} $\Rightarrow$ \textquotesingle m\textquotesingle
+                \pause
+                \item Slicing: \texttt{name[::-1]} $\Rightarrow$ \textquotesingle temhA\textquotesingle
+                \pause
+                \item Search by \texttt{in} operator: \texttt{\textquotesingle hm\textquotesingle in name} $\Rightarrow$ \texttt{True}
+            \end{itemize}
+            \pause
+            You can not do:
+            \begin{itemize}
+                \item String mutation: \text{name[2]=\textquotesingle H\textquotesingle} $\Rightarrow$ \textbf{\texttt{TypeError}}
+            \end{itemize}
+            \pause
+            Special functions about strings: \texttt{str.isnumeric(), str.capitalize(), str.format(...), str.find() ...}
+        \end{frame}
+
+    \section{Loops}
+        \begin{frame}{Loops}
+            \LARGE Do something for many elements or based on a condition.
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/while1.py}
+                    Similar to simple if blocks, but runs again and again until condition check fails.
+                \end{column}
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/for1.py}
+                    Iterable: collection of \textbf{ordered} elements.\\
+                    What is next after this item?\\
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{For Loops}
+            \LARGE
+            What is next after this item?\\
+            numbers[1] is after numbers[0]
+            \pause
+             \textbf{$\neq$ numbers[1] $>$ numbers[0]}\\
+            \pause
+            \textbf{Examples of iterables:}
+            \pause
+             lists,
+            \pause
+             strings,
+            \pause
+             ranges\\
+            \pause
+            \huge
+            \\
+            \textbf{Ranges}\\
+            \LARGE
+            \texttt{range(start, stop, step)}: creates a sequence of integers from start (inclusive) to stop (exclusive) by step.\\
+            Can be \textbf{indexed} and \textbf{sliced}\\
+            \texttt{len()} and \texttt{in} operator can be used
+        \end{frame}
+
+        \begin{frame}{For Loops}
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for_loops.py}
+        \end{frame}
+
+        \begin{frame}{Break, Continue \& Pass}
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    \textbf{Break}
+                    terminates the closest for or while loop
+                    \bigskip  
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/break1.py}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/break2.py}
+                \end{column}
+                \begin{column}{0.5\textwidth}
+                    \textbf{Continue}
+                    continues with the next iteration of the loop
+                    \bigskip  
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/continue1.py}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/continue2.py}
+                \end{column} 
+            \end{columns}
+        \end{frame}
+        
+        \begin{frame}{Break, Continue \& Pass}
+            \textbf{Pass}
+            does not have an effect
+            \bigskip  
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/pass.py}
+            \begin{itemize}
+                \item Loops, conditional statements, functions etc. cannot be empty 
+                \item Use when you have to create one
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{For Else, While Else??}
+            
+        \end{frame}
+
+    \section{Connect Four}
+
+        \begin{frame}{Questions?}
+            
+        \end{frame}
+
+\end{document}
