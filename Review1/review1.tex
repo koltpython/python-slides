@@ -434,13 +434,204 @@
         \end{frame}
 
         \begin{frame}{For Else, While Else??}
-            
+            \texttt{else} in branching: executed when all of the conditions in upper \texttt{if}/\texttt{elif} blocks are False\\
+            \pause
+            \texttt{else} in loops: executed when loop is terminated \textbf{without} a \texttt{break} statement
+            \pause
+            \vspace{-3mm}
+            \begin{columns}
+                \begin{column}{0.52\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while_else.py}
+                \end{column}
+                \begin{column}{0.48\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for_else.py}
+                \end{column}
+            \end{columns}
         \end{frame}
 
     \section{Connect Four}
 
-        \begin{frame}{Questions?}
-            
+        \begin{frame}{Final Goal}
+            \begin{center}                
+               \includegraphics[height=0.75\textheight]{images/connect_4.jpg} 
+            \end{center}
+        \end{frame}
+
+        \begin{frame}{Understanding the Board}
+            \LARGE
+            \inputminted[frame=single,framesep=2pt,firstline=12,lastline=18]{python3}{code-examples/connect_four.py}
+            A nested \texttt{list}, each element stores a row (another \texttt{list}).\\
+            First row, is stored at \texttt{board[0]}. How to iterate over rows?
+        \end{frame}
+
+        \begin{frame}{Printing the Board}
+            \LARGE
+            We need to print rows in reverse order, 0th row is printed at the bottom.\\
+            We can use \textbf{slicing} to reverse, and a \texttt{for} loop to iterate.\\
+            \texttt{\textbf{for} row \textbf{in} board[::-1]:}\\
+            \\How can we print one row?
+            \begin{itemize}
+                \item Option 1: Iterate over all squares and print them one by one
+                \item Option 2: Combine squares to one string and then print
+                \item Hint: Check how \texttt{str.join()} works, can we use \texttt{\textquotesingle \ \textquotesingle.join(row)}?
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Validating User Input}
+            \LARGE
+            What happens if players enter an invalid input?
+            \begin{itemize}
+                \item Enters his name instead of column no: Error when casting
+                \item Enters \textquotesingle *\textquotesingle\ as symbol: Our logic is broken
+            \end{itemize}
+            How can we validate user input?
+            \begin{itemize}
+                \item Using \texttt{if} blocks? What if user enters another invalid input again?
+                \item We need \textbf{loops}!
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Validating User Input}
+            \vspace{-2mm}
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/valid_input.py}
+            \begin{itemize}
+                \item If conditions are independent, create a single condition using logical operators
+                \item Example: A symbol with length one, that is not \textquotesingle * \textquotesingle  and unused.
+                \item \texttt{len(symbol) == 1 and symbol != \textquotesingle *\textquotesingle and symbol not in player\_pieces}
+                \item What happens if conditions are dependant, for example get a non-full column no.
+                \item It needs to be a valid number in the range 0-6, and the column shouldn't be full.
+                \item We need number to be valid to check whether column is full.
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Understanding the Game Flow}
+            \LARGE
+            \inputminted[frame=single,framesep=2pt,firstline=35,lastline=35]{python3}{code-examples/connect_four.py}
+            What can we do with \texttt{move\_counter}?
+            \begin{itemize}
+                \item Understand whose turn it is:\\
+                \texttt{print(\textquotesingle Turn is on \{\}\textquotesingle.format(players[move\_counter\%2]))}
+                \item Understand which piece will be added:\\
+                \texttt{player\_piece = player\_pieces[move\_counter\%len(players)]                }
+                \item Understand how many moves game lasted.\\
+                \texttt{move\_counter + 1}, why + 1?
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Adding New Pieces to Board}
+            \LARGE
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    Assume we have the board below, turn is on yellow pieces, and user entered column 3.\\
+                    \bigskip
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{images/connect_four_board.png}
+                \end{column}
+                \pause
+                \begin{column}{0.5\textwidth}
+                    Where should we add the new piece?\\
+                    \pause
+                    \bigskip
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{images/connect_four_board_1.png}\\
+                    To first \textbf{empty} square in that column
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Finding the Empty Square}
+            \LARGE
+            How can we do that?
+            \pause
+             Iterate over columns
+            \pause
+            , but how?\\
+            \pause
+            Our representation of board is a list that contains rows\\
+            We need to go over all rows to check the square in column 3\\
+            Iterate over rows as we did before?\\
+            \pause
+            \inputminted[frame=single,framesep=2pt,lastline=4]{python3}{code-examples/finding_square.py}
+        \end{frame}
+
+        \begin{frame}{Finding the Empty Square}
+            \Large
+            \inputminted[frame=single,framesep=2pt,firstline=6]{python3}{code-examples/finding_square.py}
+        \end{frame}
+
+        \begin{frame}{Adding New Pieces to Board}
+            \LARGE
+            We found the square and added it to board
+            \begin{center}
+                \includegraphics[height=0.6\textheight]{images/connect_four_board_2.png}\\
+            \end{center}
+            \vspace{-2mm}
+            How to check whether the game ended or not?
+        \end{frame}
+
+        \begin{frame}{Check for Four Connected Pieces}
+            \huge
+            Before we start, some observations:
+            \pause
+            \begin{itemize}
+                \item Yellow played the move, if game is ended winner is yellow pieces.
+                \pause
+                \item We can only check for yellow pieces since red cannot win in this move.
+                \pause
+                \item We don't have to check everywhere of board, we can be smarter. HOW?
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Check for Four Connected Pieces}
+            \LARGE
+            We know new piece is added to row:2, column:3\\
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    Check the row\\
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{images/connect_four_board_3.png}
+                \end{column}
+                \pause
+                \begin{column}{0.5\textwidth}
+                    Check the column\\
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{images/connect_four_board_1.png}\\
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Check for Four Connected Pieces}
+            \LARGE
+            Check Diagonals\\
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{images/connect_four_board_4.png}
+                \end{column}
+                \pause
+                \begin{column}{0.5\textwidth}
+                    \centering
+                    \includegraphics[width=0.6\textwidth]{images/connect_four_board_5.png}\\
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Check for Four Connected Pieces}
+            \LARGE
+            You can use separate \texttt{for} Loops to go over row, column and diagonals.\\
+            \pause
+            You can create a counter to count connected pieces.
+            \pause
+            \begin{itemize}
+                \item What happens to counter when we encounter a different piece?
+            \end{itemize}
+            \pause
+            Counting only yellow pieces (\texttt{player\_piece}) is enough.\\
+            \bigskip
+            \begin{center}
+                \Huge
+                \textbf{HAVE FUN!}
+            \end{center}
         \end{frame}
 
 \end{document}
