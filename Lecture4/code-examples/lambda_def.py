@@ -1,0 +1,1 @@
+function_name = lambda parameter1, parameter2, ... : return_value

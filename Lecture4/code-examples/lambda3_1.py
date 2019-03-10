@@ -1,0 +1,1 @@
+reverseString = lambda s: s[::-1]

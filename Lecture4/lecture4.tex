@@ -14,7 +14,9 @@
 \titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
 
 \setbeamercovered{invisible} % transparent
-
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
 \begin{document}
     \maketitle
 
@@ -101,12 +103,12 @@
 
         \begin{frame}{Strings}
             \LARGE
-            Special kind of \textbf{lists}! \texttt{name = \textquotesingle Ahmet\textquotesingle\\}
+            Special kind of \textbf{lists}! \texttt{name = \textquotesingle Python\textquotesingle\\}
             You can do:
             \begin{itemize}
-                \item Indexing: \texttt{name[2]} $\Rightarrow$ \textquotesingle m\textquotesingle
-                \item Slicing: \texttt{name[::-1]} $\Rightarrow$ \textquotesingle temhA\textquotesingle
-                \item Search by \texttt{in} operator: \texttt{\textquotesingle hm\textquotesingle in name} $\Rightarrow$ \texttt{True}
+                \item Indexing: \texttt{name[2]} $\Rightarrow$ \textquotesingle t\textquotesingle
+                \item Slicing: \texttt{name[::-1]} $\Rightarrow$ \textquotesingle nohtyP\textquotesingle
+                \item Search by \texttt{in} operator: \texttt{\textquotesingle yt\textquotesingle in name} $\Rightarrow$ \texttt{True}
             \end{itemize}
             You can not do:
             \begin{itemize}
@@ -145,7 +147,7 @@
         \end{frame}
 
         \begin{frame}{For Loops}
-            \inputminted[frame=single,framesep=2pt]{python3}{../Review1/code-examples/for_loops.py}
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for_loops.py}
         \end{frame}
 
         \begin{frame}{Break, Continue}
@@ -182,8 +184,206 @@
         \end{frame}
 
     \section{Functions}
-        \begin{frame}{...}
+        \begin{frame}{Functions}
+            \begin{columns}
+                \begin{column}{0.50\textwidth}
+                    Functions are
+                    \begin{itemize}
+                        \item pieces of codes written to carry out some specified tasks.
+                        \item used to bundle a set of instructions that you want to use repeatedly.
+                        \item block of codes which only call when needed to avoid complexity.
+                        \newline
+                        \item The def keyword is used to define a new function.
+                    \end{itemize}
+                 %   \pause
+                \end{column}
+                \begin{column}{0.50\textwidth}
+                    \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def.py}
+               %     \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def2.py}
+                %    \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def3.py}
+                \end{column}
+            \end{columns}
+        \end{frame}   
             
+
+        \begin{frame}{Functions}
+            \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_ex.py}
+         %   \pause
+            \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_ex2.py}
+        \end{frame}
+
+        \begin{frame}{Functions}
+            \begin{columns}
+                \begin{column}{0.50\textwidth}
+                \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_ex3.py}
+                You should call the function in your code to make it work.
+           %     \pause
+                \end{column}
+                \begin{column}{0.50\textwidth}
+                \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/function_ex4.py}
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Return}
+        All functions return some value even if that value is None.
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=50mm]{code-examples/function.png}
+                \end{figure}
+        \end{frame}
+
+        \begin{frame}{Return}
+            \begin{columns}
+                \begin{column}{0.50\textwidth}
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/return1.py}
+                    You should call the function and assign it to a variable to hold the value.
+                \end{column}
+                \begin{column}{0.50\textwidth}
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/return1_1.py}
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Return}
+            \begin{columns}
+                \begin{column}{0.50\textwidth}
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/return2.py}  
+         %           \pause
+                \end{column}
+                \begin{column}{0.50\textwidth}
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/return3.py}
+          %          \pause
+                    Return terminates the function. So, the output is 8.
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Default Parameters}
+            The values of parameters can be set to used as default.
+            \newline
+            In \textbf{\texttt{print(*args, sep=\textquotesingle \ \textquotesingle, end=\textquotesingle \textbackslash n\textquotesingle )}}, 
+            sep and end are defined as default parameters.
+            \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/default.py}
+            \begin{columns}
+                \begin{column}{0.50\textwidth}
+          %          \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/valid1.py}  
+                \end{column}
+                \begin{column}{0.50\textwidth}
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/valid1_1.py}                    
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Default Parameters}
+            The values of parameters can be set to used as default.
+            \newline
+            In \textbf{\texttt{print(*args, sep=\textquotesingle \ \textquotesingle, end=\textquotesingle \textbackslash n\textquotesingle )}}, 
+            sep and end are defined as default parameters.
+            \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/default.py}
+         %   \pause
+            \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/valid2.py}  
+        \end{frame}
+
+        \begin{frame}{Variadic Positional Arguments}
+            It is used to let the function accept any number of arguments.
+            \newline
+            In \textbf{\texttt{print(*args, sep=\textquotesingle \ \textquotesingle, end=\textquotesingle \textbackslash n\textquotesingle )}}, 
+            you can put as many args as you want.
+            \newline 
+            \newline Suppose we want a product function that works as so:
+            \newline product(3, 5) gives 15.
+            \newline product(3, 4, 2) gives 24.
+            \newline product(3, 5, scale=10) gives 150.
+            \newline 
+         %   \pause
+            \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/variadic.py}
+        \end{frame}
+
+        \begin{frame}{Local \& Global Variables}
+            \begin{columns}
+                \begin{column}{0.50\textwidth}
+                    \begin{itemize}
+                        \item Local variables are created in functions.
+                        \item Global variables are created out of the functions.
+                    \end{itemize}
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var.py}
+                \end{column}
+                \begin{column}{0.50\textwidth}
+           %         \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var2.py}                    
+           %         \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var3.py}                    
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Local \& Global Variables}
+            \begin{columns}
+                \begin{column}{0.33\textwidth}
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var4.py}                    
+           %         \pause
+                    Prints
+                    \newline 6
+                    \newline 2
+                \end{column}
+                \begin{column}{0.33\textwidth}
+          %          \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var5.py}                    
+           %         \pause
+                    Prints
+                    \newline 6
+                    \newline 2
+                \end{column}
+                \begin{column}{0.33\textwidth}
+            %        \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var6.py}                    
+           %         \pause
+                    Prints
+                    \newline 6
+                    \newline 6
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Lambda}
+        We can write short functions in one line by using \textbf{\texttt{lambda}}.
+        \newline
+        \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/lambda_def.py}                    
+    %    \pause
+        \begin{columns}
+            \begin{column}{0.50\textwidth}
+                \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/lambda1.py}                    
+            \end{column}
+            \begin{column}{0.50\textwidth}
+            %    \pause
+                \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/lambda1_1.py}                    
+            %    \pause
+            \end{column}
+        \end{columns}
+        \begin{columns}
+            \begin{column}{0.50\textwidth}
+                \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/lambda2.py}                    
+            \end{column}
+            \begin{column}{0.50\textwidth}
+           %     \pause
+                \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/lambda2_1.py}                    
+           %     \pause
+            \end{column}
+        \end{columns}
+        \begin{columns}
+            \begin{column}{0.50\textwidth}
+                \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/lambda3.py}                    
+            \end{column}
+            \begin{column}{0.50\textwidth}
+            %    \pause
+                \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/lambda3_1.py}                    
+            %    \pause
+            \end{column}
+        \end{columns}
         \end{frame}
 
 \end{document}
