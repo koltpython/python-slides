@@ -1,2 +1,2 @@
-def info(num, name = 'NoInfo', surname = 'NoInfo', id= 'NoInfo'):
-    print(num, name, surname, id)
+def info(num, name='NoInfo', surname='NoInfo', ID='NoInfo'):
+    print(num, name, surname, ID)
