@@ -315,21 +315,123 @@
         Almost always use \textbf{==} to compare values!
     \end{frame}
 
-    \section{Tuples}
-    \begin{frame}{Tuples}
-            
-    \end{frame}
     \section{Aliasing \& Cloning}
     \begin{frame}{Aliasing \& Cloning}
-            
+        \Large
+        \begin{columns}
+            \begin{column}[c]{0.6\textwidth}
+                \begin{itemize}
+                    \item More than one variables can refer to \textbf{same object}!
+                    \item What if we want to clone/copy instead of aliasing?
+                    \item For lists, \texttt{list.copy()} $\Rightarrow$ returns a \underline{shallow copy} of the list.
+                    \item Shallow: only copy the references, not inner values.
+                    \item \texttt{>>> import copy}
+                \end{itemize}
+            \end{column}
+            \begin{column}[c]{0.4\textwidth}
+                \includegraphics[width=0.9\textwidth]{images/aliasing.png}
+            \end{column}
+        \end{columns}
+        \texttt{copy.copy(x)}: shallow copy, \texttt{copy.deepcopy(x)}: deepcopy   
     \end{frame}
+
+
+    \section{Tuples}
+    \begin{frame}{Tuples}
+        \LARGE
+        \begin{itemize}
+            \item \textbf{Immutable} sequence(ordered) of elements.
+            \pause
+            \item Similar to \texttt{list}s, you can use \textbf{indexing}, \textbf{slicing}, and iterate over using \texttt{for} loops.
+            \pause
+            \item Elements cannot be added/removed/changed once the tuple is created.
+            \pause
+            \item How to create tuples?
+            \pause
+             \textbf{\texttt{my\_tuple = (1, [1, 2], \textquotesingle a\textquotesingle )}}
+            \pause
+            \item \textbf{\texttt{len(my\_tuple)}} $\Rightarrow$
+            \pause
+             3
+            \item \textbf{\texttt{my\_tuple.append(3)}} $\Rightarrow$
+            \pause
+             \textbf{\texttt{AttributeError:}} \texttt{\textquotesingle tuple\textquotesingle \ object has no attribute \textquotesingle append\textquotesingle}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Tuples}
+        \LARGE
+        \texttt{() / tuple()}: empty tuple, 
+        \pause
+         \texttt{(3)}:
+        \pause
+         \texttt{int} 3,
+        \pause
+         \texttt{(3,)}:
+        \pause
+         \texttt{tuple} containing 3
+        \pause
+        \inputminted[frame=single,framesep=2pt]{python3}{code-examples/tuples.py}
+    \end{frame}
+
     \section{Sets}
     \begin{frame}{Sets}
-            
+        \LARGE
+        \begin{itemize}
+            \item \textbf{Unordered} \underline{sequence} of \textbf{unique} elements.
+            \pause
+            \item \underline{\textbf{Cannot}} use \textbf{indexing/slicing}, \textbf{can} iterate with \texttt{for} loops.
+            \pause
+            \item \textbf{Mutable}, \texttt{add(element)}, \texttt{remove(element)} methods.
+            \pause
+            \item Python also has \textbf{immutable} sets: \texttt{frozenset}
+            \pause
+            \item How to create sets? 
+            \pause
+             \texttt{my\_set = \{1, 2, 3, 4, 2\}}
+            \item How to create empty sets?
+            \pause
+             \texttt{set()} (\{\ \} is reserved for \texttt{dict})
+            \pause
+            \item Can compute set operations: \textbf{union}, \textbf{intersection}, \textbf{difference}, \textbf{symmetric difference}.
+        \end{itemize}
+    \end{frame}
+    \begin{frame}{Sets}
+        \centering
+        \includegraphics[height=0.75\textheight]{images/venn.jpg}
+    \end{frame}
+    \begin{frame}{Sets}
+        \inputminted[frame=single,framesep=2pt]{python3}{code-examples/sets.py}
     \end{frame}
     \section{Dictionaries}
     \begin{frame}{Dictionaries}
-            
+        \LARGE
+        \begin{itemize}
+            \item Collection of \textbf{key$-$value} \underline{pairs}.
+            \pause
+            \item \underline{\textbf{Cannot}} use \textbf{indexing/slicing}, \textbf{can} iterate with \texttt{for} loops. 
+            \pause
+            \item In general, they are not \textbf{ordered}. 
+            \pause
+            \item However, in Python 3.7 pairs are guaranteed to be in insertion order.
+            \pause
+            \item In other words, we will get pairs in insertion order if we loop over the \texttt{dict}.
+            \pause
+            \item How to create dictionaries?
+            \pause
+             \texttt{\{\ \}/dict()}: empty dictionary
+            \pause
+            \item \texttt{d = \{\textquotesingle one\textquotesingle : 1, \textquotesingle two\textquotesingle : 2, \textquotesingle three\textquotesingle : 3, \textquotesingle four\textquotesingle : 4\}}
+            \pause
+            \item How to access values? 
+            \pause
+             \texttt{print(d[\textquotesingle one\textquotesingle ])} \# $\Rightarrow$ 1
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Dictionaries}
+        \large
+        \inputminted[frame=single,framesep=2pt]{python3}{code-examples/dicts.py}
     \end{frame}
 
 \end{document}
