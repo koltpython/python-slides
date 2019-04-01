@@ -1,0 +1,260 @@
+\input{../KU-Beamer-Template/style/template.tex}
+\usepackage{../KU-Beamer-Template/style/koc} 
+\usepackage{minted}
+\usepackage{upquote}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.symbols,positioning, chains}
+
+\title{KOLT Python}
+\subtitle{Error/Exception Handling, Object Oriented Programming} 
+\newdate{date}{01}{04}{2019}
+\date{\displaydate{date}}
+\author{İpek Köprülülü}
+
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+\setbeamercovered{invisible} % transparent
+
+\begin{document}
+    \maketitle
+
+    \frame{\frametitle{Agenda}\tableofcontents}
+    
+    \section{Recap}
+    \begin{frame}{Sets}
+        \LARGE
+        \begin{itemize}
+            \item \textbf{Unordered} \underline{sequence} of \textbf{unique} elements.
+            \item \underline{\textbf{Cannot}} use \textbf{indexing/slicing}, \textbf{can} iterate with \texttt{for} loops.
+            \item \textbf{Mutable}, \texttt{add(element)}, \texttt{remove(element)} methods.
+            \item Python also has \textbf{immutable} sets: \texttt{frozenset}
+            \item How to create sets? 
+             \texttt{my\_set = \{1, 2, 3, 4, 2\}}
+            \item How to create empty sets?
+             \texttt{set()} (\{\ \} is reserved for \texttt{dict})
+            \item Can compute set operations: \textbf{union}, \textbf{intersection}, \textbf{difference}, \textbf{symmetric difference}.
+        \end{itemize}
+    \end{frame}
+    \begin{frame}{Sets}
+        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture5/code-examples/sets.py}
+    \end{frame}
+    \begin{frame}{Dictionaries}
+        \LARGE
+        \begin{itemize}
+            \item Collection of \textbf{key$-$value} \underline{pairs}.
+            \item \underline{\textbf{Cannot}} use \textbf{indexing/slicing}, \textbf{can} iterate with \texttt{for} loops. 
+            \item In general, they are not \textbf{ordered}. 
+            \item However, in Python 3.7 pairs are guaranteed to be in insertion order.
+            \item In other words, we will get pairs in insertion order if we loop over the \texttt{dict}.
+            \item How to create dictionaries?
+             \texttt{\{\ \}/dict()}: empty dictionary
+            \item \texttt{d = \{\textquotesingle one\textquotesingle : 1, \textquotesingle two\textquotesingle : 2, \textquotesingle three\textquotesingle : 3, \textquotesingle four\textquotesingle : 4\}}
+            \item How to access values? 
+             \texttt{print(d[\textquotesingle one\textquotesingle ])} \# $\Rightarrow$ 1
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Dictionaries}
+        \large
+        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture5/code-examples/dicts.py}
+    \end{frame}
+
+    \begin{frame}{Files In Python}
+        \LARGE
+        Access to a \texttt{file object} using \texttt{\textbf{open(filename, mode=\textquotesingle r\textquotesingle )}} function        
+        \begin{itemize}
+            \Large
+            \item \texttt{\textbf{filename}}: File name including the \textbf{file extension}. Ex: \textquotesingle data.txt\textquotesingle
+            \item If you want to access/create a file outside of current \textbf{working directory}, you also need to include path. Ex: \textquotesingle ./FolderName/data.txt\textquotesingle , \textquotesingle C:/Users/AUYSAL16/Desktop/data.txt\textquotesingle 
+            \item \textbf{\texttt{mode}} denotes how the file will be used:
+            \begin{itemize}
+                \large
+                \item \textquotesingle r\textquotesingle : read mode, default
+                \item \textquotesingle w\textquotesingle : write mode, overrides the file contents if it already exists
+                \item \textquotesingle x\textquotesingle : create \& write mode, similar to write mode gives error if file already exists
+                \item \textquotesingle a\textquotesingle : append mode, adds content to the end of file
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{File Methods}
+        \LARGE
+        How to read file content?
+        \begin{itemize}
+            \item First open the file \texttt{f = open(\textquotesingle my\_file.txt\textquotesingle)}
+            \item \texttt{f.read()}: returns content of entire file as a string
+            \item \texttt{f.readline(): returns a single line from file}
+            \item \texttt{\textbf{for} line \textbf{in} f:} $\Rightarrow$ Iterate over all lines
+            \item \texttt{list(f)}/\texttt{f.readlines()}: read file lines to a list
+            \item \textbf{Always} close the file when you are done: \texttt{f.close()}
+        \end{itemize}        
+    \end{frame}
+
+    \begin{frame}{File Methods}
+        \LARGE
+        How to create/modify files?
+        \begin{itemize}
+            \item Open the file with a write enabled mode, e.g, \texttt{w, x, a}
+            \item Ex: \texttt{f = open(\textquotesingle my\_file\textquotesingle ,\textquotesingle w\textquotesingle )}
+            \item Use \texttt{f.write(string)} to write to file
+            \item \texttt{file.write()} method \textbf{only} takes \texttt{\textbf{str}} values!
+            \item Close the file when you are done.
+            \item \texttt{f.close()}
+        \end{itemize}
+    \end{frame}
+
+    \section{Error/Exception Handling}
+        \begin{frame}{Syntax Errors}
+            \LARGE
+            What happens when you run a syntactically incorrect file?
+            \inputminted[frame=single,framesep=2pt,firstline=1,lastline=3]{python3}{../Lecture6/code_examples/syntax_error.py}
+            \inputminted[frame=single,framesep=2pt,firstline=5]{python3}{../Lecture6/code_examples/syntax_error.py}
+            Easy to detect: Your code will not work :)
+        \end{frame}
+
+    \begin{frame}{Runtime Exceptions}
+        \LARGE
+        When a statement is \textbf{syntactically correct} does that mean we are safe?\\
+        \texttt{print(3/0)}
+        , \texttt{int('hello')}
+        , \texttt{\textquotesingle hello\textquotesingle [2] = \textquotesingle a\textquotesingle }\\
+        How to be safe in these situations?
+        \begin{itemize}
+            \item Put \texttt{if} checks everywhere?
+            \item Too much effort, and probably we cannot list every condition.
+            \item Solution is \texttt{try-except-finally} blocks.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Try Except Blocks}
+        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code_examples/try_except_finally.py}
+    \end{frame}
+
+    \begin{frame}{Try Except Blocks}
+        \inputminted[frame=single,framesep=2pt,lastline=9]{python3}{../Lecture6/code_examples/try_except.py}
+    \end{frame}
+
+    \section{Object Oriented Programming}
+        \begin{frame}{Objects}
+            \inputminted[frame=single,framesep=2pt, lastline = 20]{python3}{code_examples/objects.py}
+        \end{frame}
+
+        \begin{frame}{Objects}
+            We can think objects as the objects in real life. \\
+
+            For example;\\
+            A phone is an object. \\
+            It has attributes such as its brand, its being On/Off etc.\\
+            It has methods such as turn off, volume up etc.\\
+            %\pause
+
+            A person is an object. \\
+            It has attributes such as name, surname, age, education level etc.\\
+            It has methods such as increase age, change education level etc.\\
+            %\pause
+
+            We will create classes to create new objects.
+
+        \end{frame}
+
+        \begin{frame}{Classes}
+           Use key \texttt{\textbf{class}}
+           \inputminted[frame=single,framesep=2pt, lastline = 20]{python3}{code_examples/class.py}
+           %\pause
+           \inputminted[frame=single,framesep=2pt, lastline = 20]{python3}{code_examples/class_imp.py}
+        \end{frame}
+
+        \begin{frame}{Classes}
+            However; if we create another person, that person's attributes will be same.\\
+
+            How can we define same type of objects with different attributes?
+            %\pause
+            \inputminted[frame=single,framesep=2pt, lastline = 20]{python3}{code_examples/class2.py}
+            \_\_init\_\_() method is constructor and called automatically when we create an object.
+        \end{frame}
+
+        \begin{frame}{Classes}
+            \inputminted[frame=single,framesep=2pt, lastline = 20]{python3}{code_examples/class_imp2.py}
+        \end{frame}
+
+        \begin{frame}{Classes}
+            We can set some attributes as default.
+            
+            \inputminted[frame=single,framesep=2pt, lastline = 20]{python3}{code_examples/class3.py}
+        \end{frame}
+
+        \begin{frame}{Methods in Classes}
+           We use \texttt{\textbf{self}} as the first input. 
+           \small \inputminted[frame=single,framesep=1pt, lastline = 20]{python3}{code_examples/class4.py}
+        \end{frame}
+
+        \begin{frame}{Methods in Classes}
+            \inputminted[frame=single,framesep=1pt, lastline = 20]{python3}{code_examples/class_imp4.py}
+         \end{frame}
+
+        \begin{frame}{Inheritance}
+            \begin{columns}
+                \begin{column}{0.40\textwidth}
+                    \begin{itemize}
+                        \item All class objects inherit from object class.
+                        \item To implement same attributes of two different classes, we create a super class with their common traits.
+                        \item Subclass inherits superclass.
+                        \item We use \texttt{\textbf{super()}} while we mention the superclass.
+                        \item We can override the methods in superclass.
+                    \end{itemize}
+                \end{column}
+                \begin{column}{0.60\textwidth}
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[width=30mm]{code_examples/inheritance.png}
+                    \end{figure}
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Inheritance}
+            \small \inputminted[frame=single,framesep=1pt, lastline = 20]{python3}{code_examples/inheritance.py}
+        \end{frame}
+
+        \begin{frame}{Inheritance}
+            \small \inputminted[frame=single,framesep=1pt, lastline = 20]{python3}{code_examples/inheritance2.py}
+            %\pause
+            \begin{columns}
+                \begin{column}{0.47\textwidth}
+                    \small \inputminted[frame=single,framesep=1pt, lastline = 20]{python3}{code_examples/inheritance3.py}
+                \end{column}
+                \begin{column}{0.53\textwidth}
+                    \small \inputminted[frame=single,framesep=1pt, lastline = 20]{python3}{code_examples/inheritance4.py}
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Magic Methods}
+            When we call the ones on the left, they automatically call the ones on the right.\\
+            There are many more magic methods.
+
+            str(x) =\textgreater{} x.\_\_str\_\_()\\
+            x == y =\textgreater{} x.\_\_eq\_\_(y)\\
+            x \textless{} y =\textgreater{} x.\_\_lt\_\_(y)\\
+            x + y =\textgreater{} x.\_\_add\_\_(y)\\
+            len(x) =\textgreater{} x.\_\_len\_\_()\\
+            element in x =\textgreater{} x.\_\_contains\_\_(element)\\
+            %\pause
+
+            For example; when we use print() method on a person, it calls x.\_\_str\_\_() which is already defined for any object you'll create.
+            However, Python cannot know what you mean by person1 \textless{} person2. \\
+
+            So, we should define the methods on the right to use the left methods.
+        \end{frame}
+
+        \begin{frame}{Magic Methods}
+            \inputminted[frame=single,framesep=1pt, lastline = 20]{python3}{code_examples/magic.py}
+        \end{frame}
+
+        \begin{frame}{Magic Methods}
+            \inputminted[frame=single,framesep=1pt, lastline = 20]{python3}{code_examples/magic2.py}
+        \end{frame}
+\end{document}
