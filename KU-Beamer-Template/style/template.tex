@@ -1,7 +1,7 @@
 % created by Uwe Schadewald
 % modified by Mathias Kuntze and Ahmet Uysal
 % Add, handout to documentclass arguments for condensed pdf
-\documentclass[presentation, 8pt, mathserif, t, aspectratio=169]{beamer}
+\documentclass[presentation, 8pt, mathserif, t]{beamer} % , aspectratio=169
 \usepackage[english]{babel}
 \usepackage{pgf,graphicx}
 \usepackage{amsmath, amssymb}
@@ -11,9 +11,8 @@
 \usepackage{multimedia}
 \usepackage{pgfpages} 
 \usepackage{tikz}
-\usepackage[suffix=]{epstopdf}
 \usepackage{datetime}
-
+\pdfoptionpdfminorversion=5
 
 \usepackage{caption}
 \usepackage{subcaption}
@@ -32,8 +31,10 @@
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 \newcommand{\open}{$\square$}
-\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}\hspace{-2.5pt}}
-\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{1pt}{\large\hspace{1.5pt}\cmark}}\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\raisebox{1pt}{\large\hspace{1.5pt}\xmark}}}
+\newcommand{\notsure}{\rlap{$\square$}{\raisebox{0.8pt}{\large\hspace{1.5pt}\textbf{?}}}}
+
 
 
 % side bar and footer

@@ -10,14 +10,15 @@
 \usepackage{../KU-Beamer-Template/style/koc} 
 \usepackage{minted}
 \usepackage{upquote}
- 
+\usepackage{animate}
+
 \title{KOLT Python} 
 \subtitle{Introduction} 
-\newdate{date}{18}{02}{2019}
+\newdate{date}{23}{09}{2019}
 \date{\displaydate{date}}
 \author{Ahmet Uysal}
 
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
 
 \setbeamercovered{invisible} % transparent
 
@@ -44,8 +45,6 @@
 	\begin{frame}{Why Python?}
 		\vspace{-3mm}
 		\inputminted[frame=single,framesep=2pt]{python3}{code-examples/io.py}
-		%\pause
-		\inputminted[frame=single,framesep=2pt]{java}{code-examples/io.java}
 	\end{frame}
 
 	\begin{frame}{Why Python?}
@@ -59,7 +58,7 @@
 		\end{itemize}
 	\end{frame}
 
-	\begin{frame}{Some of the Usage Areas\cite{survey_jetbrains2018}}
+	\begin{frame}{Some of the Usage Areas \cite{survey_jetbrains2018}}
 		\begin{itemize}
 			\LARGE
 			\item Data Analysis
@@ -89,9 +88,9 @@
 			%\pause
 			\item COMP421/521: Introduction to Machine Learning
 			%\pause
-			\item ENGR350(Selected Topics - Summer18/Spring19): Introduction to Programming for Data Science
+			\item ENGR350 (Selected Topics - Summer18/Spring19): Introduction to Programming for Data Science
 			%\pause  
-			\item INTL450(Selected Topics - Spring19): Advanced Data Analysis in Python
+			\item INTL450 (Selected Topics - Spring19): Advanced Data Analysis in Python
 			%\pause
 		\end{itemize}
 		\begin{columns}
@@ -116,44 +115,58 @@
 		\end{table}
 	\end{frame}
 
-	\begin{frame}{Python at Industry\cite{instagram_engineering}}
+	\begin{frame}{Python at Industry \cite{instagram_engineering}}
 		\centering
-		\includegraphics[width=0.6\textwidth]{images/instagram_python.PNG}
-		\includegraphics[width=0.6\textwidth]{images/nasa_python.PNG}
+		\begin{tabular}{c}
+		\includegraphics[width=0.5\textwidth]{images/instagram_python.png}\\
+		\includegraphics[width=0.6\textwidth]{images/nasa_python.png}
+		\end{tabular}
 	\end{frame}
 
+    \begin{frame}{Python Everywhere}
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/python_everywhere.jpg}
+	\end{frame}
+
+
 	\section{Logistics}
-		\begin{frame}{Team}
+		\begin{frame}{Who Are We?}
 			\begin{columns}
 				\column{5cm}
 				\centering 
-					\includegraphics[width=4.0cm]{images/ahmet.png}\\
+					\includegraphics[width=2.0cm]{images/ahmet.png}\\
+					Ahmet Uysal\\
+					auysal16@ku.edu.tr\\
+					\includegraphics[width=2.0cm]{images/ahmet.png}\\
 					Ahmet Uysal\\
 					auysal16@ku.edu.tr
 				%\pause
 				\column{5cm}
 				\centering
-					\includegraphics[width=4.0cm]{images/ipek.jpeg}\\
-					İpek Köprülülü\\
-					ikoprululu16@ku.edu.tr
+					\includegraphics[width=2.0cm]{images/ahmet.png}\\
+					Ahmet Uysal\\
+					auysal16@ku.edu.tr\\
+					\includegraphics[width=2.0cm]{images/ahmet.png}\\
+					Ahmet Uysal\\
+					auysal16@ku.edu.tr
 			\end{columns}
 		\end{frame}
 
-		\begin{frame}{Weekly Schedule}
+		\begin{frame}{What Will We Do?}
 			\LARGE
 			\texttt{Monday 17:30-18:45 \textbf{Lecture}}\\
 			%\pause
-			\texttt{Wednesday 17:30-18:45 \textbf{Contest/Review}}\\
+			\texttt{Wednesday 17:30-18:45 \textbf{Review/PS}}\\
 			%\pause  
-			\texttt{Every Week \textbf{HackerRank Contest}}\\
+			%\texttt{Every Week \textbf{HackerRank Contest}}\\
 			%\pause
 			\vspace{4mm}
 			\centering
-			\includegraphics[width=6cm]{images/hackerrank.png}\\
-			We will use HackerRank a lot this semester, create your account if you have not already!
+			%\includegraphics[width=6cm]{images/hackerrank.png}\\
+			%We will use HackerRank a lot this semester, create your account if you have not already!
 		\end{frame}
 
-		\begin{frame}{Programming Assignments}
+		\begin{frame}{Programming Assignments (Don't Be Afraid!)}
 			\begin{itemize}
 				\LARGE
 				\item 4-6 Programming Assignments
@@ -164,8 +177,12 @@
 				%\pause
 				\item Later assignments will be based on \textbf{your interests!}
 				%\pause
-				\item We can also organize hackathons if requested :)
+				%\item We can also organize hackathons if requested :)
 			\end{itemize}
+
+			\begin{center}
+				\animategraphics[loop,autoplay,width=0.3\linewidth]{12}{gifs/assignment/}{0}{239}				
+			\end{center}
 			\LARGE
 			
 		\end{frame}
@@ -217,7 +234,7 @@
 
 		\begin{frame}{5 Minute Break}
 			\centering
-			\includegraphics[width=\textwidth]{images/you_wordart.PNG}
+			\includegraphics[width=\textwidth]{images/you_wordart.png}
 		\end{frame}
 
 	\section{Installations}
@@ -233,7 +250,7 @@
 				%\pause
 				\item Check the installation by running \textbf{\texttt{python}}(Windows)/\textbf{\texttt{python3}}(macOS/Linux) in terminal.
 			\end{itemize}
-			\includegraphics[width=\textwidth]{images/cmd_helloworld.PNG}
+			\includegraphics[width=\textwidth]{images/cmd_helloworld.png}
 		\end{frame}
 		 
 		\begin{frame}[t]{Installing an Editor/IDE(Integrated Development Environment)}
@@ -266,7 +283,7 @@
 				\item For more information, visit \href{https://code.visualstudio.com/docs/python/python-tutorial}{\underline{\textit{VS Code Python Tutorial}}}.
 			\end{itemize}
 			\centering
-			\includegraphics[width=0.75\linewidth]{images/extension_python.PNG}						
+			\includegraphics[width=0.75\linewidth]{images/extension_python.png}						
 	 	\end{frame}
 
 	\section{Introduction}
@@ -402,10 +419,9 @@
 			\textbf{LET'S TRY!!!}
 		\end{frame}
 
-\section{References}
-	\begin{frame}{References}
-		\bibliographystyle{IEEETran}
-		\bibliography{references}
-	\end{frame}
-
+	\section{References}
+		\begin{frame}{References}
+			\bibliographystyle{IEEETran}
+			\bibliography{references}
+		\end{frame}
 \end{document}
