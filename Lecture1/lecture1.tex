@@ -6,6 +6,8 @@
 % 	- Variables
 % 	- Console input output
 
+% pdflatex --shell-escape lecture1.tex & bibtex lecture1 & pdflatex --shell-escape lecture1.tex & pdflatex --shell-escape lecture1.tex
+
 \input{../KU-Beamer-Template/style/template.tex}
 \usepackage{../KU-Beamer-Template/style/koc} 
 \usepackage{minted}
@@ -43,12 +45,16 @@
 	\end{frame}
 
 	\begin{frame}{Why Python?}
+		\pause
 		\begin{itemize}
 			\LARGE
 			\item Easy Syntax
+			\pause
 			\item Beginner Friendly
 			-most popular language for introductory CS courses in top universities\cite{guo1}- 
+			\pause
 			\item Wide usage area
+			\pause
 			\item Large and growing community
 		\end{itemize}
 	\end{frame}
@@ -91,10 +97,8 @@
 		\begin{columns}
 			\column{0.3\textwidth}
 				\includegraphics[width=\textwidth]{images/berkeley_pacman.png}
-			\pause
 			\column{0.3\textwidth}
 				\includegraphics[width=\textwidth]{images/nn.jpg}
-			\pause
 			\column{0.3\textwidth}
 				\includegraphics[width=\textwidth]{images/analysis.jpeg}
 		\end{columns}
@@ -129,57 +133,67 @@
 			\begin{columns}
 				\column{5cm}
 				\centering 
+				\visible<1->{
 					\includegraphics[width=2.0cm]{images/ahmet.png}\\
 					Ahmet Uysal\\
 					auysal16@ku.edu.tr\\
-					\pause
-					\includegraphics[width=2.0cm]{images/ceren.jpg}\\
-					Ceren Kocaoğullar\\
-					ckocaogullar15@ku.edu.tr
-				\pause
-				\column{5cm}
-				\centering
+				}
+				\visible<3->{
 					\includegraphics[width=2.0cm]{images/gulsena.jpg}\\
 					Gül Sena Altıntaş\\
 					galtintas17@ku.edu.tr\\
-					\pause
+				}
+				\column{5cm}
+				\centering
+				\visible<2->{
+					\includegraphics[width=2.0cm]{images/ceren.jpg}\\
+					Ceren Kocaoğullar\\
+					ckocaogullar15@ku.edu.tr
+				}
+				\visible<4->{
 					\includegraphics[width=2.0cm]{images/hasancan.jpg}\\
 					Hasan Can Aslan\\
 					haslan16@ku.edu.tr
+				}
 			\end{columns}
 		\end{frame}
 
 		\begin{frame}{What Will We Do?}
 			\LARGE
-			\texttt{Monday 17:30-18:45 \textbf{Lecture}}\\
+			\texttt{\textbf{Lecture} Monday 11:30-12:45}\\
 			\pause
-			\texttt{Wednesday 17:30-18:45 \textbf{Review/PS}}\\
-			\pause  
-			%\texttt{Every Week \textbf{HackerRank Contest}}\\
-			\pause
-			\vspace{4mm}
-			\centering
-			%\includegraphics[width=6cm]{images/hackerrank.png}\\
-			%We will use HackerRank a lot this semester, create your account if you have not already!
+			\texttt{\textbf{Section} Wednesday 14:30-15:45
+			\textbf{or}}\\
+			\texttt{\textbf{Section} Thursday 11:30-12:45
+			\textbf{or}}\\
+			\texttt{\textbf{Section} Thursday 13:00-14:15
+			\textbf{or}}\\
+			\texttt{\textbf{Section} Thursday 16:00-17:15}\\
 		\end{frame}
 
-		\begin{frame}{Programming Assignments\pause (Don't Be Afraid!)}
+		\begin{frame}{Programming Assignments \pause (Don't Be Afraid!)}
+			\pause
+			\pause
 			\begin{itemize}
 				\LARGE
-				\item 4-6 Programming Assignments
+				\item 4-6 in total
 				\pause
-				\item Review sessions will be conducted to \textbf{help you}
+				\item Review sessions to \textbf{help you}
 				\pause
 				\item Some assignments will have \textbf{autograders} to help you find your mistakes and test your code.
 				\pause
 				\item Later assignments will be based on \textbf{your interests!}
-				%\item We can also organize hackathons if requested :)
+			%\item We can also organize hackathons if requested :)
 			\end{itemize}
-
-			\begin{center}
-				\animategraphics[loop,autoplay,width=0.3\linewidth]{12}{gifs/assignment/}{0}{239}				
-			\end{center}
-			\LARGE
+			\ifthenelse{\boolean{beamer@anotherslide}}{
+				\phantom{\rule{0.3\linewidth}{0.3\linewidth}}
+			}
+			{
+			
+				\begin{center}
+					\animategraphics[loop,autoplay,width=0.3\linewidth]{12}{gifs/assignment/}{0}{239}				
+				\end{center}
+			}
 			
 		\end{frame}
 
@@ -191,7 +205,7 @@
 				\pause
 				\item Working on and submitting all homework assignments. Submissions that do not pass the autograders will be examined by us.
 				\pause
-				\item We do not expect that you ace all programming assignments. But, we expect that you \textbf{spend time} on it!
+				\item We do not expect that you ace all programming assignments. But, we expect that you \textbf{spend time} on them!
 				\pause
 				\item Complying to \href{https://vpaa.ku.edu.tr/academic/student-code-of-conduct}{\underline{\textit{Koç University Code of Conduct}}}. 
 			\end{itemize}
@@ -337,7 +351,7 @@
 			\LARGE
 			Now we can store the data we know, \\
 			\pause
-			how about interacting with user? \\
+			how about interacting with the user? \\
 			\pause
 			\texttt{print(), input()}
 			\pause
@@ -374,9 +388,15 @@
 			\inputminted[frame=single,framesep=2pt,fontsize=\LARGE]{python3}{code-examples/example_io.py}
 			\pause
 			\centering
-			\vspace{1cm}
-			\Huge
-			\textbf{LET'S TRY!!!}
+			\includegraphics[width=0.25\textwidth]{images/thanks.png}
+
+		\end{frame}
+		
+		\begin{frame}{Get Your Hands Dirty}
+		    \vspace{5mm}
+		    \centering
+            \includegraphics[width=0.8\textwidth]{images/your_turn.jpg}
+
 		\end{frame}
 
 	\section{References}
