@@ -85,22 +85,32 @@
 	\begin{frame}{Python at Koç University}
 		\begin{itemize}
 			\LARGE
+			\visible<2->{
 			\item COMP341: Introduction to Artificial Intelligence
-			\pause
+			}
+			\visible<3->{
 			\item COMP421/521: Introduction to Machine Learning
-			\pause
+			}
+			\visible<4->{
 			\item ENGR350 (Selected Topics - Summer18/Spring19): Introduction to Programming for Data Science
-			\pause  
+			}
+			\visible<5->{
 			\item INTL450 (Selected Topics - Spring19): Advanced Data Analysis in Python
-			\pause
+			}
 		\end{itemize}
 		\begin{columns}
 			\column{0.3\textwidth}
+			\visible<2->{
 				\includegraphics[width=\textwidth]{images/berkeley_pacman.png}
+			}
 			\column{0.3\textwidth}
+			\visible<3->{
 				\includegraphics[width=\textwidth]{images/nn.jpg}
+			}
 			\column{0.3\textwidth}
+			\visible<5->{
 				\includegraphics[width=\textwidth]{images/analysis.jpeg}
+			}
 		\end{columns}
 	\end{frame}
 
@@ -201,7 +211,7 @@
 			\pause
 			\begin{itemize}
 				\LARGE
-				\item At most \textbf{3 unexcused absences}, including onsite contests and review sessions.
+				\item At most \textbf{3 unexcused absences}, including sections.
 				\pause
 				\item Working on and submitting all homework assignments. Submissions that do not pass the autograders will be examined by us.
 				\pause
@@ -213,63 +223,29 @@
 
 	\section{Installations}
 
-	 	\begin{frame}{Installing Python}
+	 	\begin{frame}{Installations}
 			\LARGE
-			\begin{itemize}
-				\item Go to \href{https://www.python.org/downloads/}{\underline{\textit{python.org/downloads}}}
-				\pause
-				\item Install the Python 3.7.2 for your operating system
-				\pause
-				\item (Windows only) Make sure to add python to the \texttt{environment variables} by checking the corresponding permission on the installation or by hand
-				\pause
-				\item Check the installation by running \textbf{\texttt{python}}(Windows)/\textbf{\texttt{python3}}(macOS/Linux) in terminal.
-			\end{itemize}
-			\includegraphics[width=\textwidth]{images/cmd_helloworld.png}
+			\pause
+			NO INSTALLATIONS!
+			\pause
+			\begin{center}
+				\includegraphics[width=3.0cm]{images/gotcha_jesus.jpg}
+			\end{center}
+			\pause
+			We will use \href{https://repl.it}{Repl.it}, an online IDE.
+			\begin{center}
+				\includegraphics[width=3.0cm]{images/replit_logo.png}
+			\end{center}
 		\end{frame}
 		 
-		\begin{frame}[t]{Installing an Editor/IDE(Integrated Development Environment)}
-			\vspace{-4mm}
-			\begin{columns}[t] 
-				\begin{column}[t]{0.66\linewidth}
-					\LARGE
-					\begin{itemize}
-						\item Although you can edit Python(.py) files with any text editor and run them directly through terminal, having a specialized editor/IDE can help a lot. 
-						\item We will use Visual Studio Code in lectures but you are free to use any editor/IDE of your choice.
-						\item Get Visual Studio Code from \href{https://code.visualstudio.com/Download}{\underline{\textit{code.visualstudio.com/Download}}}
-					\end{itemize}
-				\end{column}
-				
-				\begin{column}{0.33\linewidth}
-					\begin{center}
-						\includegraphics[width=0.8\linewidth]{images/vscode.png}						
-					\end{center}
-				\end{column}
-			\end{columns}
-	 	\end{frame}
-
-	 	\begin{frame}{Configuring Visual Studio Code for Python}
-			\LARGE
-			\begin{itemize}
-				\item Install Python extension for VS Code.
-				\pause
-				\item Select the Python(3.7.2) Interpreter in VS Code.
-				\pause
-				\item For more information, visit \href{https://code.visualstudio.com/docs/python/python-tutorial}{\underline{\textit{VS Code Python Tutorial}}}.
-			\end{itemize}
-			\centering
-			\includegraphics[width=0.75\linewidth]{images/extension_python.png}						
-	 	\end{frame}
+		\begin{frame}{Repl.it}
+			
+		
+		\end{frame}
 
 	\section{Introduction}
 		\begin{frame}{Interactive Interpreter}
-			\LARGE
-			You can instantly run code on terminal!
-			\pause
-			\includegraphics[width=\textwidth]{images/cmd_python.png}
-			\pause
-			You can also open a terminal inside VS Code
-			\centering
-			\includegraphics[width=0.5\textwidth]{images/vscode_python.png}
+		
 		\end{frame}
 
 		\begin{frame}{Why It Matters?}
