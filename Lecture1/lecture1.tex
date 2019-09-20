@@ -34,6 +34,7 @@
 	\begin{frame}{Course Outcomes}
 		\LARGE
 		\begin{itemize}
+			\pause
 			\item Apply basic programming concepts using Python
 			\pause
 			\item Demonstrate how Python can be used in different areas or disciplines
@@ -61,6 +62,7 @@
 
 	\begin{frame}{Some of the Usage Areas \cite{survey_jetbrains2018}}
 		\begin{itemize}
+			\pause
 			\LARGE
 			\item Data Analysis
 			\pause
@@ -170,6 +172,7 @@
 
 		\begin{frame}{What Will We Do?}
 			\LARGE
+			\pause
 			\texttt{\textbf{Lecture} Monday 11:30-12:45}\\
 			\pause
 			\texttt{\textbf{Section} Wednesday 14:30-15:45
@@ -181,8 +184,7 @@
 			\texttt{\textbf{Section} Thursday 16:00-17:15}\\
 		\end{frame}
 
-		\begin{frame}{Programming Assignments \pause (Don't Be Afraid!)}
-			\pause
+		\begin{frame}{Programming Assignments(Don't Be Afraid!)}
 			\pause
 			\begin{itemize}
 				\LARGE
@@ -193,7 +195,8 @@
 				\item Some assignments will have \textbf{autograders} to help you find your mistakes and test your code.
 				\pause
 				\item Later assignments will be based on \textbf{your interests!}
-			%\item We can also organize hackathons if requested :)
+				\pause
+				%\item We can also organize hackathons if requested :)
 			\end{itemize}
 			\ifthenelse{\boolean{beamer@anotherslide}}{
 				\phantom{\rule{0.3\linewidth}{0.3\linewidth}}
@@ -227,7 +230,6 @@
 			\LARGE
 			\pause
 			NO INSTALLATIONS!
-			\pause
 			\begin{center}
 				\includegraphics[width=3.0cm]{images/gotcha_jesus.jpg}
 			\end{center}
@@ -237,30 +239,49 @@
 				\includegraphics[width=3.0cm]{images/replit_logo.png}
 			\end{center}
 		\end{frame}
-		 
-		\begin{frame}{Repl.it}
-			
 		
+		\begin{frame}{Sign Up to Repl.it} 		
+			\LARGE
+			\pause
+			We already sent you an invite, check your email.
+			\pause
+			\begin{center}
+				\includegraphics[width=\textwidth]{images/replit_email.png}
+			\end{center}
+		\end{frame}
+
+		\begin{frame}{Sign Up Flow}
+		
+		\begin{columns}
+			\pause
+			\begin{column}{0.33\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{images/replit_gauth1.png}
+			\end{column}
+			\pause
+			\begin{column}{0.33\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{images/replit_gauth2.png}
+			\end{column}
+			\pause
+			\begin{column}{0.33\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{images/replit_success.png}
+			\end{column}
+		\end{columns}	
+		\end{frame}
+
+		\begin{frame}{Repl.it}
+				\begin{tikzpicture}
+					\node[anchor=north west,inner sep=0] at (0,0) {\includegraphics[width=1\textwidth]{images/replit_interface.png}};
+					\draw<2>[red,ultra thick,rounded corners] (0.5\textwidth,0) rectangle (\textwidth,-4.25);				
+					\draw<3>[red,ultra thick,rounded corners] (0,0) rectangle (0.5\textwidth,-2.9);
+					\draw<4>[red,ultra thick,rounded corners] (2.2,0) rectangle (3.2,-0.3);
+					\draw<5>[red,ultra thick,rounded corners] (0,-2.9) rectangle (0.5\textwidth,-4.25);
+				\end{tikzpicture}
 		\end{frame}
 
 	\section{Introduction}
-		\begin{frame}{Interactive Interpreter}
-		
-		\end{frame}
-
-		\begin{frame}{Why It Matters?}
-			\begin{itemize}
-				\LARGE
-				\pause
-				\item Immediate gratification :)
-				\pause
-				\item Provides a sandboxed environment to experiment
-				\pause
-				\item You are not sure what something does, \textbf{try it!}
-				\pause
-				\item Shortens code-test-debug cycle and speeds up learning 
-			\end{itemize}
-		\end{frame}
 		
 		\begin{frame}{Comments}
 			\LARGE
