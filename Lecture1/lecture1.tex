@@ -2,7 +2,7 @@
 % -> Neden Python?
 % -> Program Introduction
 % -> IDE kurulumu
-% -> Programlama ve Pythona giriş
+% -> Programlama ve Pythona giriş 
 % 	- Variables
 % 	- Console input output
 
@@ -91,7 +91,7 @@
 			\item COMP341: Introduction to Artificial Intelligence
 			}
 			\visible<3->{
-			\item COMP421/521: Introduction to Machine Learning
+			\item ENGR421/521: Introduction to Machine Learning
 			}
 			\visible<4->{
 			\item ENGR350 (Selected Topics - Summer18/Spring19): Introduction to Programming for Data Science
@@ -292,9 +292,49 @@
 		\begin{frame}{Variables}
 			\LARGE
 			\begin{itemize}
+				\pause
 				\item How to represent/store values in Python?
 				\pause
-				\item Which kind of values we need to represent?
+				\item The answer is:
+				\item \huge{\textbf{VARIABLES!}}
+				\vspace{5mm}
+				\pause
+				\item But what the heck are variables?
+			\end{itemize}
+		\end{frame}
+		
+		\begin{frame}{Variables}
+			\begin{columns}[T]
+				\begin{column}{0.2\textwidth}
+					\centering
+					Think of them as
+					\pause					
+				\end{column}
+				\begin{column}{0.8\textwidth}
+					\centering
+					\includegraphics[width=\textwidth]{images/box.png}
+				\end{column}
+			\end{columns}
+		\end{frame}
+		
+		\begin{frame}{Variables}
+			\begin{columns}[T]
+				\begin{column}{0.6\textwidth}
+					\centering
+					Tiny boxes in the computer memory
+					\pause					
+				\end{column}
+				\begin{column}{0.4\textwidth}
+					\centering
+					\includegraphics[width=\textwidth]{images/memory.jpg}
+				\end{column}
+			\end{columns}
+		\end{frame}
+		
+		\begin{frame}{Variables}
+			\LARGE
+			\begin{itemize}
+				\item Which kind of values we need to keep in these boxes (variables)?
 				\pause
 					\begin{itemize}
 						\Large
@@ -337,7 +377,24 @@
 			\inputminted[frame=single,framesep=2pt,fontsize=\LARGE]{python3}{code-examples/variables.py}
 		\end{frame}
 		
-		\begin{frame}{How about type of variables?}
+		
+		\begin{frame}{Variables}
+		    \begin{itemize}
+		        \item \LARGE BE CAREFUL!
+		        \vspace{2mm}
+				\pause
+				\item \large
+				Andy could fit all his toys into one box, but this is not the Toy Story.
+				\pause
+				\item \LARGE
+				These variable boxes can keep only \textbf{one thing at a time.}
+		    \end{itemize}
+			\vspace{2mm}
+		    \centering
+            \includegraphics[width=0.6\textwidth]{images/box_many.jpg}
+		\end{frame}
+		
+		\begin{frame}{How about types of variables?}
 			\LARGE
 			Special method called \texttt{\textbf{type()}} 
 			\inputminted[frame=single,framesep=2pt]{python3}{code-examples/types.py}
