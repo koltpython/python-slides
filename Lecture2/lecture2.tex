@@ -17,13 +17,14 @@
 
 \title{KOLT Python} 
 \subtitle{Basic Operators \& Branching} 
-\newdate{date}{25}{02}{2019}
+\newdate{date}{30}{09}{2019}
 \date{\displaydate{date}}
-\author{Ahmet Uysal}
+\author{Ceren Kocaoğullar}
 
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
 
 \setbeamercovered{invisible} % transparent
+
 
 \begin{document}
     \maketitle
@@ -94,19 +95,74 @@
             \end{itemize}
         \end{frame}
 
-    \section{Basic Operators}
-        \begin{frame}{Truthy \& Falsy Values}
+    
+        
+        \begin{frame}{Arithmetic Operators}
             \LARGE
-            Last week, we tried to cast some values to \texttt{bool}, let's look at them in detail.
-            
+            These operations are applicable on Numeric types: \texttt{int} and \texttt{float}
+            \pause
             \begin{columns}
-                \column{0.45\textwidth}
-                    \inputminted[firstline=1, lastline=8, frame=single,framesep=2pt]{python3}{code-examples/truthy-falsy.py}
-                \pause
-                \column{0.54\textwidth}
-                    \inputminted[firstline=9, lastline=16, frame=single,framesep=2pt]{python3}{code-examples/truthy-falsy.py}
+               \begin{column}{0.35\textwidth}
+                \vspace{-5mm}
+                \begin{itemize}
+                    \item \texttt{+}: Addition
+                    \pause
+                    \item \texttt{-}: Subtraction
+                    \pause
+                    \item \texttt{*}: Multiplication
+                    \pause
+                    \item \texttt{/}: Division
+                    \pause
+                    \item \texttt{//}: Floor(integer) Division
+                    \pause
+                    \item \texttt{\%}: Modulo
+                    \pause
+                    \item \texttt{**}: Power 
+                \end{itemize}
+               \end{column}
+               \pause
+               \begin{column}{0.65\textwidth}
+                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/numeric_operators.py}
+               \end{column} 
             \end{columns}
         \end{frame}
+        
+        \begin{frame}{Assignment Operators}
+            \LARGE
+            We have already seen \texttt{\textquotesingle=\textquotesingle}: 
+            \pause
+            \texttt{variable\_name = value}\\
+            \pause
+            Frequently we will update variables' values based on their \textbf{old value}.\\
+            \pause
+            \textbf{Ex:} Increment a number: \texttt{num = num + 1}\\
+            \pause
+            Python has shorthand representations for these updates with arithmetic operators.\\
+            \pause
+            \texttt{num += 1} is equivalent to \texttt{num = num + 1}\\
+            \pause
+            \texttt{result *= 2} is equivalent to \texttt{result = result * 2}\\
+        \end{frame}
+
+        \begin{frame}{Assignment Operators}
+            \LARGE
+			\begin{table}[]
+				\resizebox{0.7\textwidth}{!}{
+				\begin{tabular}{|l|l|l|}
+				\hline
+				\textcolor{koc}{\textbf{Operator}} &\textcolor{koc}{\textbf{Usage}} & \textcolor{koc}{\textbf{Equivalent}} \\ \hline
+				\textbf{\texttt{+=}} & \texttt{val += 3} & \texttt{val = val + 3} \\ \hline 
+				\textbf{\texttt{-=}} & \texttt{val -= 3} & \texttt{val = val - 3} \\ \hline
+				\textbf{\texttt{*=}} & \texttt{val *= 3} & \texttt{val = val * 3} \\ \hline
+				\textbf{\texttt{/=}} & \texttt{val /= 3} & \texttt{val = val / 3} \\ \hline
+                \textbf{\texttt{\%=}}& \texttt{val \%= 3} & \texttt{val = val \% 3} \\ \hline
+                \textbf{\texttt{**=}} & \texttt{val **= 3} & \texttt{val = val ** 3} \\ \hline
+				\textbf{\texttt{//=}} & \texttt{val //= 3} & \texttt{val = val // 3} \\ \hline
+				\end{tabular}}
+			\end{table}
+        \end{frame}
+        
+        \section{Logical Operators}
 
         \begin{frame}{\texttt{bool} Operators}
             \LARGE
@@ -174,34 +230,15 @@
             \pause
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/short_circuit.py}
         \end{frame}
-
-        \begin{frame}{Arithmetic Operators}
-            \LARGE
-            These operations are applicable on Numeric types: \texttt{int} and \texttt{float}
-            \pause
+        
+        \begin{frame}{Truthy \& Falsy Values}
+            
             \begin{columns}
-               \begin{column}{0.35\textwidth}
-                \vspace{-5mm}
-                \begin{itemize}
-                    \item \texttt{+}: Addition
-                    \pause
-                    \item \texttt{-}: Subtraction
-                    \pause
-                    \item \texttt{*}: Multiplication
-                    \pause
-                    \item \texttt{/}: Division
-                    \pause
-                    \item \texttt{//}: Floor(integer) Division
-                    \pause
-                    \item \texttt{\%}: Modulo
-                    \pause
-                    \item \texttt{**}: Power 
-                \end{itemize}
-               \end{column}
-               \pause
-               \begin{column}{0.65\textwidth}
-                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/numeric_operators.py}
-               \end{column} 
+                \column{0.45\textwidth}
+                    \inputminted[firstline=1, lastline=8, frame=single,framesep=2pt]{python3}{code-examples/truthy-falsy.py}
+                \pause
+                \column{0.54\textwidth}
+                    \inputminted[firstline=9, lastline=16, frame=single,framesep=2pt]{python3}{code-examples/truthy-falsy.py}
             \end{columns}
         \end{frame}
 
@@ -245,41 +282,6 @@
             \pause
             \vspace{-4mm}
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/chained.py}
-        \end{frame}
-
-        \begin{frame}{Assignment Operators}
-            \LARGE
-            We have already seen \texttt{\textquotesingle=\textquotesingle}: 
-            \pause
-            \texttt{variable\_name = value}\\
-            \pause
-            Frequently we will update variables' values based on their \textbf{old value}.\\
-            \pause
-            \textbf{Ex:} Increment a number: \texttt{num = num + 1}\\
-            \pause
-            Python has shorthand representations for these updates with arithmetic operators.\\
-            \pause
-            \texttt{num += 1} is equivalent to \texttt{num = num + 1}\\
-            \pause
-            \texttt{result *= 2} is equivalent to \texttt{result = result * 2}\\
-        \end{frame}
-
-        \begin{frame}{Assignment Operators}
-            \LARGE
-			\begin{table}[]
-				\resizebox{0.7\textwidth}{!}{
-				\begin{tabular}{|l|l|l|}
-				\hline
-				\textcolor{koc}{\textbf{Operator}} &\textcolor{koc}{\textbf{Usage}} & \textcolor{koc}{\textbf{Equivalent}} \\ \hline
-				\textbf{\texttt{+=}} & \texttt{val += 3} & \texttt{val = val + 3} \\ \hline 
-				\textbf{\texttt{-=}} & \texttt{val -= 3} & \texttt{val = val - 3} \\ \hline
-				\textbf{\texttt{*=}} & \texttt{val *= 3} & \texttt{val = val * 3} \\ \hline
-				\textbf{\texttt{/=}} & \texttt{val /= 3} & \texttt{val = val / 3} \\ \hline
-                \textbf{\texttt{\%=}}& \texttt{val \%= 3} & \texttt{val = val \% 3} \\ \hline
-                \textbf{\texttt{**=}} & \texttt{val **= 3} & \texttt{val = val ** 3} \\ \hline
-				\textbf{\texttt{//=}} & \texttt{val //= 3} & \texttt{val = val // 3} \\ \hline
-				\end{tabular}}
-			\end{table}
         \end{frame}
 
     \section{Branching}
