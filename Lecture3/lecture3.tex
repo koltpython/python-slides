@@ -6,11 +6,13 @@
 
 \title{KOLT Python} 
 \subtitle{Lists, Strings \& Loops} 
-\newdate{date}{04}{03}{2019}
+\newdate{date}{07}{10}{2019}
 \date{\displaydate{date}}
-\author{İpek Köprülülü}
+\author{Ahmet Uysal}
 
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+% pdflatex --shell-escape lecture3.tex & pdflatex --shell-escape lecture3.tex
+
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
 
 \setbeamercovered{invisible} % transparent
 
@@ -20,6 +22,50 @@
     \frame{\frametitle{Agenda}\tableofcontents}
 
     \section{Recap}
+
+        \begin{frame}{Branching}
+            \vspace{-3mm}
+            \begin{columns}
+                \column{0.5\textwidth}
+                \inputminted[firstline=1, lastline=4, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+                \inputminted[firstline=6, lastline=13, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+                \column{0.5\textwidth}
+                \inputminted[firstline=15, lastline=27, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+            \end{columns}
+            \begin{itemize}
+                \item \texttt{<condition>} has a \textbf{\texttt{bool}} value (\texttt{True} or \texttt{False})
+                \item Which expressions will be evaluated in which conditions?
+            \end{itemize}
+        \end{frame}
+
+        \begin{frame}{Branching Example}
+            \LARGE
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/branching_example.py}
+        \end{frame}
+
+        \begin{frame}{Branching Example}
+            \LARGE
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/branching_example2.py}
+        \end{frame}
+
+        \begin{frame}{Comparison Operators}
+            \LARGE
+            \begin{columns}
+                \begin{column}{0.4\textwidth}
+                    \begin{itemize}
+                        \item \texttt{<}: Strictly less than
+                        \item \texttt{<=}: Less than or equal
+                        \item \texttt{>}: Strictly greater than
+                        \item \texttt{>=}: Greater than or equal
+                        \item \texttt{==}: Equal
+                        \item \texttt{!=}: Not equal
+                    \end{itemize}
+                \end{column}
+                \begin{column}{0.6\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/comparison.py}
+                \end{column}
+            \end{columns}
+        \end{frame}
 
         \begin{frame}{\texttt{bool} Operators}
          \LARGE
@@ -51,58 +97,7 @@
         
         \end{frame}
 
-        \begin{frame}{Short-Circuit Evaluation}
-            \LARGE
-            \texttt{X}: Any boolean value\\
-            \texttt{True or X} $\Rightarrow$ 
-            \textbf{\texttt{True}}\\
-            \texttt{False and X} $\Rightarrow$
-            \textbf{\texttt{False}}\\
-            Python is smart enough to take advantage of this!
-            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/short_circuit.py}
-        \end{frame}
-
-        \begin{frame}{Arithmetic Operators}
-            \LARGE
-            These operations are applicable on Numeric types: \texttt{int} and \texttt{float}
-            \begin{columns}
-               \begin{column}{0.35\textwidth}
-                \vspace{-5mm}
-                \begin{itemize}
-                    \item \texttt{+}: Addition
-                    \item \texttt{-}: Subtraction
-                    \item \texttt{*}: Multiplication
-                    \item \texttt{/}: Division
-                    \item \texttt{//}: Floor(integer) Division
-                    \item \texttt{\%}: Modulo
-                    \item \texttt{**}: Power 
-                \end{itemize}
-               \end{column}
-               \begin{column}{0.65\textwidth}
-                \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/numeric_operators.py}
-               \end{column} 
-            \end{columns}
-        \end{frame}
-
-        \begin{frame}{Comparison Operators}
-            \LARGE
-            \begin{columns}
-                \begin{column}{0.4\textwidth}
-                    \begin{itemize}
-                        \item \texttt{<}: Strictly less than
-                        \item \texttt{<=}: Less than or equal
-                        \item \texttt{>}: Strictly greater than
-                        \item \texttt{>=}: Greater than or equal
-                        \item \texttt{==}: Equal
-                        \item \texttt{!=}: Not equal
-                    \end{itemize}
-                \end{column}
-                \begin{column}{0.6\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/comparison.py}
-                \end{column}
-            \end{columns}
-        \end{frame}
-
+        
         \begin{frame}{Assignment Operators}
             \LARGE
 			\begin{table}[]
@@ -121,20 +116,79 @@
 			\end{table}
         \end{frame}
 
-        \begin{frame}{Branching}
-            \vspace{-3mm}
-            \begin{columns}
-                \column{0.5\textwidth}
-                \inputminted[firstline=1, lastline=4, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
-                \inputminted[firstline=6, lastline=13, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
-                \column{0.5\textwidth}
-                \inputminted[firstline=15, lastline=27, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
-            \end{columns}
-            \begin{itemize}
-                \item \texttt{<condition>} has a \textbf{\texttt{bool}} value (\texttt{True} or \texttt{False})
-                \item Which expressions will be evaluated in which conditions?
-            \end{itemize}
+        \section{Strings}
+        \begin{frame}{Strings}
+            \pause
+            \LARGE
+            \textbf{\texttt{my\_string = \textquotesingle abcde\textquotesingle}}
+            \pause
+            \begin{center}
+                \begin{table}[]
+                    \begingroup
+                    \setlength{\tabcolsep}{1pt} % Default value: 6pt
+                    \begin{tabular}{rcccccl}
+                     & {\color[HTML]{c4122e} 0}  & {\color[HTML]{c4122e} 1}  & {\color[HTML]{c4122e} 2}  & {\color[HTML]{c4122e} 3}\  & {\color[HTML]{c4122e} 4} &  \\
+                     \textquotesingle & a  & b  & c  & d  & e & \textquotesingle \\
+                     \pause
+                    & {\color[HTML]{A0A0A0} -5} & {\color[HTML]{A0A0A0} -4} & {\color[HTML]{A0A0A0} -3} & {\color[HTML]{A0A0A0} -2} & {\color[HTML]{A0A0A0} -1} & 
+                    \end{tabular}
+                    \endgroup
+                    \end{table}
+            \end{center}
+
+            \pause
+            \textbf{\texttt{print(my\_string[2])}}\pause $\Rightarrow$ prints c \\
+            \pause
+            \textbf{\texttt{print(my\_string[-2])}}\pause $\Rightarrow$ prints d
+            
         \end{frame}
+
+        \begin{frame}{Indexing \& Slicing}
+            \Large
+            \pause
+            Access specific characters using \textbf{indexing}, i.e, \texttt{\textbf{[index]}}\\
+            \pause
+            \textbf{Slice} strings by using \texttt{\textbf{[start:stop:step]}}
+            \pause
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/string_index.py}
+            \pause 
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/string_index2.py}
+        \end{frame}
+
+
+        \begin{frame}{String Operations}
+            \large
+            \pause
+            \inputminted[frame=single,framesep=2pt, lastline=4]{python3}{code-examples/string_operations.py}
+            \pause
+            \inputminted[frame=single,framesep=2pt, firstline=6]{python3}{code-examples/string_operations.py}
+            \pause
+            \LARGE
+            \texttt{\textbf{str1 + str2}} $\Rightarrow$ \textbf{Concatenate} \texttt{str1} and \texttt{str2}\\
+            \pause
+            \texttt{\textbf{str1 *}} $n$ $\Rightarrow$  Repeate \texttt{str1} $n$ times.
+        \end{frame}
+
+        \begin{frame}{Example: Evil Laughter}
+            \centering
+            \includegraphics[height=0.8\textheight]{images/evil_laugh.jpg}
+        \end{frame}
+
+    \section{While Loops}
+        \begin{frame}{While Loops}
+            \begin{columns}
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while1.py}
+                \end{column}
+            \pause 
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while2.py}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while3.py}
+                \end{column} 
+            \end{columns}
+        \end{frame}
+        
 
     \section{Lists}
         \begin{frame}{Lists}
@@ -198,26 +252,6 @@
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/nestedlists.py}
         \end{frame}
 
-    \section{Strings}
-        \begin{frame}{Strings}
-            \begin{figure}[H]
-                \centering
-                \includegraphics[width=80mm]{code-examples/string.png}
-                \end{figure}
-        \end{frame}
-
-        \begin{frame}{Indexing \& Slicing}
-            \begin{columns}
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/string_index.py}
-                \end{column}
-               \pause 
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/string_index2.py}
-                \end{column} 
-            \end{columns}
-        \end{frame}
-
     \section{Loops}
         \begin{frame}{in Operator}
             Search an operand in the specified sequence by using \textbf{in}
@@ -253,19 +287,7 @@
                 \end{column} 
             \end{columns}
         \end{frame}
-        \begin{frame}{While Loops}
-            \begin{columns}
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while1.py}
-                \end{column}
-               \pause 
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while2.py}
-                    \pause
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while3.py}
-                \end{column} 
-            \end{columns}
-        \end{frame}
+        
         \begin{frame}{Break, Continue \& Pass}
             \begin{columns}
                 \begin{column}{0.5\textwidth}
