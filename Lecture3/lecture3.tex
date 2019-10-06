@@ -97,25 +97,6 @@
         
         \end{frame}
 
-        
-        \begin{frame}{Assignment Operators}
-            \LARGE
-			\begin{table}[]
-				\resizebox{0.7\textwidth}{!}{
-				\begin{tabular}{|l|l|l|}
-				\hline
-				\textcolor{koc}{\textbf{Operator}} &\textcolor{koc}{\textbf{Usage}} & \textcolor{koc}{\textbf{Equivalent}} \\ \hline
-				\textbf{\texttt{+=}} & \texttt{val += 3} & \texttt{val = val + 3} \\ \hline 
-				\textbf{\texttt{-=}} & \texttt{val -= 3} & \texttt{val = val - 3} \\ \hline
-				\textbf{\texttt{*=}} & \texttt{val *= 3} & \texttt{val = val * 3} \\ \hline
-				\textbf{\texttt{/=}} & \texttt{val /= 3} & \texttt{val = val / 3} \\ \hline
-                \textbf{\texttt{\%=}}& \texttt{val \%= 3} & \texttt{val = val \% 3} \\ \hline
-                \textbf{\texttt{**=}} & \texttt{val **= 3} & \texttt{val = val ** 3} \\ \hline
-				\textbf{\texttt{//=}} & \texttt{val //= 3} & \texttt{val = val // 3} \\ \hline
-				\end{tabular}}
-			\end{table}
-        \end{frame}
-
         \section{Strings}
         \begin{frame}{Strings}
             \pause
@@ -203,93 +184,172 @@
 
     \section{Lists}
         \begin{frame}{Lists}
-            \centering
-            \includegraphics[width=0.6\textwidth]{../Lecture1/images/box_many.jpg}
-            
-        
+            \pause
+            \begin{center}
+                \includegraphics[width=0.6\textwidth]{../Lecture1/images/box_many.jpg}                
+            \end{center}
+            \pause
+            \LARGE
+            Imagine variables, but with limitless capacity$\dots$\\
+            \pause
+            \textbf{\texttt{sunnyside = [\textquotesingle Mr. Potato Head\textquotesingle, \textquotesingle Hamm\textquotesingle,
+            \textquotesingle Buzz Lightyear\textquotesingle, \textquotesingle Slinky Dog\textquotesingle]}}
         \end{frame}
 
         \begin{frame}{Lists}
-                \Huge {\textbf{myList = [1, 2, 3]}}
-                \pause  
-                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/intro_lists.py}
-                \pause  
-                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/mixed_list.py}
+            \huge
+            \pause  
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/intro_lists.py}
+            \pause  
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/mixed_list.py}
         \end{frame}
-        \begin{frame}{Appending}
+
+        \begin{frame}{Accessing Elements}
+            \pause
+            \LARGE
+            \texttt{\textbf{values = [1, \textquotesingle hello\textquotesingle, None, [3], True]}}\\
+            \pause
+            \begin{center}
+                \huge
+                \begin{table}[]
+                    \begingroup
+                    \setlength{\tabcolsep}{2pt} % Default value: 6pt
+                    \begin{tabular}{rcccccl}
+                     & {\color[HTML]{c4122e} 0}  & {\color[HTML]{c4122e} 1}  & {\color[HTML]{c4122e} 2}  & {\color[HTML]{c4122e} 3}\  & {\color[HTML]{c4122e} 4} &  \\
+                     $[$ & 1,  & \textquotesingle hello\textquotesingle,  & \texttt{None},  & \texttt{[3]},  & \texttt{True} & $]$ \\
+                     \pause
+                    & {\color[HTML]{A0A0A0} -5} & {\color[HTML]{A0A0A0} -4} & {\color[HTML]{A0A0A0} -3} & {\color[HTML]{A0A0A0} -2} & {\color[HTML]{A0A0A0} -1} & 
+                    \end{tabular}
+                    \endgroup
+                    \end{table}
+            \end{center}
+            \pause
+            Use \textbf{indexing} to access and \textbf{update} elements inside list.\\
+            \pause
+            \textbf{\texttt{print(values[2])}}\\
+            \pause
+            \textbf{\texttt{values[2] = \textquotesingle new value\textquotesingle}} 
+
+        \end{frame}
+
+        \begin{frame}{Adding New Elements}
+            \LARGE
             Append elements at the end of a list by \textbf{append()}
             \bigskip
+            \pause
+            \normalsize
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/append_list.py}
             \pause  
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/append_list2.py}
         \end{frame}
-        \begin{frame}{Removing An Element}
-            Remove elements in a list by \textbf{remove()}
-            \bigskip
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/remove.py}
-            \pause  
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/remove2.py}
-        \end{frame}
+        
         \begin{frame}{Inspecting List Elements}
-            Access elements at a particular index
-            \begin{columns}
-               \begin{column}{0.5\textwidth}
-                \vspace{-5mm}
-                \begin{figure}[H]
-                    \bigskip
-                    \includegraphics[width=70mm]{code-examples/index.png}
-                    \end{figure}    
-               \end{column}
-              \pause 
-               \begin{column}{0.5\textwidth}
-                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/index.py}
-               \end{column} 
-            \end{columns}
-        \end{frame}
-        \begin{frame}{Inspecting List Elements}
+            \pause
+            \LARGE
             Slice lists by using \texttt{\textbf{[start:stop:step]}}
+            \pause
+            \normalsize
             \begin{columns}
-                \begin{column}{0.5\textwidth}
+                \begin{column}{0.35\textwidth}
                 \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing.py} 
                 \end{column}
                \pause 
-                \begin{column}{0.5\textwidth}
+                \begin{column}{0.65\textwidth}
                  \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing2.py}
                 \end{column} 
              \end{columns}
         \end{frame}
+
         \begin{frame}{Inspecting List Elements}
+            \LARGE
+            \pause
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing3.py}
             \pause 
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing4.py}
         \end{frame}
-        \begin{frame}{Nested Lists}
-            Lists can contain lists
+        
+        \begin{frame}{Removing An Element}
+            \pause
+            \LARGE
+            Remove elements in a list by \textbf{remove()}
+            \pause              
             \bigskip
-            \bigskip
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/nestedlists.py}
+            \normalsize
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/remove.py}
+            \pause
+            \LARGE
+            How to avoid \texttt{ValueError}? \pause (Hint: \textbf{Branching})
         \end{frame}
 
-    \section{Loops}
         \begin{frame}{in Operator}
+            \pause
+            \LARGE
             Search an operand in the specified sequence by using \textbf{in}
+            \pause
             \bigskip
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/in_operator.py}
+            \pause
             \begin{itemize}
-                \item Works with lists and strings
+                \item Works with both lists and strings
+                \pause
                 \item Works with ranges
             \end{itemize}
         \end{frame}
+
+        \begin{frame}{len() Function}
+            \pause
+            \LARGE
+            \texttt{len()} is an operator to determine the size of lists, strings, etc.
+            \pause
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/length.py}
+        \end{frame}
+
+        \begin{frame}{List Slicing}
+            \Large
+            Access collection of elements with \textbf{\texttt{[start:stop:step]}}\\
+            Gives a list, even when number of elements is not bigger than 1.
+            \inputminted[frame=single,framesep=2pt,firstline=10]{python3}{../Review1/code-examples/slicing.py}                                
+            \LARGE
+            Slices with \texttt{step} = 1 are called \textbf{Basic Slice}.\\
+            Slices with \texttt{step != 1} are called \textbf{Extended Slice}.
+        \end{frame}
+
+        \begin{frame}{List Mutation}
+            \Large
+            \textbf{\texttt{list.append(x)}}: Append x to end of the sequence\\
+            \textbf{\texttt{list.insert(i, x)}}: Insert x to index i\\
+            \textbf{\texttt{list.pop(i=-1)}}: Remove and return element at index i\\
+            \textbf{\texttt{list.remove(x)}}: Remove first occurrence of x\\
+            \textbf{\texttt{list.extend(iterable)}}: Add all elements in iterable to end of list\\
+            \textbf{\texttt{list[i] = new\_value}}: Update value of index i with new value\\
+            \textbf{\texttt{list[basic\_slice] = iterable}}: Change elements in basic slice with elements in iterable, sizes can be different: \texttt{numbers[:] = []}\\
+            \textbf{\texttt{list[extended\_slice] = iterable}}: Change elements in extended slice with elements in iterable 1-1, sizes must be equal.\\
+        \end{frame}
+
+        \begin{frame}{Some Other List Operations}
+            \Large
+            \textbf{\texttt{in}} operator: Check whether an element is in list.\\
+            \texttt{3 in numbers} $\Rightarrow$ \texttt{True}\\
+            \textbf{\texttt{len(list)}}: Returns the length of list(and other collections).\\
+            \textbf{\texttt{list.index(value, start=0, stop=len(list))}}:\\
+            Return first index of value.\\
+            \textbf{\texttt{list.count(value)}}: Count number of occurrences of value.\\
+            \textbf{\texttt{list.reverse()}}: Reverse the list (in-place)\\
+            \textbf{\texttt{list.sort()}}: Sort list elements (in-place)\\
+            \\ 
+            For more, type \texttt{help(list)} in your interactive interpreter.
+        \end{frame}
+
+
+    \section{Loops}
+      
         \begin{frame}{range() Function}
             \texttt{range(\textbf{start, stop, step})} is a function to create ranges
             \bigskip
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/range.py}
         \end{frame}
-        \begin{frame}{len() Function}
-            \texttt{len()} is an operator to determine the size of lists, strings, etc.
-            \bigskip
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/length.py}
-        \end{frame}
+      
         \begin{frame}{For Loops}
             \begin{columns}
                 \begin{column}{0.5\textwidth}

@@ -1,7 +1,11 @@
-x = [1, 2, 3, 4]
+numbers = [1, 2, 3, 4]
+numbers.remove(2) # => numbers = [1, 3, 4]
 
-x.remove(2) # => x = [1, 3, 4]
+letters = ['a', 'b', 'c']
+letters.remove('b') # => letters = ['a', 'c']
 
-y = ['a', 'b', 'c']
+numbers_repeated = [1, 2, 5, 4, 2, 6]
+numbers_repeated.remove(2) # => number_repeated = [1, 5, 4, 2, 6]
 
-y.remove('b') # => y = ['a', 'c']
+my_list = [1, 'a']
+my_list.remove('b') # => ValueError
