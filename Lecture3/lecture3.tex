@@ -5,7 +5,7 @@
 \usepackage{graphicx}
 
 \title{KOLT Python} 
-\subtitle{Lists, Strings \& Loops} 
+\subtitle{Strings, Loops \& Lists} 
 \newdate{date}{07}{10}{2019}
 \date{\displaydate{date}}
 \author{Ahmet Uysal}
@@ -123,6 +123,7 @@
             \textbf{\texttt{my\_string = \textquotesingle abcde\textquotesingle}}
             \pause
             \begin{center}
+                \huge
                 \begin{table}[]
                     \begingroup
                     \setlength{\tabcolsep}{1pt} % Default value: 6pt
@@ -176,21 +177,38 @@
 
     \section{While Loops}
         \begin{frame}{While Loops}
+            \pause
+            Repeat some \texttt{<expression>}s \underline{as long as} a \texttt{<condition>} is \texttt{True}.
+            \pause
             \begin{columns}
-                \begin{column}{0.5\textwidth}
+                \begin{column}{0.45\textwidth}
                     \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while1.py}
                 \end{column}
             \pause 
-                \begin{column}{0.5\textwidth}
+                \begin{column}{0.45\textwidth}
                     \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while2.py}
-                    \pause
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while3.py}
                 \end{column} 
             \end{columns}
+            \pause
+            \LARGE
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/while3.py}
+            \pause
+            \texttt{<condition>} is only checked \textbf{\underline{before}} each execution.
         \end{frame}
-        
+
+        \begin{frame}{Example: Evil Laughter (Cont.)}
+            \centering
+            \includegraphics[height=0.8\textheight]{images/evil_laugh.jpg}
+        \end{frame}
 
     \section{Lists}
+        \begin{frame}{Lists}
+            \centering
+            \includegraphics[width=0.6\textwidth]{../Lecture1/images/box_many.jpg}
+            
+        
+        \end{frame}
+
         \begin{frame}{Lists}
                 \Huge {\textbf{myList = [1, 2, 3]}}
                 \pause  
@@ -291,8 +309,7 @@
         \begin{frame}{Break, Continue \& Pass}
             \begin{columns}
                 \begin{column}{0.5\textwidth}
-                    \textbf{Break}
-                    terminates the closest for or while loop
+                    \textbf{\texttt{break}} immidiately terminates the closest loop
                     \bigskip  
                     \inputminted[frame=single,framesep=2pt]{python3}{code-examples/break1.py}
                     \pause
