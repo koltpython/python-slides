@@ -4,14 +4,16 @@
 \usepackage{upquote}
 \usepackage{graphicx}
 
+% pdflatex --shell-escape lecture4.tex & pdflatex --shell-escape lecture4.tex
+
 \title{KOLT Python}
 % https://www.geeksforgeeks.org/difference-method-function-python/
-\subtitle{Functions} 
-\newdate{date}{11}{03}{2019}
+\subtitle{Lists, For Loops \& Functions} 
+\newdate{date}{14}{10}{2019}
 \date{\displaydate{date}}
-\author{İpek Köprülülü}
+\author{Ahmet Uysal}
 
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
 
 \setbeamercovered{invisible} % transparent
 \makeatletter
@@ -23,63 +25,183 @@
     \frame{\frametitle{Agenda}\tableofcontents}
 
     \section{Recap}
+
+        \begin{frame}{Strings}
+            \LARGE
+            \textbf{\texttt{my\_string = \textquotesingle abcde\textquotesingle}}
+            \begin{center}
+                \huge
+                \begin{table}[]
+                    \begingroup
+                    \setlength{\tabcolsep}{1pt} % Default value: 6pt
+                    \begin{tabular}{rcccccl}
+                    & {\color[HTML]{c4122e} 0}  & {\color[HTML]{c4122e} 1}  & {\color[HTML]{c4122e} 2}  & {\color[HTML]{c4122e} 3}\  & {\color[HTML]{c4122e} 4} &  \\
+                    \textquotesingle & a  & b  & c  & d  & e & \textquotesingle \\
+                    & {\color[HTML]{A0A0A0} -5} & {\color[HTML]{A0A0A0} -4} & {\color[HTML]{A0A0A0} -3} & {\color[HTML]{A0A0A0} -2} & {\color[HTML]{A0A0A0} -1} & 
+                    \end{tabular}
+                    \endgroup
+                    \end{table}
+            \end{center}
+
+            \textbf{\texttt{print(my\_string[2])}} $\Rightarrow$ prints c \\
+            \textbf{\texttt{print(my\_string[-2])}} $\Rightarrow$ prints d
+        \end{frame}
+
+        \begin{frame}{Indexing \& Slicing}
+            \Large
+            Access specific characters using \textbf{indexing}, i.e, \texttt{\textbf{[index]}}\\
+            \textbf{Slice} strings by using \texttt{\textbf{[start:stop:step]}}
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/string_index.py}
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/string_index2.py}
+        \end{frame}
+
+        \begin{frame}{String Operations}
+            \large
+            \inputminted[frame=single,framesep=2pt, lastline=4]{python3}{../Lecture3/code-examples/string_operations.py}
+            \inputminted[frame=single,framesep=2pt, firstline=6]{python3}{../Lecture3/code-examples/string_operations.py}
+            \LARGE
+            \texttt{\textbf{str1 + str2}} $\Rightarrow$ \textbf{Concatenate} \texttt{str1} and \texttt{str2}\\
+            \texttt{\textbf{str1 *}} $n$ $\Rightarrow$  Repeate \texttt{str1} $n$ times.
+        \end{frame}
+
+        \begin{frame}{While Loops}
+            Repeat some \texttt{<expression>}s \underline{as long as} a \texttt{<condition>} is \texttt{True}.
+            \begin{columns}
+                \begin{column}{0.45\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/while1.py}
+                \end{column}
+                \begin{column}{0.45\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/while2.py}
+                \end{column} 
+            \end{columns}
+            \LARGE
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/while3.py}
+            \texttt{<condition>} is only checked \textbf{\underline{before}} each execution.
+        \end{frame}
+
         \begin{frame}{Lists}
+            \begin{center}
+                \includegraphics[width=0.6\textwidth]{../Lecture1/images/box_many.jpg}                
+            \end{center}
+            \LARGE
+            Imagine variables, but with limitless capacity$\dots$\\
+            \textbf{\texttt{sunnyside = [\textquotesingle Mr. Potato Head\textquotesingle, \textquotesingle Hamm\textquotesingle,
+            \textquotesingle Buzz Lightyear\textquotesingle, \textquotesingle Slinky Dog\textquotesingle]}}
+        \end{frame}
+
+        \begin{frame}{Lists}
+            \huge
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/intro_lists.py}
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/mixed_list.py}
+        \end{frame}
+
+        \begin{frame}{Accessing Elements}
+            \LARGE
+            \texttt{\textbf{values = [1, \textquotesingle hello\textquotesingle, None, [3], True]}}\\
+            \begin{center}
+                \huge
+                \begin{table}[]
+                    \begingroup
+                    \setlength{\tabcolsep}{2pt} % Default value: 6pt
+                    \begin{tabular}{rcccccl}
+                     & {\color[HTML]{c4122e} 0}  & {\color[HTML]{c4122e} 1}  & {\color[HTML]{c4122e} 2}  & {\color[HTML]{c4122e} 3}\  & {\color[HTML]{c4122e} 4} &  \\
+                     $[$ & 1,  & \textquotesingle hello\textquotesingle,  & \texttt{None},  & \texttt{[3]},  & \texttt{True} & $]$ \\
+                    & {\color[HTML]{A0A0A0} -5} & {\color[HTML]{A0A0A0} -4} & {\color[HTML]{A0A0A0} -3} & {\color[HTML]{A0A0A0} -2} & {\color[HTML]{A0A0A0} -1} & 
+                    \end{tabular}
+                    \endgroup
+                    \end{table}
+            \end{center}
+            Use \textbf{indexing} to access and \textbf{update} elements inside list.\\
+            \textbf{\texttt{print(values[2])}}\\
+            \textbf{\texttt{values[2] = \textquotesingle new value\textquotesingle}} 
+
+        \end{frame}
+
+        \begin{frame}{Adding New Elements}
+            \LARGE
+            Append elements at the end of a list by \textbf{append()}
+            \bigskip
+            \normalsize
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/append_list.py}
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/append_list2.py}
+        \end{frame}
+        
+        \begin{frame}{Inspecting List Elements}
+            \LARGE
+            Slice lists by using \texttt{\textbf{[start:stop:step]}}
+            \normalsize
+            \begin{columns}
+                \begin{column}{0.35\textwidth}
+                \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/slicing.py} 
+                \end{column}
+                \begin{column}{0.65\textwidth}
+                 \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/slicing2.py}
+                \end{column} 
+             \end{columns}
+        \end{frame}
+
+        \begin{frame}{Inspecting List Elements}
+            \LARGE
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/slicing3.py}
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/slicing4.py}
+        \end{frame}
+
+    \section{Lists}
+        \begin{frame}{Lists (Cont.)}
+        
+            
+        
+        \end{frame}
+
+        \begin{frame}{Removing An Element}
+            \pause
+            \LARGE
+            Remove elements in a list by \textbf{remove()}
+            \pause              
+            \bigskip
+            \normalsize
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/remove.py}
+            \pause
+            \LARGE
+            How to avoid \texttt{ValueError}? \pause (Hint: \textbf{Branching})
+        \end{frame}
+
+        \begin{frame}{in Operator}
+            \pause
+            \LARGE
+            Search an operand in the specified sequence by using \textbf{in}
+            \pause
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/in_operator.py}
+            \pause
             \begin{itemize}
-                \LARGE
-                \item Group values together. \texttt{my\_values = [1, \textquotesingle a\textquotesingle, None]}
-                \item You can think of each element as a variable, accessed by \textbf{indexing}
-                \item You can do everything you do to variables to list elements:
-                    \begin{itemize}
-                        \Large
-                        \item Assign new values: \texttt{my\_values[0] = 3}
-                        \item Use shorthand assignment operators: \texttt{my\_values[1] += \textquotesingle bc\textquotesingle}
-                        \item Learn their type: \texttt{type(my\_values[2]) \# => <class \textquotesingle NoneType\textquotesingle>}
-                        \item Change their type: \texttt{my\_values[2] = True}
-                        \item Compare their value: \texttt{if my\_values[0] == my\_values[1]: ...}
-                    \end{itemize}
-                \item What happens when we call \texttt{my\_values[3] = 3}? \texttt{\# => \textbf{IndexError}}
+                \item Works with both lists and strings
+                \pause
+                \item Works with ranges
             \end{itemize}
         \end{frame}
 
-        \begin{frame}{List Indexing}
+        \begin{frame}{len() Function}
+            \pause
             \LARGE
-            Access elements at a particular index
-            \begin{columns}
-            \begin{column}{0.5\textwidth}
-                \vspace{-5mm}
-                \begin{figure}[H]
-                    \bigskip
-                    \includegraphics[width=70mm]{../Lecture3/code-examples/index.png}
-                    \end{figure}    
-            \end{column}
-            \begin{column}{0.5\textwidth}
-                \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{../Lecture3/code-examples/index.py}
-            \end{column} 
-            \end{columns}
+            \texttt{len()} is an operator to determine the size of lists, strings, etc.
+            \pause
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/length.py}
         \end{frame}
 
         \begin{frame}{List Slicing}
-            \LARGE
-            Access collection of elements by specifying \textbf{\texttt{[start:stop:step]}}\\
+            \Large
+            Access collection of elements with \textbf{\texttt{[start:stop:step]}}\\
             Gives a list, even when number of elements is not bigger than 1.
-            \normalsize
-            \vspace{-2mm}
-            \begin{columns}
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt,lastline=9]{python3}{../Review1/code-examples/slicing.py}                        
-                \end{column}                
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt,firstline=10]{python3}{../Review1/code-examples/slicing.py}                                
-                \end{column}
-            \end{columns}
-            \vspace{2mm}
+            \inputminted[frame=single,framesep=2pt,firstline=10]{python3}{../Review1/code-examples/slicing.py}                                
             \LARGE
             Slices with \texttt{step} = 1 are called \textbf{Basic Slice}.\\
             Slices with \texttt{step != 1} are called \textbf{Extended Slice}.
         \end{frame}
 
         \begin{frame}{List Mutation}
-            \LARGE
+            \Large
             \textbf{\texttt{list.append(x)}}: Append x to end of the sequence\\
             \textbf{\texttt{list.insert(i, x)}}: Insert x to index i\\
             \textbf{\texttt{list.pop(i=-1)}}: Remove and return element at index i\\
@@ -91,97 +213,84 @@
         \end{frame}
 
         \begin{frame}{Some Other List Operations}
-            \LARGE
-            \textbf{\texttt{in}} operator: Check whether an element is in list. \texttt{3 in numbers} $\Rightarrow$ \texttt{True}\\
+            \Large
+            \textbf{\texttt{in}} operator: Check whether an element is in list.\\
+            \texttt{3 in numbers} $\Rightarrow$ \texttt{True}\\
             \textbf{\texttt{len(list)}}: Returns the length of list(and other collections).\\
-            \textbf{\texttt{list.index(value, start=0, stop=len(list))}}: Return first index of value.\\
-            \textbf{\texttt{list.count(value)}}: Count number of occurrences of value in list.\\
+            \textbf{\texttt{list.index(value, start=0, stop=len(list))}}:\\
+            Return first index of value.\\
+            \textbf{\texttt{list.count(value)}}: Count number of occurrences of value.\\
             \textbf{\texttt{list.reverse()}}: Reverse the list (in-place)\\
             \textbf{\texttt{list.sort()}}: Sort list elements (in-place)\\
+            \\ 
             For more, type \texttt{help(list)} in your interactive interpreter.
         \end{frame}
 
-        \begin{frame}{Strings}
+        \section{For Loops}
+      
+        \begin{frame}{range() Function}
+            \pause
             \LARGE
-            Special kind of \textbf{lists}! \texttt{name = \textquotesingle Python\textquotesingle\\}
-            You can do:
-            \begin{itemize}
-                \item Indexing: \texttt{name[2]} $\Rightarrow$ \textquotesingle t\textquotesingle
-                \item Slicing: \texttt{name[::-1]} $\Rightarrow$ \textquotesingle nohtyP\textquotesingle
-                \item Search by \texttt{in} operator: \texttt{\textquotesingle yt\textquotesingle in name} $\Rightarrow$ \texttt{True}
-            \end{itemize}
-            You can not do:
-            \begin{itemize}
-                \item String mutation: \text{name[2]=\textquotesingle H\textquotesingle} $\Rightarrow$ \textbf{\texttt{TypeError}}
-            \end{itemize}
-            Special functions about strings: \texttt{str.isnumeric(), str.capitalize(), str.format(...), str.find() ...}
+            \texttt{range(\textbf{start, stop, step})} is a function to create ranges
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/range.py}
         \end{frame}
-
-        \begin{frame}{Loops}
-            \LARGE Do something for many elements or based on a condition.
+      
+        \begin{frame}{For Loops}
+            \pause
             \begin{columns}
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/while1.py}
-                    Similar to simple if blocks, but runs again and again until condition check fails.
-                \end{column}
                 \begin{column}{0.5\textwidth}
                     \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/for1.py}
-                    Iterable: collection of \textbf{ordered} elements.\\
-                    What is next after this item?\\
                 \end{column}
+               \pause 
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/for2.py}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/for3.py}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/for4.py}
+                \end{column} 
             \end{columns}
         \end{frame}
-
-        \begin{frame}{For Loops}
-            \LARGE
-            What is next after this item?\\
-            numbers[1] is after numbers[0] \textbf{$\neq$ numbers[1] $>$ numbers[0]}\\
-            \textbf{Examples of iterables:} lists, strings, ranges\\
+        
+        \begin{frame}{For Loop Example}
             \huge
-            \\
-            \textbf{Ranges}\\
-            \LARGE
-            \texttt{range(start, stop, step)}: creates a sequence of integers from start (inclusive) to stop (exclusive) by step.\\
-            Can be \textbf{indexed} and \textbf{sliced}\\
-            \texttt{len()} and \texttt{in} operator can be used
+            TODO: Add example
+        
         \end{frame}
 
-        \begin{frame}{For Loops}
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for_loops.py}
-        \end{frame}
-
-        \begin{frame}{Break, Continue}
+        \begin{frame}{Break, Continue \& Pass}
             \begin{columns}
                 \begin{column}{0.5\textwidth}
-                    \textbf{Break}
-                    terminates the closest for or while loop
+                    \textbf{\texttt{break}} immidiately terminates the closest loop
                     \bigskip  
                     \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/break1.py}
+                    \pause
                     \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/break2.py}
                 \end{column}
+               \pause 
                 \begin{column}{0.5\textwidth}
-                    \textbf{Continue}
-                    continues with the next iteration of the loop
+                    \textbf{\texttt{continue}} skips to the next iteration of the loop
                     \bigskip  
                     \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/continue1.py}
+                    \pause
                     \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/continue2.py}
                 \end{column} 
             \end{columns}
         \end{frame}
         
-        \begin{frame}{For Else, While Else}
-            \texttt{else} in branching: executed when all of the conditions in upper \texttt{if}/\texttt{elif} blocks are False\\
-            \texttt{else} in loops: executed when loop is terminated \textbf{without} a \texttt{break} statement
-            \vspace{-3mm}
-            \begin{columns}
-                \begin{column}{0.52\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{../Review1/code-examples/while_else.py}
-                \end{column}
-                \begin{column}{0.48\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{../Review1/code-examples/for_else.py}
-                \end{column}
-            \end{columns}
+        \begin{frame}{Break, Continue \& Pass}
+            \pause
+            \LARGE
+            \textbf{\texttt{pass}} does not have an effect
+            \bigskip  
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/pass.py}
+            \pause
+            \begin{itemize}
+                \item Loops, conditional statements, functions etc. cannot be empty 
+            \end{itemize}
         \end{frame}
+
 
     \section{Functions}
         \begin{frame}{Functions}
