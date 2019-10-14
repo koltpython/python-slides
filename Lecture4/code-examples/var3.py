@@ -3,4 +3,4 @@ def func():
     print(a)
 
 func()
-print(a) # => not defined (gives error)
+print(a) # => NameError

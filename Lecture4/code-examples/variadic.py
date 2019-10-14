@@ -1,5 +1,8 @@
-def product(*nums, scale = 1):
-    p = scale
+def my_max(*nums):
+    """Returns the maximum of the given arguments.
+    Returns -infinity if no arguments are given."""  
+    max_num = -float('inf')
     for n in nums:
-        p *= n
-    return p
+        if n > max_num:
+            max_num = n
+    return max_num
