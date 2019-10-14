@@ -146,13 +146,7 @@
             \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/slicing4.py}
         \end{frame}
 
-    \section{Lists}
-        \begin{frame}{Lists (Cont.)}
-        
-            
-        
-        \end{frame}
-
+    \section{Lists(Cont.)}
         \begin{frame}{Removing An Element}
             \pause
             \LARGE
@@ -253,9 +247,13 @@
             \end{columns}
         \end{frame}
         
-        \begin{frame}{For Loop Example}
-            \huge
-            TODO: Add example
+        \begin{frame}{Example: Mail Sender}
+            \pause
+            \LARGE
+            Fill out the attendance form: \href{https://tiny.cc/kolt-python}{\underline{\textit{tiny.cc/kolt-python}}} 
+            \begin{center}
+                \includegraphics[height=0.65\textheight]{images/unicorn.jpg}                
+            \end{center}
         
         \end{frame}
 
@@ -294,28 +292,40 @@
 
     \section{Functions}
         \begin{frame}{Functions}
-            \begin{columns}
-                \begin{column}{0.50\textwidth}
-                    Functions are
-                    \begin{itemize}
-                        \item pieces of codes written to carry out some specified tasks.
-                        \item used to bundle a set of instructions that you want to use repeatedly.
-                        \item block of codes which only call when needed to avoid complexity.
-                        \newline
-                        \item The def keyword is used to define a new function.
-                    \end{itemize}
-          %          \pause
-                \end{column}
-                \begin{column}{0.50\textwidth}
-                    \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def.py}
-           %         \pause
-                    \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def2.py}
-           %         \pause
-                    \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def3.py}
-                \end{column}
-            \end{columns}
-        \end{frame}   
+            \pause
+            \LARGE
+            Functions are blocks of \textbf{organized}, \textbf{reusable} code that carry some \textbf{specific} tasks.
+            \pause
+            \begin{itemize}
+                \item \textbf{\texttt{input([prompt])}:} \\
+                \pause
+                If the prompt \textbf<5->{argument} is present, it is written to standard output without a trailing newline. The function then reads a line from input, converts it to a string (stripping a trailing newline), and \textbf<5->{returns} that. When \texttt{EOF} is read, \texttt{EOFError} is \textbf<5->{raised}.   
+            \end{itemize}
             
+            \pause
+            \pause
+
+            \begin{center}
+                \tikzstyle{int}=[draw, fill=blue!20, minimum size=2em]
+
+                \begin{tikzpicture}[node distance=2.5cm,auto]
+                    \node [int] (a) {$function$};
+                    \node (b) [left of=a,node distance=4cm, coordinate] {a};
+                    \node [coordinate] (end) [right of=a, node distance=4cm]{};
+                    \path[->] (b) edge node {$*arguments$} (a);
+                    \draw[->] (a) edge node {\texttt{return}} (end) ;
+                \end{tikzpicture}
+            \end{center}
+        \end{frame}   
+ 
+        \begin{frame}{}
+        
+            \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def.py}
+            \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def2.py}
+            \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def3.py}
+        
+        \end{frame}
+
 
         \begin{frame}{Functions}
             \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_ex.py}
