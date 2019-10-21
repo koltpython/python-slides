@@ -177,18 +177,27 @@
             \pause
             \textbf{\texttt{what\_is\_going\_on = print(fib\_100)}}\\
             \newline
-            \pause
-            \textbf{Every} function returns \textbf{one} value! \pause Functions implicitly return \texttt{None} if they complete without a return statement.
         \end{frame}
 
       \subsection{return Statement}
 
-        \begin{frame}{Return}
+        \begin{frame}{return Statement}
             \LARGE
             \pause
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/return.py}
             \pause
             Return \textbf{immidiately} terminates the function. So, the output is 8.
+        \end{frame}
+
+        \begin{frame}{return Statement}
+            \LARGE
+            \visible<2->{\textbf{Every} function returns \textbf{one} value!} 
+            \newline
+            \visible<4->{\texttt{value = }}\visible<3->{\texttt{\textbf{print}(\textquotesingle Hello, World!\textquotesingle )}}
+            \newline
+            \visible<5->{\texttt{\textbf{print}(value)}}
+            \newline
+            \visible<6->{Functions implicitly return \texttt{None} if they complete without a return statement.}
         \end{frame}
 
       \subsection{Parameters}    
@@ -241,28 +250,5 @@
           \pause
           \large
           \inputminted[frame=single,framesep=2pt]{python3}{code-examples/variadic.py}
-        \end{frame}
-      
-      \subsection{Variable Scope}
-
-        \begin{frame}{Local \& Global Variables}
-          \pause
-          \large
-          \begin{columns}
-            \begin{column}{0.50\textwidth}
-              \begin{itemize}
-                \item Local variables are created in functions.
-                
-                \item Global variables are created out of the functions.
-              \end{itemize}
-              \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var.py}
-            \end{column}
-            \begin{column}{0.50\textwidth}
-              \pause
-              \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var2.py}                    
-              \pause
-              \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var3.py}                    
-            \end{column}
-          \end{columns}
         \end{frame}
 \end{document}
