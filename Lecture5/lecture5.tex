@@ -1,437 +1,259 @@
-% tuples, lists, dictionaries, aliasing, cloning, mutability
 \input{../KU-Beamer-Template/style/template.tex}
 \usepackage{../KU-Beamer-Template/style/koc} 
 \usepackage{minted}
 \usepackage{upquote}
 \usepackage{graphicx}
-\usepackage{tikz}
-\usetikzlibrary{shapes.symbols,positioning, chains}
+
+% pdflatex --shell-escape lecture5.tex & pdflatex --shell-escape lecture5.tex
 
 \title{KOLT Python}
-\subtitle{Containers, Aliasing \& Mutability} 
-\newdate{date}{18}{03}{2019}
+% https://www.geeksforgeeks.org/difference-method-function-python/
+\subtitle{Functions} 
+\newdate{date}{21}{10}{2019}
 \date{\displaydate{date}}
 \author{Ahmet Uysal}
 
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
 
 \setbeamercovered{invisible} % transparent
-
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
 \begin{document}
     \maketitle
 
     \frame{\frametitle{Agenda}\tableofcontents}
 
     \section{Recap}
-        \begin{frame}{Lists}
-            \begin{itemize}
-                \LARGE
-                \item Group values together. \texttt{my\_values = [1, \textquotesingle a\textquotesingle, None]}
-                \item You can think of each element as a variable, accessed by \textbf{indexing}
-                \item You can do everything you do to variables to list elements:
-                    \begin{itemize}
-                        \Large
-                        \item Assign new values: \texttt{my\_values[0] = 3}
-                        \item Use shorthand assignment operators: \texttt{my\_values[1] += \textquotesingle bc\textquotesingle}
-                        \item Learn their type: \texttt{type(my\_values[2]) \# => <class \textquotesingle NoneType\textquotesingle>}
-                        \item Change their type: \texttt{my\_values[2] = True}
-                        \item Compare their value: \texttt{if my\_values[0] == my\_values[1]: ...}
-                    \end{itemize}
-                \item What happens when we call \texttt{my\_values[3] = 3}? \texttt{\# => \textbf{IndexError}}
-            \end{itemize}
-        \end{frame}
-
-        \begin{frame}{Indexing}
-            \LARGE
-            Access elements at a particular index
+       \begin{frame}{While Loops}
+            Repeat some \texttt{<expression>}s \underline{as long as} a \texttt{<condition>} is \texttt{True}.
             \begin{columns}
-            \begin{column}{0.5\textwidth}
-                \vspace{-5mm}
-                \begin{figure}[H]
-                    \bigskip
-                    \includegraphics[width=70mm]{../Lecture3/code-examples/index.png}
-                    \end{figure}    
-            \end{column}
-            \begin{column}{0.5\textwidth}
-                \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{../Lecture3/code-examples/index.py}
-            \end{column} 
-            \end{columns}
-        \end{frame}
-
-        \begin{frame}{Slicing}
-            \LARGE
-            Access collection of elements by specifying \textbf{\texttt{[start:stop:step]}}\\
-            Gives a list, even when number of elements is not bigger than 1.
-            \normalsize
-            \vspace{-2mm}
-            \begin{columns}
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt,lastline=9]{python3}{../Review1/code-examples/slicing.py}                        
-                \end{column}                
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt,firstline=10]{python3}{../Review1/code-examples/slicing.py}                                
+                \begin{column}{0.45\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/while1.py}
                 \end{column}
+                \begin{column}{0.45\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/while2.py}
+                \end{column} 
             \end{columns}
-            \vspace{2mm}
+            \LARGE
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/while3.py}
+            \texttt{<condition>} is only checked \textbf{\underline{before}} each execution.
+        \end{frame}
+
+        \begin{frame}{List Slicing}
+            \Large
+            Access collection of elements with \textbf{\texttt{[start:stop:step]}}\\
+            Gives a list, even when number of elements is not bigger than 1.
+            \inputminted[frame=single,framesep=2pt,firstline=10]{python3}{../Review1/code-examples/slicing.py}                                
             \LARGE
             Slices with \texttt{step} = 1 are called \textbf{Basic Slice}.\\
             Slices with \texttt{step != 1} are called \textbf{Extended Slice}.
         \end{frame}
 
-        \begin{frame}{Strings}
-            \LARGE
-            Special kind of \textbf{lists}! \texttt{name = \textquotesingle Ahmet\textquotesingle\\}
-            You can do:
-            \begin{itemize}
-                \item Indexing: \texttt{name[2]} $\Rightarrow$ \textquotesingle m\textquotesingle
-                \item Slicing: \texttt{name[::-1]} $\Rightarrow$ \textquotesingle temhA\textquotesingle
-                \item Search by \texttt{in} operator: \texttt{\textquotesingle hm\textquotesingle in name} $\Rightarrow$ \texttt{True}
-            \end{itemize}
-            You can not do:
-            \begin{itemize}
-                \item String mutation: \text{name[2]=\textquotesingle H\textquotesingle} $\Rightarrow$ \textbf{\texttt{TypeError}}
-            \end{itemize}
-            Special functions about strings: \texttt{str.isnumeric(), str.capitalize(), str.format(...), str.find() ...}
+        \begin{frame}{len() Function}
+          \pause
+          \LARGE
+          \texttt{len()} is an operator to determine the size of lists, strings, etc.
+          \pause
+          \bigskip
+          \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/length.py}
         \end{frame}
 
-        \begin{frame}{Loops}
-            \LARGE Do something for many elements or based on a condition.
+        \begin{frame}{range() Function}
+            \pause
+            \LARGE
+            \texttt{range(\textbf{start, stop, step})} is a function to create ranges
+            \bigskip
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/range.py}
+        \end{frame}
+      
+        \begin{frame}{For Loops}
+            \pause
             \begin{columns}
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/while1.py}
-                    Similar to simple if blocks, but runs again and again until condition check fails.
-                \end{column}
                 \begin{column}{0.5\textwidth}
                     \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/for1.py}
-                    Iterable: collection of \textbf{ordered} elements.\\
-                    What is next after this item?\\
                 \end{column}
+               \pause 
+                \begin{column}{0.5\textwidth}
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/for2.py}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/for3.py}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/for4.py}
+                \end{column} 
             \end{columns}
         \end{frame}
-
-        \begin{frame}{For Loops}
-            \LARGE
-            What is next after this item?\\
-            numbers[1] is after numbers[0] \textbf{$\neq$ numbers[1] $>$ numbers[0]}\\
-            \textbf{Examples of iterables:} lists, strings, ranges\\
-            \huge
-            \\
-            \textbf{Ranges}\\
-            \LARGE
-            \texttt{range(start, stop, step)}: creates a sequence of integers from start (inclusive) to stop (exclusive) by step.\\
-            Can be \textbf{indexed} and \textbf{sliced}\\
-            \texttt{len()} and \texttt{in} operator can be used
-        \end{frame}
-
-
-        \begin{frame}{Break, Continue}
+        
+        \begin{frame}{Break, Continue \& Pass}
             \begin{columns}
                 \begin{column}{0.5\textwidth}
-                    \textbf{Break}
-                    terminates the closest for or while loop
+                    \textbf{\texttt{break}} immidiately terminates the closest loop
                     \bigskip  
                     \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/break1.py}
+                    \pause
                     \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/break2.py}
                 \end{column}
+               \pause 
                 \begin{column}{0.5\textwidth}
-                    \textbf{Continue}
-                    continues with the next iteration of the loop
+                    \textbf{\texttt{continue}} skips to the next iteration of the loop
                     \bigskip  
                     \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/continue1.py}
+                    \pause
                     \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/continue2.py}
                 \end{column} 
             \end{columns}
         \end{frame}
         
-
-    \section{Lists}
-    \begin{frame}{List Mutation}
-        \LARGE
-        \textbf{\texttt{list.append(x)}}: Append x to end of the sequence\\
-        \textbf{\texttt{list.insert(i, x)}}: Insert x to index i\\
-        \textbf{\texttt{list.pop(i=-1)}}: Remove and return element at index i\\
-        \textbf{\texttt{list.remove(x)}}: Remove first occurrence of x\\
-        \textbf{\texttt{list.extend(iterable)}}: Add all elements in iterable to end of list\\
-        \textbf{\texttt{list[i] = new\_value}}: Update value of index i with new value\\
-        \textbf{\texttt{list[basic\_slice] = iterable}}: Change elements in basic slice with elements in iterable, sizes can be different: \texttt{numbers[:] = []}\\
-        \textbf{\texttt{list[extended\_slice] = iterable}}: Change elements in extended slice with elements in iterable 1-1, sizes must be equal.\\
-    \end{frame}
-
-    \begin{frame}{Some Other List Operations}
-        \LARGE
-        \textbf{\texttt{in}} operator: Check whether an element is in list. \texttt{3 in numbers} $\Rightarrow$ \texttt{True}\\
-        \textbf{\texttt{len(list)}}: Returns the length of list(and other collections).\\
-        \textbf{\texttt{list.index(value, start=0, stop=len(list))}}: Return first index of value.\\
-        \textbf{\texttt{list.count(value)}}: Count number of occurrences of value in list.\\
-        \textbf{\texttt{list.reverse()}}: Reverse the list (in-place)\\
-        \textbf{\texttt{list.sort()}}: Sort list elements (in-place)\\
-        For more, type \texttt{help(list)} in your interactive interpreter.
-    \end{frame}
-
-    \section{Mutability}
-
-    \begin{frame}{Mutability}
-        \huge
-        \textbf{Immutable:}\\
-        \LARGE
-        An \texttt{\textbf{object}} with a fixed value.
-        \pause
-         Immutable objects include \textbf{numbers}, \textbf{strings} and \textbf{tuples}. Such an object cannot be altered.
-        \pause
-         A new object has to be created if a different value has to be stored.
-        \pause
-         They play an important role in places where a constant \textbf{hash value} is needed, for example as a \textbf{key} in a \texttt{dictionary}.
-        \pause
-        \inputminted[frame=single,framesep=2pt]{python3}{code-examples/value_update.py}
-    \end{frame}
-
-    \begin{frame}{Python Data Model}
-        \pause
-        \LARGE
-        How did we represent data in Python?
-        \pause
-         \textbf{Variables!}\\
-        \pause
-        How do they work?
-        \pause
-         Do they store the data themselves?
-        \pause
-        \begin{columns}
-            \begin{column}{0.5\textwidth}
-                \includegraphics[width=0.9\textwidth]{images/box.jpg}
-            \end{column}
+        \begin{frame}{Break, Continue \& Pass}
             \pause
-            \begin{column}{0.5\textwidth}
-                \includegraphics[width=0.6\textwidth]{images/box_tag.jpg}
-            \end{column}
-        \end{columns}
+            \LARGE
+            \textbf{\texttt{pass}} does not have an effect
+            \bigskip  
+            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/pass.py}
+            \pause
+            \begin{itemize}
+                \item Loops, conditional statements, functions etc. cannot be empty 
+            \end{itemize}
+        \end{frame}
+
+
+    \section{Functions}
+        \begin{frame}{Functions}
+            \pause
+            \LARGE
+            Functions are blocks of \textbf{organized}, \textbf{reusable} code that carry some \textbf{specific} tasks.
+            \pause
+            \begin{itemize}
+                \item \textbf{\texttt{input([prompt])}:} \\
+                \pause
+                If the prompt \textbf<5->{argument} is present, it is written to standard output without a trailing newline. The function then reads a line from input, converts it to a string (stripping a trailing newline), and \textbf<5->{returns} that. When \texttt{EOF} is read, \texttt{EOFError} is \textbf<5->{raised}.   
+            \end{itemize}
+
+            \pause
+            \pause
+
+            \begin{center}
+                \tikzstyle{int}=[draw, fill=blue!20, minimum size=2em]
+
+                \begin{tikzpicture}[node distance=2.5cm,auto]
+                    \node [int] (a) {$function$};
+                    \node (b) [left of=a,node distance=4cm, coordinate] {a};
+                    \node [coordinate] (end) [right of=a, node distance=4cm]{};
+                    \path[->] (b) edge node {$*arguments$} (a);
+                    \draw[->] (a) edge node {\texttt{return}} (end) ;
+                \end{tikzpicture}
+            \end{center}
+        \end{frame}   
+ 
+        \begin{frame}{Defining Functions}
+            \pause
+            \LARGE
+            \textbf{\texttt{def}} keyword introduces a function \textit{definition}.
+            \normalsize
+            \pause
+            \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def.py}
+            \pause
+            \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def2.py}
+            \pause
+            \inputminted[frame=single,framesep=2pt, lastline=8]{python3}{code-examples/function_def3.py}
+        \end{frame}
+
+
+        \begin{frame}{Functions}
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/function_ex.py}
+            \pause
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/function_ex2.py}
+        \end{frame}
+
+        \begin{frame}{Functions}
+            \LARGE
+            \textit{Defining} a \texttt{function} only makes it available.\\
+            \pause 
+            You should \textit{call} the \texttt{function} to execute.\\           
+            \pause
+            \newline
+            \textbf{\texttt{fib\_100 = fibonacci\_series(100)}}\\
+            \pause
+            \textbf{\texttt{what\_is\_going\_on = print(fib\_100)}}\\
+            \newline
+            \pause
+            \textbf{Every} function returns \textbf{one} value! \pause Functions implicitly return \texttt{None} if they complete without a return statement.
+        \end{frame}
+
+        \begin{frame}{Return}
+            \LARGE
+            \pause
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/return.py}
+            \pause
+            Return \textbf{immidiately} terminates the function. So, the output is 8.
+        \end{frame}
+
+        \begin{frame}{Default Parameters}
+            The values of parameters can be set to used as default.
+            \newline
+            In \textbf{\texttt{print(*args, sep=\textquotesingle \ \textquotesingle, end=\textquotesingle \textbackslash n\textquotesingle )}}, 
+            sep and end has default values.
+            \pause
+            \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/default.py}
+            \textbf{Valid Uses}
+            \begin{columns}
+                \begin{column}{0.50\textwidth}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/valid1.py}  
+                \end{column}
+                \begin{column}{0.50\textwidth}
+                    \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/valid1_1.py}                    
+                \end{column}
+            \end{columns}
+        \end{frame}
+
+        \begin{frame}{Default Parameters}
+            \LARGE
+            \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/default.py}
+            \pause
+            \textbf{Invalid Usages}
+            \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/valid2.py}  
+        \end{frame}
+
+        \begin{frame}{Variadic Positional Arguments}
+            \pause
+            \LARGE
+            How to allow function to accept arbitrary number of arguments.
+            \newline
+            In \textbf{\texttt{print(*args, sep=\textquotesingle \ \textquotesingle, end=\textquotesingle \textbackslash n\textquotesingle )}}, 
+            you can put as many args as you want.
+            \pause
+            \newline 
+            \newline Suppose we want a \texttt{max} function that works as so:
+            \newline max(3, 5) gives 5.
+            \newline max(3, 4, 2) gives 4.
+            \newline product(3, 5, -1, 2, 10, 20, 13, 34) gives 34.
+            \newline 
+        \end{frame}
+
+        \begin{frame}{Variadic Positional Arguments: my\_max}
+          \pause
+          \Large
+          \inputminted[frame=single,framesep=2pt]{python3}{code-examples/variadic.py}
         
-    \end{frame}
+        \end{frame}
 
-    \begin{frame}{Box Analogy}
-        \pause
-        \LARGE
-        \inputminted[frame=single,framesep=2pt,lastline=4]{python3}{code-examples/box_counter_ex.py}
-        \pause
-        \inputminted[frame=single,framesep=2pt,firstline=6]{python3}{code-examples/box_counter_ex.py}
-        \pause
-        Did we just changed inside of a closed box?
-        \pause 
-         Box analogy \textbf{does not} work!
-    \end{frame}
-
-    \begin{frame}{Python Data Model}
-       \begin{columns}
-            \begin{column}[c]{0.5\textwidth}
-                \LARGE
-                \texttt{my\_secret\_box = [0, 1, 2]}\\
-                \visible<5->{\texttt{other\_box = my\_secret\_box}\\}
-                \visible<8->{\texttt{other\_box.remove(2)}\\}
-                \visible<10->{\texttt{print(my\_secret\_box)}}
-            \end{column}
-            \begin{column}[c]{0.5\textwidth}
-                \begin{tikzpicture}%[node distance=-0.15mm]
-                    \visible<3->{\node[signal, draw, signal from=west, fill=cyan!20] (var1) {my\_secret\_box};}
-                    \visible<2->{
-                        \begin{scope}[start chain, right of= var1, node distance=-.5pt, shift={(1,0)}]
-                            \def\index{2}
-                            \foreach \x in {0,1,2} {
-                                \ifx\x\index
-                                \visible<2-8>{\node [draw,on chain] (arr\x) {\x};}
-                                \else
-                                \node [draw,on chain] (arr\x) {\x};
-                                \fi
-                            } 
-                        \end{scope}
-                    }
-                    \visible<4->{\draw[->] (var1.east) -- (arr0.west);}
-                    \visible<6->{\node[signal, draw, signal from=west, fill=cyan!20, below of=var1] (var2) {other\_box};}
-                    \visible<7->{\draw[->] (var2.east) -- (arr0.west);}
-                \end{tikzpicture}
-           \end{column}
-       \end{columns}
-       \bigskip
-       \LARGE
-       \visible<11->{Variables are more like \textbf{labels} pointing to \textbf{values}!\\}
-       \visible<12->{\textbf{Assignment} links \textbf{variables} to \textbf{values}!}
-    \end{frame}
-
-
-    \begin{frame}{Mutability}
-        \huge
-        \textbf{Immutable:}\\
-        \LARGE
-        An \texttt{\textbf{object}} with a fixed value.
-        %\pause
-         Immutable objects include \textbf{numbers}, \textbf{strings} and \textbf{tuples}. Such an object cannot be altered.
-        %\pause
-         A new object has to be created if a different value has to be stored.
-        %\pause
-         They play an important role in places where a constant \textbf{hash value} is needed, for example as a \textbf{key} in a \texttt{dictionary}.
-        %\pause
-        \inputminted[frame=single,framesep=2pt]{python3}{code-examples/value_update.py}
-    \end{frame}
-
-    \begin{frame}{Object}
-        \LARGE
-        \textbf{Everything} is an object in Python.
-        \pause
-         Even though variables \textbf{do not} have \texttt{types}, each object has a \textbf{fixed} \texttt{type}.\\
-        \pause
-        $\hookrightarrow$ Values at the right side of our label analogy are objects!
-        \bigskip
-        \begin{columns}
-            \begin{column}[c]{0.5\textwidth}
-                \LARGE
-                \visible<4->{\texttt{a = 5}\\}
-                \visible<8->{\texttt{a = 10}\\}
-                \visible<12->{\texttt{a += 3}\\}
-                \visible<16->{\texttt{print(a)}}
-            \end{column}
-            \begin{column}[c]{0.5\textwidth}
-                \begin{tikzpicture}%[node distance=-0.15mm]
-                    \visible<6->{\node[signal, draw, signal from=west, fill=cyan!20] (var1) {a};}
-                    \visible<5-10>{\node[circle, draw, right of=var1, shift={(1,0)}] (val1) {5};}
-                    \visible<7-9>{\draw[->] (var1.east) -- (val1.west);}
-                    \visible<9-14>{\node[circle, draw, below of=val1] (val2) {10};}
-                    \visible<10-13>{\draw[->] (var1.east) -- (val2.west);}
-                    \visible<13->{\node[circle, draw, right of=var1, shift={(1,0)}] (val3) {13};}
-                    \visible<14->{\draw[->] (var1.east) -- (val3.west);}
-                \end{tikzpicture}
-           \end{column}
-       \end{columns}
-    \end{frame}
-
-    \begin{frame}{Object}
-        \LARGE
-        Each object has an \texttt{identity},
-        \pause
-         this value can be obtained by using \texttt{\textbf{id()}} function.\\
-        \pause
-        \textbf{==} operator compares values, \textbf{\texttt{is}} operator compares identities. 
-        \pause
-        \inputminted[frame=single,framesep=2pt]{python3}{code-examples/identity.py}
-        \pause
-        Almost always use \textbf{==} to compare values!
-    \end{frame}
-
-    \section{Aliasing \& Cloning}
-    \begin{frame}{Aliasing \& Cloning}
-        \Large
-        \begin{columns}
-            \begin{column}[c]{0.6\textwidth}
-                \begin{itemize}
-                    \item More than one variables can refer to \textbf{same object}!
-                    \item What if we want to clone/copy instead of aliasing?
-                    \item For lists, \texttt{list.copy()} $\Rightarrow$ returns a \underline{shallow copy} of the list.
-                    \item Shallow: only copy the references, not inner values.
-                    \item \texttt{>>> import copy}
-                \end{itemize}
-            \end{column}
-            \begin{column}[c]{0.4\textwidth}
-                \includegraphics[width=0.9\textwidth]{images/aliasing.png}
-            \end{column}
-        \end{columns}
-        \texttt{copy.copy(x)}: shallow copy, \texttt{copy.deepcopy(x)}: deepcopy   
-    \end{frame}
-
-
-    \section{Tuples}
-    \begin{frame}{Tuples}
-        \LARGE
-        \begin{itemize}
-            \item \textbf{Immutable} sequence(ordered) of elements.
-            \pause
-            \item Similar to \texttt{list}s, you can use \textbf{indexing}, \textbf{slicing}, and iterate over using \texttt{for} loops.
-            \pause
-            \item Elements cannot be added/removed/changed once the tuple is created.
-            \pause
-            \item How to create tuples?
-            \pause
-             \textbf{\texttt{my\_tuple = (1, [1, 2], \textquotesingle a\textquotesingle )}}
-            \pause
-            \item \textbf{\texttt{len(my\_tuple)}} $\Rightarrow$
-            \pause
-             3
-            \item \textbf{\texttt{my\_tuple.append(3)}} $\Rightarrow$
-            \pause
-             \textbf{\texttt{AttributeError:}} \texttt{\textquotesingle tuple\textquotesingle \ object has no attribute \textquotesingle append\textquotesingle}
-        \end{itemize}
-    \end{frame}
-
-    \begin{frame}{Tuples}
-        \LARGE
-        \texttt{() / tuple()}: empty tuple, 
-        \pause
-         \texttt{(3)}:
-        \pause
-         \texttt{int} 3,
-        \pause
-         \texttt{(3,)}:
-        \pause
-         \texttt{tuple} containing 3
-        \pause
-        \inputminted[frame=single,framesep=2pt]{python3}{code-examples/tuples.py}
-    \end{frame}
-
-    \section{Sets}
-    \begin{frame}{Sets}
-        \LARGE
-        \begin{itemize}
-            \item \textbf{Unordered} \underline{sequence} of \textbf{unique} elements.
-            \pause
-            \item \underline{\textbf{Cannot}} use \textbf{indexing/slicing}, \textbf{can} iterate with \texttt{for} loops.
-            \pause
-            \item \textbf{Mutable}, \texttt{add(element)}, \texttt{remove(element)} methods.
-            \pause
-            \item Python also has \textbf{immutable} sets: \texttt{frozenset}
-            \pause
-            \item How to create sets? 
-            \pause
-             \texttt{my\_set = \{1, 2, 3, 4, 2\}}
-            \item How to create empty sets?
-            \pause
-             \texttt{set()} (\{\ \} is reserved for \texttt{dict})
-            \pause
-            \item Can compute set operations: \textbf{union}, \textbf{intersection}, \textbf{difference}, \textbf{symmetric difference}.
-        \end{itemize}
-    \end{frame}
-    \begin{frame}{Sets}
-        \centering
-        \includegraphics[height=0.75\textheight]{images/venn.jpg}
-    \end{frame}
-    \begin{frame}{Sets}
-        \inputminted[frame=single,framesep=2pt]{python3}{code-examples/sets.py}
-    \end{frame}
-    \section{Dictionaries}
-    \begin{frame}{Dictionaries}
-        \LARGE
-        \begin{itemize}
-            \item Collection of \textbf{key$-$value} \underline{pairs}.
-            \pause
-            \item \underline{\textbf{Cannot}} use \textbf{indexing/slicing}, \textbf{can} iterate with \texttt{for} loops. 
-            \pause
-            \item In general, they are not \textbf{ordered}. 
-            \pause
-            \item However, in Python 3.7 pairs are guaranteed to be in insertion order.
-            \pause
-            \item In other words, we will get pairs in insertion order if we loop over the \texttt{dict}.
-            \pause
-            \item How to create dictionaries?
-            \pause
-             \texttt{\{\ \}/dict()}: empty dictionary
-            \pause
-            \item \texttt{d = \{\textquotesingle one\textquotesingle : 1, \textquotesingle two\textquotesingle : 2, \textquotesingle three\textquotesingle : 3, \textquotesingle four\textquotesingle : 4\}}
-            \pause
-            \item How to access values? 
-            \pause
-             \texttt{print(d[\textquotesingle one\textquotesingle ])} \# $\Rightarrow$ 1
-        \end{itemize}
-    \end{frame}
-
-    \begin{frame}{Dictionaries}
-        \large
-        \inputminted[frame=single,framesep=2pt]{python3}{code-examples/dicts.py}
-    \end{frame}
-
+        \begin{frame}{Local \& Global Variables}
+            \begin{columns}
+                \begin{column}{0.50\textwidth}
+                    \begin{itemize}
+                        \item Local variables are created in functions.
+                        \item Global variables are created out of the functions.
+                    \end{itemize}
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var.py}
+                \end{column}
+                \begin{column}{0.50\textwidth}
+      %              \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var2.py}                    
+       %             \pause
+                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var3.py}                    
+                \end{column}
+            \end{columns}
+        \end{frame}
 \end{document}
