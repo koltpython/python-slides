@@ -118,6 +118,7 @@
 
 
     \section{Functions}
+        \subsection{Defining Functions}
         \begin{frame}{Functions}
             \pause
             \LARGE
@@ -180,6 +181,8 @@
             \textbf{Every} function returns \textbf{one} value! \pause Functions implicitly return \texttt{None} if they complete without a return statement.
         \end{frame}
 
+      \subsection{return Statement}
+
         \begin{frame}{Return}
             \LARGE
             \pause
@@ -187,6 +190,8 @@
             \pause
             Return \textbf{immidiately} terminates the function. So, the output is 8.
         \end{frame}
+
+      \subsection{Parameters}    
 
         \begin{frame}{Default Parameters}
             The values of parameters can be set to used as default.
@@ -209,9 +214,9 @@
         \end{frame}
 
         \begin{frame}{Default Parameters}
-            \LARGE
             \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/default.py}
             \pause
+            \LARGE
             \textbf{Invalid Usages}
             \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/valid2.py}  
         \end{frame}
@@ -234,26 +239,30 @@
 
         \begin{frame}{Variadic Positional Arguments: my\_max}
           \pause
-          \Large
+          \large
           \inputminted[frame=single,framesep=2pt]{python3}{code-examples/variadic.py}
-        
         \end{frame}
+      
+      \subsection{Variable Scope}
 
         \begin{frame}{Local \& Global Variables}
-            \begin{columns}
-                \begin{column}{0.50\textwidth}
-                    \begin{itemize}
-                        \item Local variables are created in functions.
-                        \item Global variables are created out of the functions.
-                    \end{itemize}
-                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var.py}
-                \end{column}
-                \begin{column}{0.50\textwidth}
-      %              \pause
-                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var2.py}                    
-       %             \pause
-                    \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var3.py}                    
-                \end{column}
-            \end{columns}
+          \pause
+          \large
+          \begin{columns}
+            \begin{column}{0.50\textwidth}
+              \begin{itemize}
+                \item Local variables are created in functions.
+                
+                \item Global variables are created out of the functions.
+              \end{itemize}
+              \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var.py}
+            \end{column}
+            \begin{column}{0.50\textwidth}
+              \pause
+              \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var2.py}                    
+              \pause
+              \inputminted[frame=single,framesep=2pt, lastline=15]{python3}{code-examples/var3.py}                    
+            \end{column}
+          \end{columns}
         \end{frame}
 \end{document}
