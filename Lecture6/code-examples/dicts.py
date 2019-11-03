@@ -1,13 +1,16 @@
-d = {'x': 1, 'y': 2, 'z': 3}
-for key, value in d.items():
-    print(f'value {value} is associated with key: {key}')
+# I need a way to keep track of my students
+my_students = {'Ayse': ['economics', 'freshman'],
+                'Emir': ['psychology', 'master'],
+                'Emirhan': ['business administration', 'junior'],
+                'Furkan': ['law', 'junior'],
+                'Mahsa': ['material science', 'phd'],
+                'Meva': ['international relations', 'freshman']}
 
-for key in d:
-    print(f'value {d[key]} is associated with key: {key}')
-
-# Add new pairs
-d['a'] = 15
-# Change value of key
-d['x'] = 1
-# Remove pairs
-y_value = d.pop('y')
+for student, info in my_students.items():
+    print(f'{student} studies {info[0]}')
+# Emir left my class :(
+my_students.pop('Emir')
+# someone new in my class
+my_students['Canan'] = ['industrial engineering', 'junior'] 
+# Ayse passed another year
+my_students['Ayse'][1] = 'sophomore'
