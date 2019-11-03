@@ -26,7 +26,8 @@
 
     \frame{\frametitle{Agenda}\tableofcontents}
 
-    \section{Recap}
+    \section*{Recap}
+
     \subsection{Functions}
         \begin{frame}{Functions}
             \Large
@@ -70,25 +71,25 @@
             \pause
             \inputminted[frame=single, framesep=2pt]{python3}{code-examples/return_list.py}
         \end{frame}
-
+    
     \subsection{Lists}
     \begin{frame}{Sponge Bob seeks for Sandy}
         \pause
-        \texttt{cartoon\_characters=['Tweety', 'Mickey', 'Sponge Bob', 'Jerry', 'Minnie']}\\
+        \texttt{cartoon\_characters=[\textquotesingle Tweety\textquotesingle , \textquotesingle Mickey\textquotesingle , \textquotesingle Sponge Bob\textquotesingle , \textquotesingle Jerry\textquotesingle , \textquotesingle Minnie\textquotesingle ]}\\
         \includegraphics[width=.80\textwidth]{images/list_cartoons/list0.png}   
         \pause
-        \texttt{cartoon\_characters.append('Sandy')}\\
+        \texttt{cartoon\_characters.append(\textquotesingle Sandy\textquotesingle )}\\
         \pause
         \includegraphics[width=.95\textwidth]{images/list_cartoons/list_after_append.png}       
     \end{frame}
 
-    \begin{frame} {Let's play}
+    \begin{frame} {Let\textquotesingle s play}
         But, what good is Mickey without being near to Minnie?\\
         \pause
-        \texttt{cartoon\_characters.remove('Mickey')}\\
+        \texttt{cartoon\_characters.remove(\textquotesingle Mickey\textquotesingle )}\\
         \includegraphics[width=.77\textwidth]{images/list_cartoons/list_after_remove.png}   
         \pause
-        \texttt{cartoon\_characters.insert(4, 'Mickey')}\\
+        \texttt{cartoon\_characters.insert(4, \textquotesingle Mickey\textquotesingle )}\\
         \pause
         \includegraphics[width=.89\textwidth]{images/list_cartoons/list_after_insert.png}       
     \end{frame}
@@ -98,11 +99,11 @@
         \includegraphics[width=\textwidth]{images/list_cartoons/list_after_insert.png}     
         \texttt{len(cartoon\_characters)}  $\Rightarrow$ \pause 6\\
         \pause \texttt{cartoon\_characters[6]}  $\Rightarrow$ \pause Error\\
-        \pause \texttt{'Jerry' in cartoon\_characters}  $\Rightarrow$ \pause False\\
-        \pause \texttt{cartoon\_characters.index('Tweety')}  $\Rightarrow$ \pause 0\\
+        \pause \texttt{\textquotesingle Jerry\textquotesingle  in cartoon\_characters}  $\Rightarrow$ \pause False\\
+        \pause \texttt{cartoon\_characters.index(\textquotesingle Tweety\textquotesingle )}  $\Rightarrow$ \pause 0\\
     \end{frame}
 
-    \begin{frame}{Don't let me forget you}
+    \begin{frame}{Don\textquotesingle t let me forget you}
         \pause
         \Large
         Fill out the attendance form: \href{https://tiny.cc/kolt-python}{\underline{\textit{tiny.cc/kolt-python}}}\\
@@ -155,10 +156,10 @@
     \begin{frame}{Python Data Model}
        \begin{columns}
             \begin{column}[c]{0.5\textwidth}
-                \texttt{cartoon\_characters = ['Tweety', 'Sponge Bob', 'Jerry', 'Minnie', 'Mickey', 'Sandy']}                \\
+                \texttt{cartoon\_characters = [\textquotesingle Tweety\textquotesingle , \textquotesingle Sponge Bob\textquotesingle , \textquotesingle Jerry\textquotesingle , \textquotesingle Minnie\textquotesingle , \textquotesingle Mickey\textquotesingle , \textquotesingle Sandy\textquotesingle ]}                \\
                 \visible<5->{\texttt{mickeys\_leaving = cartoon\_characters}\\}
-                \visible<8->{\texttt{mickeys\_leaving.remove('Mickey')}\\}
-                \visible<8->{\texttt{mickeys\_leaving.remove('Minnie')}\\}
+                \visible<8->{\texttt{mickeys\_leaving.remove(\textquotesingle Mickey\textquotesingle )}\\}
+                \visible<8->{\texttt{mickeys\_leaving.remove(\textquotesingle Minnie\textquotesingle )}\\}
                 \visible<10->{\texttt{print(cartoon\_characters)}}
             \end{column}
             \begin{column}[c]{0.5\textwidth}
