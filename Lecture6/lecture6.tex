@@ -44,16 +44,18 @@
             \pause
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/function_def.py}
             \pause
-            \textbf{\texttt{fib\_100 = fibonacci\_series(100)}}
+            \textbf{\texttt{fib\_100 = fibonacci\_series(100)}}\\
             \pause
             \textbf{\texttt{what\_is\_going\_on = print(fib\_100)}}
         \end{frame}
 
         \begin{frame}{return Statement}
+            \Large
             Every function returns one value!\\
             \pause
             What type does each function return?
             % int and string return
+            \normalsize
             \begin{columns}
                 \begin{column}{0.35\textwidth}
                     \pause
@@ -87,6 +89,7 @@
         But, what good is Mickey without being near to Minnie?\\
         \pause
         \texttt{cartoon\_characters.remove(\textquotesingle Mickey\textquotesingle )}\\
+        \pause
         \includegraphics[width=.77\textwidth]{images/list_cartoons/list_after_remove.png}   
         \pause
         \texttt{cartoon\_characters.insert(4, \textquotesingle Mickey\textquotesingle )}\\
@@ -95,6 +98,7 @@
     \end{frame}
 
     \begin{frame}{List Operations}
+        \Large
         Be quick!\\
         \includegraphics[width=\textwidth]{images/list_cartoons/list_after_insert.png}     
         \texttt{len(cartoon\_characters)}  $\Rightarrow$ \pause 6\\
@@ -157,10 +161,10 @@
        \begin{columns}
             \begin{column}[c]{0.5\textwidth}
                 \texttt{cartoon\_characters = [\textquotesingle Tweety\textquotesingle , \textquotesingle Sponge Bob\textquotesingle , \textquotesingle Jerry\textquotesingle , \textquotesingle Minnie\textquotesingle , \textquotesingle Mickey\textquotesingle , \textquotesingle Sandy\textquotesingle ]}                \\
-                \visible<5->{\texttt{mickeys\_leaving = cartoon\_characters}\\}
-                \visible<8->{\texttt{mickeys\_leaving.remove(\textquotesingle Mickey\textquotesingle )}\\}
-                \visible<8->{\texttt{mickeys\_leaving.remove(\textquotesingle Minnie\textquotesingle )}\\}
-                \visible<10->{\texttt{print(cartoon\_characters)}}
+                \pause \texttt{mickeys\_leaving = cartoon\_characters}\\
+                \pause \texttt{mickeys\_leaving.remove(\textquotesingle Mickey\textquotesingle )}\\
+                \pause \texttt{mickeys\_leaving.remove(\textquotesingle Minnie\textquotesingle )}\\
+                \pause \texttt{print(cartoon\_characters)}
             \end{column}
             \begin{column}[c]{0.5\textwidth}
                 \includegraphics[width=\textwidth]{images/list_cartoons/pointer.png}
@@ -202,7 +206,6 @@
                     \item What if we want to clone/copy instead of aliasing?
                     \item For lists, \texttt{list.copy()} $\Rightarrow$ returns a \underline{shallow copy} of the list.
                     \item Shallow: only copy the references, not inner values.
-                    \item \texttt{>>> import copy}
                 \end{itemize}
             \end{column}
             \begin{column}[c]{0.4\textwidth}
@@ -211,7 +214,7 @@
         \end{columns}
     \end{frame}
 
-    \begin{frame}{What if we cloned the cartoon characters}
+    \begin{frame}{What if we copied the cartoon characters}
         \pause
         \includegraphics[width=\textwidth]{images/list_cartoons/if_we_cloned.png}
     \end{frame}
@@ -312,16 +315,16 @@
     \end{frame}
 
     \begin{frame}{Tuples}
-        \LARGE
-        \texttt{() / tuple()}: empty tuple, 
+        \Large
+        \texttt{() / tuple()}: empty tuple, \\
         \pause
          \texttt{(3)}:
         \pause
-         \texttt{int} 3,
+         \texttt{int} 3,\\
         \pause
          \texttt{(3,)}:
         \pause
-         \texttt{tuple} containing 3
+         \texttt{tuple} containing 3\\
         \pause
         \inputminted[frame=single,framesep=2pt]{python3}{code-examples/tuples.py}
     \end{frame}
