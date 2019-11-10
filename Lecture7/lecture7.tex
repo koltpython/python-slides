@@ -179,29 +179,40 @@
     \end{frame}
 
     \subsection{Data Structures}
-
     \begin{frame}{Tuples}
         \LARGE
         \begin{itemize}
             \item \textbf{Immutable} sequence(ordered) of elements.
+            \pause
             \item Similar to \texttt{list}s, you can use \textbf{indexing}, \textbf{slicing}, and iterate over using \texttt{for} loops.
+            \pause
             \item Elements cannot be added/removed/changed once the tuple is created.
+            \pause
             \item How to create tuples?
+            \pause
              \textbf{\texttt{my\_tuple = (1, [1, 2], \textquotesingle a\textquotesingle )}}
+            \pause
             \item \textbf{\texttt{len(my\_tuple)}} $\Rightarrow$
+            \pause
              3
             \item \textbf{\texttt{my\_tuple.append(3)}} $\Rightarrow$
+            \pause
              \textbf{\texttt{AttributeError:}} \texttt{\textquotesingle tuple\textquotesingle \ object has no attribute \textquotesingle append\textquotesingle}
         \end{itemize}
     \end{frame}
 
     \begin{frame}{Tuples}
-        \LARGE
-        \texttt{() / tuple()}: empty tuple, 
+        \Large
+        \texttt{() / tuple()}: empty tuple, \\
+        \pause
          \texttt{(3)}:
-         \texttt{int} 3,
+        \pause
+         \texttt{int} 3,\\
+        \pause
          \texttt{(3,)}:
-         \texttt{tuple} containing 3
+        \pause
+         \texttt{tuple} containing 3\\
+        \pause
         \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/tuples.py}
     \end{frame}
 
@@ -226,11 +237,6 @@
             \item Can compute set operations: \textbf{union}, \textbf{intersection}, \textbf{difference}, \textbf{symmetric difference}.
         \end{itemize}
     \end{frame}
-
-    \begin{frame}{Sets}
-        \centering
-        \includegraphics[height=0.75\textheight]{../Lecture6/images/venn.jpg}
-    \end{frame}
     
     \begin{frame}{Sets}
         \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/sets.py}
@@ -238,7 +244,7 @@
     
 
     \begin{frame}{Dictionaries}
-        \LARGE
+        \Large
         \begin{itemize}
             \item Collection of \textbf{key$-$value} \underline{pairs}.
             \pause
@@ -262,10 +268,10 @@
         \end{itemize}
     \end{frame}
 
-    \begin{frame}{Dictionaries}
-        \large
+    \begin{frame}{Confused Section Leader Gul Sena}
         \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/dicts.py}
     \end{frame}
+
 
     \begin{frame}{Attendance}
         \pause
@@ -274,6 +280,50 @@
         \pause
         Password: \textbf{G2WIN}
     \end{frame}
+
+
+
+    \section{Error/Exception Handling}
+    \begin{frame}{Syntax Errors}
+        \LARGE
+        What happens when you run a syntactically incorrect file?
+        \pause
+        \inputminted[frame=single,framesep=2pt,firstline=1,lastline=3]{python3}{./code_examples/syntax_error.py}
+        \pause
+        \inputminted[frame=single,framesep=2pt,firstline=5]{python3}{./code_examples/syntax_error.py}
+        Easy to detect: Your code will not work :)
+    \end{frame}
+
+    \begin{frame}{Runtime Exceptions}
+        \LARGE
+        When a statement is \textbf{syntactically correct} does that mean we are safe?\\
+        \pause
+        \texttt{print(3/0)}
+        \pause
+        , \texttt{int(\textquotesingle hello\textquotesingle)}
+        \pause
+        , \texttt{\textquotesingle hello\textquotesingle [2] = \textquotesingle a\textquotesingle }\\
+        \pause
+        How to be safe in these situations?
+        \begin{itemize}
+            \pause
+            \item Put \texttt{if} checks everywhere?
+            \pause
+            \item Too much effort, and probably we cannot list every condition.
+            \pause
+            \item Solution is \texttt{try-except-finally} blocks.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Try Except Blocks}
+        \inputminted[frame=single,framesep=2pt]{python3}{./code_examples/try_except_finally.py}
+    \end{frame}
+
+    \begin{frame}{Try Except Blocks}
+        \LARGE
+        \inputminted[frame=single,framesep=2pt,lastline=9]{python3}{./code_examples/try_except.py}
+    \end{frame}
+
 
 
     \section{File Input/Output}
@@ -289,7 +339,7 @@
             \begin{itemize}
                 \Large
                 \pause
-                \item How to add save/load functionality to Connect Four game you have written?
+                \item How to add save/load functionality to game you have written?
             \end{itemize}
             \item Save the result of your program.
             \begin{itemize}
@@ -373,45 +423,10 @@
         \inputminted[frame=single,framesep=2pt,firstline=8]{python3}{./code_examples/with_open.py}
     \end{frame}
 
-    \section{Error/Exception Handling}
-    \begin{frame}{Syntax Errors}
-        \LARGE
-        What happens when you run a syntactically incorrect file?
-        \pause
-        \inputminted[frame=single,framesep=2pt,firstline=1,lastline=3]{python3}{./code_examples/syntax_error.py}
-        \pause
-        \inputminted[frame=single,framesep=2pt,firstline=5]{python3}{./code_examples/syntax_error.py}
-        Easy to detect: Your code will not work :)
-    \end{frame}
-
-    \begin{frame}{Runtime Exceptions}
-        \LARGE
-        When a statement is \textbf{syntactically correct} does that mean we are safe?\\
-        \pause
-        \texttt{print(3/0)}
-        \pause
-        , \texttt{int(\textquotesingle hello\textquotesingle)}
-        \pause
-        , \texttt{\textquotesingle hello\textquotesingle [2] = \textquotesingle a\textquotesingle }\\
-        \pause
-        How to be safe in these situations?
-        \begin{itemize}
-            \pause
-            \item Put \texttt{if} checks everywhere?
-            \pause
-            \item Too much effort, and probably we cannot list every condition.
-            \pause
-            \item Solution is \texttt{try-except-finally} blocks.
-        \end{itemize}
-    \end{frame}
-
-    \begin{frame}{Try Except Blocks}
-        \inputminted[frame=single,framesep=2pt]{python3}{./code_examples/try_except_finally.py}
-    \end{frame}
-
-    \begin{frame}{Try Except Blocks}
-        \LARGE
-        \inputminted[frame=single,framesep=2pt,lastline=9]{python3}{./code_examples/try_except.py}
+    \begin{frame}{Example: XXX}
+        
+        
+    
     \end{frame}
 
 \end{document}
