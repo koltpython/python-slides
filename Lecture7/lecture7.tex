@@ -22,53 +22,79 @@
 
     \frame{\frametitle{Agenda}\tableofcontents}
 
-    \section{Recap}
+    \section*{Recap}
+
+    \subsection{Python Data Model}
 
     \begin{frame}{Mutability}
         \huge
         \textbf{Immutable:}\\
         \LARGE
         An \texttt{\textbf{object}} with a fixed value.
+        \pause
          Immutable objects include \textbf{numbers}, \textbf{strings} and \textbf{tuples}. Such an object cannot be altered.
+        \pause
          A new object has to be created if a different value has to be stored.
-         They play an important role in places where a constant \textbf{hash value} is needed, for example as a \textbf{key} in a \texttt{dictionary}.
-        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/value_update.py}
-    \end{frame}
-
-    \begin{frame}{Python Data Model}
-        \LARGE
-        How did we represent data in Python?
-         \textbf{Variables!}\\
-        How do they work?
-         Do they store the data themselves?
+        \pause
+        \Large
         \begin{columns}
-            \begin{column}{0.5\textwidth}
-                \includegraphics[width=0.9\textwidth]{../Lecture6/images/box.jpg}
+            \begin{column}{0.2\textwidth}
+                \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/value_update.py}
             \end{column}
-            \begin{column}{0.5\textwidth}
-                \includegraphics[width=0.6\textwidth]{../Lecture6/images/box_tag.jpg}
+            \begin{column}{0.75\textwidth}
+                \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/change_string.py}
             \end{column}
         \end{columns}
     \end{frame}
 
+    \begin{frame}{Python Data Model}
+        \pause
+        \LARGE
+        How did we represent data in Python?
+        \pause
+         \textbf{Variables!}\\
+        \pause
+        How do they work?
+        \pause
+         Do they store the data themselves?
+        \pause
+        \begin{columns}
+            \begin{column}{0.5\textwidth}
+                \includegraphics[width=0.9\textwidth]{../Lecture6/images/box.jpg}
+            \end{column}
+            \pause
+            \begin{column}{0.5\textwidth}
+                \includegraphics[width=0.6\textwidth]{../Lecture6/images/box_tag.jpg}
+            \end{column}
+        \end{columns}
+        
+    \end{frame}
+
     \begin{frame}{Box Analogy}
         \LARGE
-        \inputminted[frame=single,framesep=2pt,lastline=4]{python3}{../Lecture6/code-examples/box_counter_ex.py}
-        \inputminted[frame=single,framesep=2pt,firstline=6]{python3}{../Lecture6/code-examples/box_counter_ex.py}
-        Did we just changed inside of a closed box?
+        \pause
+        \inputminted[frame=single,framesep=2pt,firstline=8,lastline=10]{python3}{../Lecture6/code-examples/cartoons_box_analogy.py}
+        \pause
+        \inputminted[frame=single,framesep=2pt,firstline=18]{python3}{../Lecture6/code-examples/cartoons_box_analogy.py}
+        \pause
+        Prints \textbf{\texttt{[0, 1]}}
+        \newline
+        \pause
+        Did we just changed inside of a closed box?\\
+        \pause 
          Box analogy \textbf{does not} work!
     \end{frame}
 
     \begin{frame}{Python Data Model}
        \begin{columns}
-            \begin{column}[c]{0.5\textwidth}
+            \begin{column}[c]{0.57\textwidth}
                 \LARGE
                 \texttt{my\_secret\_box = [0, 1, 2]}\\
                 \visible<5->{\texttt{other\_box = my\_secret\_box}\\}
                 \visible<8->{\texttt{other\_box.remove(2)}\\}
                 \visible<10->{\texttt{print(my\_secret\_box)}}
             \end{column}
-            \begin{column}[c]{0.5\textwidth}
+            \begin{column}[c]{0.43\textwidth}
                 \begin{tikzpicture}%[node distance=-0.15mm]
                     \visible<3->{\node[signal, draw, signal from=west, fill=cyan!20] (var1) {my\_secret\_box};}
                     \visible<2->{
@@ -93,22 +119,6 @@
        \LARGE
        \visible<11->{Variables are more like \textbf{labels} pointing to \textbf{values}!\\}
        \visible<12->{\textbf{Assignment} links \textbf{variables} to \textbf{values}!}
-    \end{frame}
-
-
-    \begin{frame}{Mutability}
-        \huge
-        \textbf{Immutable:}\\
-        \LARGE
-        An \texttt{\textbf{object}} with a fixed value.
-        %\pause
-         Immutable objects include \textbf{numbers}, \textbf{strings} and \textbf{tuples}. Such an object cannot be altered.
-        %\pause
-         A new object has to be created if a different value has to be stored.
-        %\pause
-         They play an important role in places where a constant \textbf{hash value} is needed, for example as a \textbf{key} in a \texttt{dictionary}.
-        %\pause
-        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/value_update.py}
     \end{frame}
 
     \begin{frame}{Object}
@@ -144,7 +154,8 @@
         Each object has an \texttt{identity},
          this value can be obtained by using \texttt{\textbf{id()}} function.\\
         \textbf{==} operator compares values, \textbf{\texttt{is}} operator compares identities. 
-        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/identity.py}
+        \bigskip
+        \inputminted[frame=single,framesep=2pt,lastline=4]{python3}{../Lecture6/code-examples/identity.py}
         Almost always use \textbf{==} to compare values!
     \end{frame}
 
@@ -167,6 +178,7 @@
         \texttt{copy.copy(x)}: shallow copy, \texttt{copy.deepcopy(x)}: deepcopy   
     \end{frame}
 
+    \subsection{Data Structures}
 
     \begin{frame}{Tuples}
         \LARGE
@@ -193,7 +205,6 @@
         \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/tuples.py}
     \end{frame}
 
-    \section{Sets}
     \begin{frame}{Sets}
         \LARGE
         \begin{itemize}
@@ -215,14 +226,17 @@
             \item Can compute set operations: \textbf{union}, \textbf{intersection}, \textbf{difference}, \textbf{symmetric difference}.
         \end{itemize}
     \end{frame}
+
     \begin{frame}{Sets}
         \centering
         \includegraphics[height=0.75\textheight]{../Lecture6/images/venn.jpg}
     \end{frame}
+    
     \begin{frame}{Sets}
         \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/sets.py}
     \end{frame}
-    \section{Dictionaries}
+    
+
     \begin{frame}{Dictionaries}
         \LARGE
         \begin{itemize}
@@ -252,6 +266,15 @@
         \large
         \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/dicts.py}
     \end{frame}
+
+    \begin{frame}{Attendance}
+        \pause
+        \Huge
+        Fill out the attendance form: \href{https://tiny.cc/kolt-python}{\underline{\textit{tiny.cc/kolt-python}}}\\
+        \pause
+        Password: \textbf{G2WIN}
+    \end{frame}
+
 
     \section{File Input/Output}
 
@@ -367,7 +390,7 @@
         \pause
         \texttt{print(3/0)}
         \pause
-        , \texttt{int('hello')}
+        , \texttt{int(\textquotesingle hello\textquotesingle)}
         \pause
         , \texttt{\textquotesingle hello\textquotesingle [2] = \textquotesingle a\textquotesingle }\\
         \pause
@@ -389,16 +412,6 @@
     \begin{frame}{Try Except Blocks}
         \LARGE
         \inputminted[frame=single,framesep=2pt,lastline=9]{python3}{./code_examples/try_except.py}
-    \end{frame}
-
-    \section{Debugging}
-    \begin{frame}{Debugging in VS Code}
-        \centering
-        \Huge
-        \textbf{In-class Demo}\\
-        \bigskip
-        \Large
-        Refer to \href{https://code.visualstudio.com/docs/python/python-tutorial}{\underline{\textit{VSCode Python Tutorial}}} if you have missed the class.
     \end{frame}
 
 \end{document}

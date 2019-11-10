@@ -14,3 +14,8 @@ mickeys_leaving.remove('Mickey')
 mickeys_leaving.remove('Minnie')
 print(cartoon_characters)     
 # => ['Tweety', 'Sponge Bob', 'Jerry', 'Sandy']
+
+my_secret_box = [0, 1, 2]
+other_box = my_secret_box
+other_box.remove(2)
+print(my_secret_box)

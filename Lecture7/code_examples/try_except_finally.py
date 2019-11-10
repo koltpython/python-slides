@@ -1,7 +1,7 @@
 try:
-    <risky-statements >
-    <risky-statements >
-    <risky-statements >
+    <risky-statements>
+    <risky-statements>
+    <risky-statements>
     ...
 except ValueError as valError:
     print('value error', valError)
