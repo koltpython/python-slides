@@ -1,5 +1,4 @@
-% sets, dictionaries(no time left in lecture5)
-% file I/O, exceptions, debugging
+% pdflatex --shell-escape lecture7.tex & pdflatex --shell-escape lecture7.tex  
 \input{../KU-Beamer-Template/style/template.tex}
 \usepackage{../KU-Beamer-Template/style/koc} 
 \usepackage{minted}
@@ -9,12 +8,12 @@
 \usetikzlibrary{shapes.symbols,positioning, chains}
 
 \title{KOLT Python}
-\subtitle{File I/O, Testing \& Debugging} 
-\newdate{date}{25}{03}{2019}
+\subtitle{Error Handling, File Input \& Output} 
+\newdate{date}{11}{11}{2019}
 \date{\displaydate{date}}
 \author{Ahmet Uysal}
 
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.eps}}
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
 
 \setbeamercovered{invisible} % transparent
 
@@ -33,7 +32,7 @@
          Immutable objects include \textbf{numbers}, \textbf{strings} and \textbf{tuples}. Such an object cannot be altered.
          A new object has to be created if a different value has to be stored.
          They play an important role in places where a constant \textbf{hash value} is needed, for example as a \textbf{key} in a \texttt{dictionary}.
-        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture5/code-examples/value_update.py}
+        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/value_update.py}
     \end{frame}
 
     \begin{frame}{Python Data Model}
@@ -44,18 +43,18 @@
          Do they store the data themselves?
         \begin{columns}
             \begin{column}{0.5\textwidth}
-                \includegraphics[width=0.9\textwidth]{../Lecture5/images/box.jpg}
+                \includegraphics[width=0.9\textwidth]{../Lecture6/images/box.jpg}
             \end{column}
             \begin{column}{0.5\textwidth}
-                \includegraphics[width=0.6\textwidth]{../Lecture5/images/box_tag.jpg}
+                \includegraphics[width=0.6\textwidth]{../Lecture6/images/box_tag.jpg}
             \end{column}
         \end{columns}
     \end{frame}
 
     \begin{frame}{Box Analogy}
         \LARGE
-        \inputminted[frame=single,framesep=2pt,lastline=4]{python3}{../Lecture5/code-examples/box_counter_ex.py}
-        \inputminted[frame=single,framesep=2pt,firstline=6]{python3}{../Lecture5/code-examples/box_counter_ex.py}
+        \inputminted[frame=single,framesep=2pt,lastline=4]{python3}{../Lecture6/code-examples/box_counter_ex.py}
+        \inputminted[frame=single,framesep=2pt,firstline=6]{python3}{../Lecture6/code-examples/box_counter_ex.py}
         Did we just changed inside of a closed box?
          Box analogy \textbf{does not} work!
     \end{frame}
@@ -109,7 +108,7 @@
         %\pause
          They play an important role in places where a constant \textbf{hash value} is needed, for example as a \textbf{key} in a \texttt{dictionary}.
         %\pause
-        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture5/code-examples/value_update.py}
+        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/value_update.py}
     \end{frame}
 
     \begin{frame}{Object}
@@ -145,7 +144,7 @@
         Each object has an \texttt{identity},
          this value can be obtained by using \texttt{\textbf{id()}} function.\\
         \textbf{==} operator compares values, \textbf{\texttt{is}} operator compares identities. 
-        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture5/code-examples/identity.py}
+        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/identity.py}
         Almost always use \textbf{==} to compare values!
     \end{frame}
 
@@ -162,7 +161,7 @@
                 \end{itemize}
             \end{column}
             \begin{column}[c]{0.4\textwidth}
-                \includegraphics[width=0.9\textwidth]{../Lecture5/images/aliasing.png}
+                \includegraphics[width=0.9\textwidth]{../Lecture6/images/aliasing.png}
             \end{column}
         \end{columns}
         \texttt{copy.copy(x)}: shallow copy, \texttt{copy.deepcopy(x)}: deepcopy   
@@ -191,7 +190,7 @@
          \texttt{int} 3,
          \texttt{(3,)}:
          \texttt{tuple} containing 3
-        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture5/code-examples/tuples.py}
+        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/tuples.py}
     \end{frame}
 
     \section{Sets}
@@ -218,10 +217,10 @@
     \end{frame}
     \begin{frame}{Sets}
         \centering
-        \includegraphics[height=0.75\textheight]{../Lecture5/images/venn.jpg}
+        \includegraphics[height=0.75\textheight]{../Lecture6/images/venn.jpg}
     \end{frame}
     \begin{frame}{Sets}
-        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture5/code-examples/sets.py}
+        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/sets.py}
     \end{frame}
     \section{Dictionaries}
     \begin{frame}{Dictionaries}
@@ -251,7 +250,7 @@
 
     \begin{frame}{Dictionaries}
         \large
-        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture5/code-examples/dicts.py}
+        \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/dicts.py}
     \end{frame}
 
     \section{File Input/Output}
