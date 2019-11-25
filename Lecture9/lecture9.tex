@@ -136,13 +136,39 @@
     \section{Virtual Environments}
 
     \begin{frame}{Virtual Environments}
-    
-    
+        \LARGE
+        \pause
+        A \textit{virtual environment} is an \textbf<4->{isolated} Python environment that contains the Python interpreter, installed \textbf<4->{libraries} and scripts.\\
+        \pause
+        \textbf{Why} do we need them?\\
+        \pause
+        \pause
+        What happens if two different programs use the same library?
+        \begin{itemize}
+            \pause
+            \item We might want to use different versions of the same library.
+            \pause
+            \item Updating a library for \textbf{Program A} can harm another \textbf{Program B}. (\textit{Breaking Changes})
+            \pause
+            \item We want \textbf{isolation} between programs.
+        \end{itemize}
     \end{frame}
 
-    \begin{frame}{}
-        
-    
+    \begin{frame}{Creating Virtual Environments}
+        \LARGE
+        \pause
+        In Python 3.6+, the recommended way to create a virtual environment is using \textbf{venv} package, which is included in the standard installation (similar to \textbf{pip}).\\
+        \pause
+        \textbf{Creating a virtual environment:}\\
+        \texttt{\$ \textbf{python -m venv} /path/to/new/virtualenv}\\
+        \pause
+        \textbf{Activating a virtual environment:}\\
+        \textbf{cd}(Change directory) to virtual environment folder.\\
+        In Windows: \texttt{\$ \textbf{Scripts\textbackslash activate}}\\
+        In Mac/Linux: \texttt{\$ \textbf{source bin/activate}}\\
+        \pause
+        \textbf{Deactivating a virtual environment:}\\
+        \texttt{\$ \textbf{deactivate}}
     \end{frame}
 
     \section{Example: Telegram Bot}
