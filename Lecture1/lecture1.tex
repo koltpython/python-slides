@@ -12,15 +12,14 @@
 \usepackage{../KU-Beamer-Template/style/koc} 
 \usepackage{minted}
 \usepackage{upquote}
-\usepackage{animate}
 
 \title{KOLT Python} 
 \subtitle{Introduction} 
-\newdate{date}{23}{09}{2019}
+\newdate{date}{28}{01}{2020}
 \date{\displaydate{date}}
 \author{Ahmet Uysal}
 
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
+\titlegraphic{\includegraphics[scale=0.18]{../KU-Beamer-Template/style/images/kolt_logo.png}}
 
 \setbeamercovered{invisible} % transparent
 
@@ -72,7 +71,7 @@
 			\pause
 			\item Machine Learning
 			\pause
-			\item Web Parsers/Scrawlers
+			\item Web Parsers/Crawlers
 			\pause
 			\item Testing
 			\pause
@@ -80,40 +79,8 @@
 			\pause
 			\item Network Programming
 			\pause
-			\item ...
+			\item $\dots$
 		\end{itemize}	
-	\end{frame}
-	
-	\begin{frame}{Python at Koç University}
-		\begin{itemize}
-			\LARGE
-			\visible<2->{
-			\item COMP341: Introduction to Artificial Intelligence
-			}
-			\visible<3->{
-			\item ENGR421/521: Introduction to Machine Learning
-			}
-			\visible<4->{
-			\item ENGR350 (Selected Topics - Summer18/Spring19): Introduction to Programming for Data Science
-			}
-			\visible<5->{
-			\item INTL450 (Selected Topics - Spring19): Advanced Data Analysis in Python
-			}
-		\end{itemize}
-		\begin{columns}
-			\column{0.3\textwidth}
-			\visible<2->{
-				\includegraphics[width=\textwidth]{images/berkeley_pacman.png}
-			}
-			\column{0.3\textwidth}
-			\visible<3->{
-				\includegraphics[width=\textwidth]{images/nn.jpg}
-			}
-			\column{0.3\textwidth}
-			\visible<5->{
-				\includegraphics[width=\textwidth]{images/analysis.jpeg}
-			}
-		\end{columns}
 	\end{frame}
 
 	\begin{frame}{Python at Industry}
@@ -143,29 +110,49 @@
 	\section{Logistics}
 		\begin{frame}{Who Are We?}
 			\begin{columns}
-				\column{5cm}
+				\column{2.5cm}
 				\centering 
 				\visible<1->{
 					\includegraphics[width=2.0cm]{images/ahmet.png}\\
 					Ahmet Uysal\\
-					auysal16@ku.edu.tr\\
 				}
-				\visible<3->{
-					\includegraphics[width=2.0cm]{images/gulsena.jpg}\\
-					Gül Sena Altıntaş\\
-					galtintas17@ku.edu.tr\\
+				\medskip
+				\visible<5->{
+					\includegraphics[width=2.0cm]{images/firat.jpg}\\
+					Fırat Tamur\\
 				}
-				\column{5cm}
+				\column{2.5cm}
 				\centering
 				\visible<2->{
 					\includegraphics[width=2.0cm]{images/ceren.jpg}\\
 					Ceren Kocaoğullar\\
-					ckocaogullar15@ku.edu.tr
 				}
-				\visible<4->{
+				\medskip
+				\visible<6->{
+					\includegraphics[width=2.0cm]{images/ayse.jpg}\\
+					Ayşe Turşucular\\
+				}
+				\column{2.5cm}
+				\centering
+				\visible<3->{
 					\includegraphics[width=2.0cm]{images/hasancan.jpg}\\
 					Hasan Can Aslan\\
-					haslan16@ku.edu.tr
+				}
+				\medskip
+				\visible<7->{
+					\includegraphics[width=2.0cm]{images/haluk.jpg}\\
+					Haluk Ceyhun Gün\\
+				}
+				\column{2.5cm}
+				\centering
+				\visible<4->{
+					\includegraphics[width=2.0cm]{images/necla.jpg}\\
+					Necla Mutlu\\
+				}
+				\medskip
+				\visible<8->{
+					\includegraphics[width=2.0cm]{images/eralp.jpg}\\
+					Halil Eralp Koçaş\\
 				}
 			\end{columns}
 		\end{frame}
@@ -173,41 +160,35 @@
 		\begin{frame}{What Will We Do?}
 			\LARGE
 			\pause
-			\texttt{\textbf{Lecture} Monday 11:30-12:45}\\
+			\texttt{\textbf{Lecture} Tuesday 14:30-15:45} @SNA 158
+			\begin{itemize}
+				\item New concepts about Python \& programming in general
+				\item 
+			\end{itemize}
 			\pause
-			\texttt{\textbf{Section} Wednesday 14:30-15:45
-			\textbf{or}}\\
-			\texttt{\textbf{Section} Thursday 11:30-12:45
-			\textbf{or}}\\
-			\texttt{\textbf{Section} Thursday 13:00-14:15
-			\textbf{or}}\\
-			\texttt{\textbf{Section} Thursday 16:00-17:15}\\
+			\texttt{\textbf{Section}}
+			\begin{itemize}
+				\item Starting next week
+				\item You will receive a Form with possible Section slots 
+				\item Please select \textbf{every} option that suits you
+				\item Exercise questions for \textbf{you} to solve
+			\end{itemize}
+			We need your feedback to get better, don't hesitate to talk with us!
 		\end{frame}
 
-		\begin{frame}{Programming Assignments(Don't Be Afraid!)}
+		\begin{frame}{Programming Assignments}
 			\pause
 			\begin{itemize}
 				\LARGE
-				\item 4-6 in total
+				\item 3-4 in total
 				\pause
 				\item Review sessions to \textbf{help you}
 				\pause
 				\item Some assignments will have \textbf{autograders} to help you find your mistakes and test your code.
 				\pause
-				\item Later assignments will be based on \textbf{your interests!}
-				\pause
+				\item Later assignments will be based on \textbf{your interests!} Feel free to recommend subjects.
 				%\item We can also organize hackathons if requested :)
 			\end{itemize}
-			\ifthenelse{\boolean{beamer@anotherslide}}{
-				\phantom{\rule{0.3\linewidth}{0.3\linewidth}}
-			}
-			{
-			
-				\begin{center}
-					\animategraphics[loop,autoplay,width=0.3\linewidth]{12}{gifs/assignment/}{0}{239}				
-				\end{center}
-			}
-			
 		\end{frame}
 
 		\begin{frame}{Certificate Requirements}
@@ -224,62 +205,78 @@
 			\end{itemize}
 		\end{frame}
 
+		
+		\begin{frame}{Extra}
+			\LARGE
+			We will also organize complementary events throughout the semester,
+			\begin{itemize}
+				\item Workshops
+				\item Hackathons
+				\item Programming Contests
+				\item $\dots$ 
+			\end{itemize}
+			These are not mandatory, but we highly encourage you to attend.\\
+			\huge
+			\textbf{Stay tuned :)}
+
+		\end{frame}
+
 	\section{Installations}
 
-	 	\begin{frame}{Installations}
-			\LARGE
-			\pause
-			NO INSTALLATIONS!
-			\begin{center}
-				\includegraphics[width=3.0cm]{images/gotcha_jesus.jpg}
-			\end{center}
-			\pause
-			We will use \href{https://repl.it}{Repl.it}, an online IDE.
-			\begin{center}
-				\includegraphics[width=3.0cm]{images/replit_logo.png}
-			\end{center}
-		\end{frame}
-		
-		\begin{frame}{Sign Up to Repl.it} 		
-			\LARGE
-			\pause
-			We already sent you an invite, check your email.
-			\pause
-			\begin{center}
-				\includegraphics[width=\textwidth]{images/replit_email.png}
-			\end{center}
-		\end{frame}
+	\begin{frame}{Attendance}
+        \pause
+        \Huge
+        Fill out the attendance form: \href{https://tiny.cc/koltpython}{\underline{\textit{tiny.cc/koltpython}}}\\
+        \pause
+        Password: \textbf{Canada}
+    \end{frame}
 
-		\begin{frame}{Sign Up Flow}
-		
-		\begin{columns}
-			\pause
-			\begin{column}{0.33\textwidth}
-				\centering
-				\includegraphics[width=\textwidth]{images/replit_gauth1.png}
-			\end{column}
-			\pause
-			\begin{column}{0.33\textwidth}
-				\centering
-				\includegraphics[width=\textwidth]{images/replit_gauth2.png}
-			\end{column}
-			\pause
-			\begin{column}{0.33\textwidth}
-				\centering
-				\includegraphics[width=\textwidth]{images/replit_success.png}
-			\end{column}
-		\end{columns}	
-		\end{frame}
+	\begin{frame}{Installing Python}
+        \LARGE
+        \begin{itemize}
+            \item Go to \href{https://www.python.org/downloads/}{\underline{\textit{python.org/downloads}}}
+            \pause
+            \item Install the latest version of Python for your operating system
+            \pause
+            \item (Windows only) Make sure to add python to the \texttt{environment variables} by checking the corresponding permission on the installation or by hand
+            \pause
+            \item Check the installation by running \textbf{\texttt{python}}(Windows)/\textbf{\texttt{python3}}(macOS/Linux) in terminal.
+        \end{itemize}
+        \includegraphics[width=\textwidth]{images/cmd_helloworld.PNG}
+    \end{frame}
+     
+    \begin{frame}[t]{Installing an Editor/IDE(Integrated Development Environment)}
+        \vspace{-4mm}
+        \begin{columns}[t] 
+            \begin{column}[t]{0.66\linewidth}
+                \LARGE
+                \begin{itemize}
+                    \item Having a specialized editor/IDE can help a lot. 
+                    \item We will use Visual Studio Code but you are free to use any editor/IDE of your choice.
+                    \item Get Visual Studio Code from \href{https://code.visualstudio.com/download}{\underline{\textit{code.visualstudio.com/download}}}
+                \end{itemize}
+            \end{column}
+            
+            \begin{column}{0.33\linewidth}
+                \begin{center}
+                    \includegraphics[width=0.8\linewidth]{images/vscode_icon.png}						
+                \end{center}
+            \end{column}
+        \end{columns}
+     \end{frame}
 
-		\begin{frame}{Repl.it}
-				\begin{tikzpicture}
-					\node[anchor=north west,inner sep=0] at (0,0) {\includegraphics[width=1\textwidth]{images/replit_interface.png}};
-					\draw<2>[red,ultra thick,rounded corners] (0.5\textwidth,0) rectangle (\textwidth,-4.25);				
-					\draw<3>[red,ultra thick,rounded corners] (0,0) rectangle (0.5\textwidth,-2.9);
-					\draw<4>[red,ultra thick,rounded corners] (2.2,0) rectangle (3.2,-0.3);
-					\draw<5>[red,ultra thick,rounded corners] (0,-2.9) rectangle (0.5\textwidth,-4.25);
-				\end{tikzpicture}
-		\end{frame}
+     \begin{frame}{Configuring Visual Studio Code for Python}
+        \LARGE
+        \begin{itemize}
+            \item Install Python extension for VS Code.
+            \pause
+            \item Select the Python(3.8.1) Interpreter in VS Code.
+            \pause
+            \item For more information, visit \href{https://code.visualstudio.com/docs/python/python-tutorial}{\underline{\textit{VS Code Python Tutorial}}}.
+        \end{itemize}
+        \centering
+        \includegraphics[width=0.75\linewidth]{images/python_extension.PNG}						
+     \end{frame}
 
 	\section{Introduction}
 		
@@ -299,18 +296,19 @@
 				\item \huge{\textbf{VARIABLES!}}
 				\vspace{5mm}
 				\pause
-				\item But what the heck are variables?
+				\item But what are variables?
 			\end{itemize}
 		\end{frame}
 		
 		\begin{frame}{Variables}
 			\begin{columns}[T]
-				\begin{column}{0.2\textwidth}
+				\begin{column}{0.4\textwidth}
 					\centering
+					\LARGE
 					Think of them as
 					\pause					
 				\end{column}
-				\begin{column}{0.8\textwidth}
+				\begin{column}{0.6\textwidth}
 					\centering
 					\includegraphics[width=\textwidth]{images/box.png}
 				\end{column}
@@ -321,6 +319,7 @@
 			\begin{columns}[T]
 				\begin{column}{0.6\textwidth}
 					\centering
+					\LARGE
 					Tiny boxes in the computer memory
 					\pause					
 				\end{column}
@@ -380,14 +379,11 @@
 		
 		\begin{frame}{Variables}
 		    \begin{itemize}
-		        \item \LARGE BE CAREFUL!
-		        \vspace{2mm}
+				\LARGE 
 				\pause
-				\item \large
-				Andy could fit all his toys into one box, but this is not the Toy Story.
+				\item Andy could fit all his toys into one box, but this is not the Toy Story.
 				\pause
-				\item \LARGE
-				These variable boxes can keep only \textbf{one thing at a time.}
+				\item These variable boxes can keep only \textbf{one thing at a time.}
 		    \end{itemize}
 			\vspace{2mm}
 		    \centering
@@ -403,11 +399,13 @@
 
 		\begin{frame}{Console I/O(Input/Output)}
 			\LARGE
-			Now we can store the data we know, \\
+			Now we can store the data we know,
 			\pause
-			how about interacting with the user? \\
+			 how about interacting with the user? \\
 			\pause
-			\texttt{print(), input()}
+			\texttt{print(), input()}\\
+			\pause
+			Let's write our first program!
 			\pause
 			\inputminted[frame=single,framesep=2pt]{python3}{code-examples/io.py}
 		\end{frame}
@@ -443,15 +441,8 @@
 			\pause
 			\centering
 			\includegraphics[width=0.25\textwidth]{images/thanks.png}
-
 		\end{frame}
 		
-		\begin{frame}{Get Your Hands Dirty}
-		    \vspace{5mm}
-		    \centering
-            \includegraphics[width=0.8\textwidth]{images/your_turn.jpg}
-
-		\end{frame}
 
 	\section{References}
 		\begin{frame}{References}
