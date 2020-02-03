@@ -1,6 +1,6 @@
 % !TeX root = ./Lecture2.tex
 \input{../KU-Beamer-Template/style/template.tex}
-\usepackage{../KU-Beamer-Template/style/koc} 
+\usepackage{../KU-Beamer-Template/style/koc}
 \usepackage{minted}
 \usepackage{upquote}
 \usepackage{graphicx}
@@ -10,7 +10,7 @@
 % pdflatex --shell-escape Lecture2.tex & pdflatex --shell-escape Lecture2.tex
 
 \title{KOLT Python}
-\subtitle{Basic Operators, Intro to Branching \& Simple Functions} 
+\subtitle{Basic Operators, Intro to Branching \& Simple Functions}
 \newdate{date}{04}{02}{2020}
 \date{\displaydate{date}}
 \author{Ceren Kocaoğullar}
@@ -39,7 +39,7 @@
                 \begin{tabular}{|l|l|l|}
                 \hline
                 \textcolor{koc}{\textbf{Type}} &\textcolor{koc}{\textbf{Explanation}} & \textcolor{koc}{\textbf{Examples}} \\ \hline
-                \textbf{\texttt{int}}  & represent \textbf{integers} & 3, 4, 17, -10 \\ \hline 
+                \textbf{\texttt{int}}  & represent \textbf{integers} & 3, 4, 17, -10 \\ \hline
                 \textbf{\texttt{float}} & represent \textbf{real numbers} & 3.0, 1.11, -109.123123 \\ \hline
                 \textbf{\texttt{bool}} & represent \textbf{boolean} truth values & \texttt{True}, \texttt{False} \\ \hline
                 \textbf{\texttt{str}} & A sequence of characters. & \textquotesingle Hello\textquotesingle, \textquotesingle \textquotesingle, \textquotesingle 3\textquotesingle \\ \hline
@@ -48,16 +48,16 @@
             \end{table}
 
             \begin{itemize}
-                \item How to create a variable?        
+                \item How to create a variable?
                 \texttt{variable\_name = value}
                 \item How about types?
                 use \texttt{type()}
                 \item Can a variable change type?
                 \textbf{Yes!} Just assing a new value with any type.
-                \item What if we if want to convert a value between types, i.e, \textquotesingle 2\textquotesingle $\to$ 2? 
+                \item What if we if want to convert a value between types, i.e, \textquotesingle 2\textquotesingle $\to$ 2?
             \end{itemize}
         \end{frame}
-        
+
         \begin{frame}{Casting}
             \LARGE
             \begin{itemize}
@@ -74,7 +74,7 @@
                 \item Can we cast every value to every type?
                 \\
                 \pause
-                \textbf{NO!} 
+                \textbf{NO!}
                 \\try \texttt{int(\textquotesingle hello\textquotesingle)}
             \end{itemize}
         \end{frame}
@@ -88,18 +88,18 @@
                 \item Separates elements with space by default
                 \item Adds newline character \texttt{\textquotesingle \textbackslash n\textquotesingle} to end by default
             \end{itemize}
-            
+
             \textbf{\texttt{input([prompt])}}
             \begin{itemize}
                 \LARGE
                 \item Prints the prompt to Console
                 \item Program is paused until user enters something
-                \item \textbf{returns an \texttt{str} object!} 
+                \item \textbf{returns an \texttt{str} object!}
             \end{itemize}
         \end{frame}
 
-    
-     \section{Basic Operators} 
+
+     \section{Basic Operators}
         \begin{frame}{Arithmetic Operators}
             \LARGE
             These operations are applicable on Numeric types: \texttt{int} and \texttt{float}
@@ -120,26 +120,26 @@
                     \pause
                     \item \texttt{\%}: Modulo
                     \pause
-                    \item \texttt{**}: Power 
+                    \item \texttt{**}: Power
                 \end{itemize}
                \end{column}
                \pause
                \begin{column}{0.65\textwidth}
                 \inputminted[frame=single,framesep=2pt]{python3}{code-examples/numeric_operators.py}
-               \end{column} 
+               \end{column}
             \end{columns}
         \end{frame}
-        
+
         \begin{frame}{Assignment Operators}
             \LARGE
-            We have already seen \texttt{\textquotesingle=\textquotesingle}: 
+            We have already seen \texttt{\textquotesingle=\textquotesingle}:
             \texttt{variable\_name = value}\\
             \pause
-            \medskip
+            \\
             Frequently we will update variables' values based on their \textbf{old value}.\\
             \textbf{Ex:} Increment a number: \texttt{num = num + 1}\\
             \pause
-            \medskip
+            \\
             Python has shorter representations for these updates with arithmetic operators.\\
             \pause
             \texttt{num += 1} is equivalent to \texttt{num = num + 1}\\
@@ -154,7 +154,7 @@
 				\begin{tabular}{|l|l|l|}
 				\hline
 				\textcolor{koc}{\textbf{Operator}} &\textcolor{koc}{\textbf{Usage}} & \textcolor{koc}{\textbf{Equivalent}} \\ \hline
-				\textbf{\texttt{+=}} & \texttt{val += 3} & \texttt{val = val + 3} \\ \hline 
+				\textbf{\texttt{+=}} & \texttt{val += 3} & \texttt{val = val + 3} \\ \hline
 				\textbf{\texttt{-=}} & \texttt{val -= 3} & \texttt{val = val - 3} \\ \hline
 				\textbf{\texttt{*=}} & \texttt{val *= 3} & \texttt{val = val * 3} \\ \hline
 				\textbf{\texttt{/=}} & \texttt{val /= 3} & \texttt{val = val / 3} \\ \hline
@@ -164,7 +164,7 @@
 				\end{tabular}}
 			\end{table}
         \end{frame}
-        
+
         \begin{frame}{\texttt{bool} Operators}
             \LARGE
             How to represent logical operations in Python?
@@ -191,7 +191,7 @@
                     \end{itemize}
                 \pause
                 \column{0.75\textwidth}
-                    \texttt{True or False and False} $\Rightarrow$ 
+                    \texttt{True or False and False} $\Rightarrow$
                     \pause
                     \textbf{\texttt{True}} \\
                     \pause
@@ -199,7 +199,7 @@
                     \Huge
                     \textbf{WHY?}
             \end{columns}
-            
+
         \end{frame}
 
         \begin{frame}{Operator Precedence}
@@ -215,7 +215,7 @@
             You can override this order with parentheses\\
             \pause
             \smallskip
-            \texttt{(True or False) and False} $\Rightarrow$ 
+            \texttt{(True or False) and False} $\Rightarrow$
             \pause
             \textbf{\texttt{False}} \\
         \end{frame}
@@ -223,11 +223,11 @@
         \begin{frame}{Short-Circuit Evaluation}
             \LARGE
             \texttt{X}: Any boolean value\\
-            \texttt{True or X} $\Rightarrow$ 
+            \texttt{True or X} $\Rightarrow$
             \pause
             \textbf{\texttt{True}}\\
             \pause
-            \texttt{False and X} $\Rightarrow$ 
+            \texttt{False and X} $\Rightarrow$
             \pause
             \textbf{\texttt{False}}\\
             \pause
@@ -236,8 +236,8 @@
             \medskip
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/short_circuit.py}
         \end{frame}
-        
-        \begin{frame}{Truthy \& Falsy Values}
+
+        \begin{frame}[c]{Truthy \& Falsy Values}
             \begin{columns}
                 \column{0.45\textwidth}
                     \inputminted[firstline=1, lastline=8, frame=single,framesep=2pt]{python3}{code-examples/truthy-falsy.py}
@@ -273,8 +273,8 @@
         \end{frame}
 
         \begin{frame}{Chained Comparisons}
-            \LARGE  
-            \texttt{1 < 2 < 3} $\Rightarrow$ 
+            \LARGE
+            \texttt{1 < 2 < 3} $\Rightarrow$
             \pause
             \textbf{\texttt{True}}\\
             \pause
@@ -291,6 +291,7 @@
 
     \section{Branching}
         \begin{frame}{Branching}
+            \pause
             \begin{center}
                 \begin{tikzpicture}[node distance=2cm]
                     \node (in1) {User's age};
@@ -322,7 +323,7 @@
                 \item Which expressions will be evaluated in which conditions?
             \end{itemize}
         \end{frame}
-    
+
     \section{Objects}
         \begin{frame}[c]{Python Data Model}
             \pause
@@ -377,9 +378,10 @@
          this value can be obtained by using \texttt{\textbf{id()}} function.\\
         \pause
         \\
-        \textbf{==} operator compares values \\\textbf{\texttt{is}} operator compares identities 
+        \textbf{==} operator compares values \\\textbf{\texttt{is}} operator compares identities
+        \pause
     \end{frame}
-    
+
     \begin{frame}{Objects - Identity}
         \begin{center}
             \Large
@@ -391,23 +393,23 @@
             \pause
         \end{center}
     \end{frame}
-    
+
     \section{Basic Functions}
         \subsection{Defining Functions}
         \begin{frame}[c]{Functions}
             \LARGE
-            Functions are blocks of 
+            Functions are blocks of
             \pause
-            \textbf{organized}, 
+            \textbf{organized},
             \pause
-            \textbf{reusable} code 
+            \textbf{reusable} code
             \pause that carry some \textbf{specific} tasks.\\
             \pause
             \begin{center}
                 \includegraphics[width=0.3\textwidth]{Lecture2/images/reduce_reuse_recycle.png}
             \end{center}
-        \end{frame}   
-        
+        \end{frame}
+
         \begin{frame}[c]{Functions}
             \large
             \textbf{Menemen \textit{without} Onions}
@@ -425,11 +427,12 @@
                 \includegraphics[width=0.5\textwidth]{Lecture2/images/reduce_reuse_recycle.png}};
             \end{tikzpicture}
             \end{center}
-        \end{frame} 
+        \end{frame}
 
         \begin{frame}{Defining Functions}
             \LARGE
             \textbf{\texttt{def}} keyword introduces a function \textbf{\textit{definition}}.
+            \\
             \large
             \inputminted[firstline=14, lastline=16, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
             \inputminted[firstline=18, lastline=20, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
@@ -438,8 +441,8 @@
         \begin{frame}{Functions}
             \LARGE
             \textit{Defining} a \texttt{function} only makes it available.\\
-            \pause 
-            You should \textit{call} the \texttt{function} to execute it.\\    
+            \pause
+            You should \textit{call} the \texttt{function} to execute it.\\
             \pause
             \\
             \large
@@ -449,15 +452,15 @@
             \textbf{Menemen \textit{with} Onions}
             \inputminted[firstline=35, lastline=38, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
             \begin{center}
-            Defining a function = writing down the recipe\\
-            Calling a function = executing the recipe
+            Defining a function = \textbf{writing down the recipe}\\
+            Calling a function = \textbf{executing the recipe}
             \end{center}
         \end{frame}
-    
+
         \begin{frame}{Functions}
             \LARGE
             You \textbf{can} call a function inside another function.\\
-            \pause 
+            \pause
             \large
             \inputminted[firstline=22, lastline=24, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
             \pause
