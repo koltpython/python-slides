@@ -1,40 +1,34 @@
-% 2. Hafta
-% -> Scalar Objects - Variables (int, float, bool, NoneType, str)
-% -> Printing, numeric operators, bool operators, operator precedence, type conversion
-% -> if-else, elif
-
+% !TeX root = ./Lecture2.tex
 \input{../KU-Beamer-Template/style/template.tex}
 \usepackage{../KU-Beamer-Template/style/koc} 
 \usepackage{minted}
 \usepackage{upquote}
+\usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm,text centered, draw=black, fill=red!30]
-%\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=1cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
-\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
-\tikzstyle{decision} = [diamond, minimum width=2.5cm, minimum height=1cm, text centered, draw=black, fill=green!30]
-\tikzstyle{arrow} = [thick,->,>=stealth]
+\usetikzlibrary{shapes.symbols,positioning, chains}
 
-\title{KOLT Python} 
-\subtitle{Basic Operators \& Branching} 
-\newdate{date}{30}{09}{2019}
+% pdflatex --shell-escape Lecture2.tex & pdflatex --shell-escape Lecture2.tex
+
+\title{KOLT Python}
+\subtitle{Basic Operators, Intro to Branching \& Simple Functions} 
+\newdate{date}{04}{02}{2020}
 \date{\displaydate{date}}
 \author{Ceren Kocaoğullar}
 
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
+\titlegraphic{\includegraphics[scale=0.18]{../KU-Beamer-Template/style/images/kolt_logo.png}}
 
 \setbeamercovered{invisible} % transparent
-
-
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
 \begin{document}
     \maketitle
+
     \frame{\frametitle{Agenda}\tableofcontents}
-
     \section{Recap}
-
         \begin{frame}{Comments}
             \LARGE
-            \inputminted[frame=single,framesep=2pt]{python3}{../Lecture1/code-examples/comments.py}
+            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/comments.py}
             Python will basically ignore comments, they are purely written \textbf{for humans}!
         \end{frame}
 
@@ -60,19 +54,28 @@
                 use \texttt{type()}
                 \item Can a variable change type?
                 \textbf{Yes!} Just assing a new value with any type.
-                \item What if we if want to convert a value between types, i.e, \textquotesingle 2\textquotesingle $\to$ 2
+                \item What if we if want to convert a value between types, i.e, \textquotesingle 2\textquotesingle $\to$ 2? 
             \end{itemize}
         \end{frame}
-
+        
         \begin{frame}{Casting}
             \LARGE
             \begin{itemize}
                 \item \texttt{int(\textquotesingle 2\textquotesingle)} $\to$ 2
+                \pause
                 \item Any possible reasons for casting?
-                -taking user input
-                -reading numbers from a file?
+                \pause
+                \begin{itemize}
+                    \LARGE
+                    \item Taking user input\\
+                    \item Reading numbers from a file\\
+                \end{itemize}
+                \pause
                 \item Can we cast every value to every type?
-                \textbf{NO!} try \texttt{int(\textquotesingle hello\textquotesingle)}
+                \\
+                \pause
+                \textbf{NO!} 
+                \\try \texttt{int(\textquotesingle hello\textquotesingle)}
             \end{itemize}
         \end{frame}
 
@@ -96,13 +99,13 @@
         \end{frame}
 
     
-        
+     \section{Basic Operators} 
         \begin{frame}{Arithmetic Operators}
             \LARGE
             These operations are applicable on Numeric types: \texttt{int} and \texttt{float}
             \pause
             \begin{columns}
-               \begin{column}{0.35\textwidth}
+               \begin{column}{0.40\textwidth}
                 \vspace{-5mm}
                 \begin{itemize}
                     \item \texttt{+}: Addition
@@ -113,7 +116,7 @@
                     \pause
                     \item \texttt{/}: Division
                     \pause
-                    \item \texttt{//}: Floor(integer) Division
+                    \item \texttt{//}: Floor (integer) Division
                     \pause
                     \item \texttt{\%}: Modulo
                     \pause
@@ -130,21 +133,21 @@
         \begin{frame}{Assignment Operators}
             \LARGE
             We have already seen \texttt{\textquotesingle=\textquotesingle}: 
-            \pause
             \texttt{variable\_name = value}\\
             \pause
+            \medskip
             Frequently we will update variables' values based on their \textbf{old value}.\\
-            \pause
             \textbf{Ex:} Increment a number: \texttt{num = num + 1}\\
             \pause
-            Python has shorthand representations for these updates with arithmetic operators.\\
+            \medskip
+            Python has shorter representations for these updates with arithmetic operators.\\
             \pause
             \texttt{num += 1} is equivalent to \texttt{num = num + 1}\\
             \pause
             \texttt{result *= 2} is equivalent to \texttt{result = result * 2}\\
         \end{frame}
 
-        \begin{frame}{Assignment Operators}
+        \begin{frame}[c]{Assignment Operators}
             \LARGE
 			\begin{table}[]
 				\resizebox{0.7\textwidth}{!}{
@@ -162,11 +165,9 @@
 			\end{table}
         \end{frame}
         
-        \section{Logical Operators}
-
         \begin{frame}{\texttt{bool} Operators}
             \LARGE
-            How to represent logical operations in Python? (and, or, not)
+            How to represent logical operations in Python?
             \begin{table}[]
                 \resizebox{0.45\textwidth}{!}{
                 \begin{tabular}{|c|c|c|c|c|}
@@ -179,7 +180,7 @@
                 \end{tabular}}
             \end{table}
             \pause
-            \begin{columns}
+            \begin{columns}[c]
                 \column{0.25\textwidth}
                     \begin{itemize}
                         \item \textbf{\texttt{and}}
@@ -194,6 +195,7 @@
                     \pause
                     \textbf{\texttt{True}} \\
                     \pause
+                    \medskip
                     \Huge
                     \textbf{WHY?}
             \end{columns}
@@ -208,8 +210,11 @@
                 \item \texttt{and}
                 \item \texttt{or}
             \end{enumerate}
+            \pause
+            \medskip
             You can override this order with parentheses\\
             \pause
+            \smallskip
             \texttt{(True or False) and False} $\Rightarrow$ 
             \pause
             \textbf{\texttt{False}} \\
@@ -228,11 +233,11 @@
             \pause
             Python is smart enough to take advantage of this!
             \pause
+            \medskip
             \inputminted[frame=single,framesep=2pt]{python3}{code-examples/short_circuit.py}
         \end{frame}
         
         \begin{frame}{Truthy \& Falsy Values}
-            
             \begin{columns}
                 \column{0.45\textwidth}
                     \inputminted[firstline=1, lastline=8, frame=single,framesep=2pt]{python3}{code-examples/truthy-falsy.py}
@@ -244,7 +249,7 @@
 
         \begin{frame}{Comparison Operators}
             \LARGE
-            \begin{columns}
+            \begin{columns}[c]
                 \begin{column}{0.4\textwidth}
                     \begin{itemize}
                         \item \texttt{<}: Strictly less than
@@ -286,19 +291,21 @@
 
     \section{Branching}
         \begin{frame}{Branching}
-            \begin{tikzpicture}[node distance=2cm]
-                \node (start) [startstop] {Start};
-                \node (in1) [process, right of=start, xshift=1cm, scale=0.8] {Input: User's age};
-                \node (dec1) [decision, right of=in1, xshift=1cm] {Is even?};
-                \node (proc1) [process, right of=dec1, xshift=1.5cm, scale=0.8] {Say hello.};
-                \node (proc2) [process, below of=dec1, yshift=-0.5cm] {Say goodbye.};
-                \node (end) [startstop, right of=proc1, xshift=1cm] {Stop};
-                \draw [arrow] (start) -- (in1);
-                \draw [arrow] (in1) -- (dec1);
-                \draw [arrow] (dec1) -- node[anchor=south] {yes} (proc1);
-                \draw [arrow] (dec1) -- node[anchor=east] {no} (proc2);
-                \draw [arrow] (proc1) -- (end);
-            \end{tikzpicture}
+            \begin{center}
+                \begin{tikzpicture}[node distance=2cm]
+                    \node (in1) {User's age};
+                    \node (dec1) [right of=in1, xshift=1cm] {Greater that 18?};
+                    \node (proc1) [right of=dec1, xshift=1cm] {Offer \textbf{rakı}};
+                    \node (proc2) [below of=dec1, yshift=-1cm] {Offer \textbf{ayran}};
+                    \draw (in1) -- (dec1);
+                    \draw (dec1) -- node[anchor=south] {yes} (proc1);
+                    \draw (dec1) -- node[anchor=east] {no} (proc2);
+                \end{tikzpicture}
+                \\
+                \includegraphics[width=0.25\textwidth]{Lecture2/images/milk_bottle.png}
+                \includegraphics[width=0.25\textwidth]{Lecture2/images/lion.png}
+                \includegraphics[width=0.15\textwidth]{Lecture2/images/ayran.png}
+            \end{center}
         \end{frame}
 
         \begin{frame}{Branching}
@@ -315,5 +322,145 @@
                 \item Which expressions will be evaluated in which conditions?
             \end{itemize}
         \end{frame}
+    
+    \section{Objects}
+        \begin{frame}[c]{Python Data Model}
+            \pause
+            \LARGE
+            How did we represent data in Python?\\
+            \\
+            \pause
+            \textbf{Variables!}\\
+            \pause
+            \\
+            How do they work?\\
+            \pause
+             Do they store the data themselves?
+            \pause
+        \end{frame}
 
+    \begin{frame}{Objects}
+        \LARGE
+        \textbf{Everything} is an object in Python.
+        \\
+        \begin{columns}
+            \begin{column}[c]{0.5\textwidth}
+                \LARGE
+                \visible<4->{\texttt{a = 5}\\}
+                \visible<8->{\texttt{a = 10}\\}
+                \visible<12->{\texttt{a += 3}\\}
+                \visible<16->{\texttt{print(a)}}
+            \end{column}
+            \begin{column}[c]{0.5\textwidth}
+                \begin{tikzpicture}%[node distance=-0.15mm]
+                    \visible<6->{\node[signal, draw, signal from=west, fill=cyan!20] (var1) {a};}
+                    \visible<5-10>{\node[circle, draw, right of=var1, shift={(1,0)}] (val1) {5};}
+                    \visible<7-9>{\draw[->] (var1.east) -- (val1.west);}
+                    \visible<9-14>{\node[circle, draw, below of=val1] (val2) {10};}
+                    \visible<10-13>{\draw[->] (var1.east) -- (val2.west);}
+                    \visible<13->{\node[circle, draw, right of=var1, shift={(1,0)}] (val3) {13};}
+                    \visible<14->{\draw[->] (var1.east) -- (val3.west);}
+                \end{tikzpicture}
+           \end{column}
+       \end{columns}
+       \medskip
+        $\hookrightarrow$ Values at the right side of our label analogy are
+        objects!\\
+        \pause
+         Even though variables \textbf{do not} have \texttt{types}, each object has a \textbf{fixed} \texttt{type}.
+    \end{frame}
+
+    \begin{frame}[c]{Objects - Identity}
+        \Large
+        Each object has an \texttt{identity},
+        \pause
+         this value can be obtained by using \texttt{\textbf{id()}} function.\\
+        \pause
+        \\
+        \textbf{==} operator compares values \\\textbf{\texttt{is}} operator compares identities 
+    \end{frame}
+    
+    \begin{frame}{Objects - Identity}
+        \begin{center}
+            \Large
+            Is this glass half full or half empty?
+            \\
+            \includegraphics[width=0.30\textwidth]{Lecture2/images/glass.png}
+            \pause
+            \inputminted[frame=single,framesep=2pt, firstline=6]{python3}{code-examples/identity.py}
+            \pause
+        \end{center}
+    \end{frame}
+    
+    \section{Basic Functions}
+        \subsection{Defining Functions}
+        \begin{frame}[c]{Functions}
+            \LARGE
+            Functions are blocks of 
+            \pause
+            \textbf{organized}, 
+            \pause
+            \textbf{reusable} code 
+            \pause that carry some \textbf{specific} tasks.\\
+            \pause
+            \begin{center}
+                \includegraphics[width=0.3\textwidth]{Lecture2/images/reduce_reuse_recycle.png}
+            \end{center}
+        \end{frame}   
+        
+        \begin{frame}[c]{Functions}
+            \large
+            \textbf{Menemen \textit{without} Onions}
+            \normalsize
+            \inputminted[firstline=1, lastline=4, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
+            \pause
+            \large
+            \textbf{Menemen \textit{with} Onions}
+            \normalsize
+            \inputminted[firstline=6, lastline=11, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
+            \pause
+            \begin{center}
+            \begin{tikzpicture}[remember picture,overlay]
+                \node[xshift=65mm,yshift=-48mm] at (current page.north west){%
+                \includegraphics[width=0.5\textwidth]{Lecture2/images/reduce_reuse_recycle.png}};
+            \end{tikzpicture}
+            \end{center}
+        \end{frame} 
+
+        \begin{frame}{Defining Functions}
+            \LARGE
+            \textbf{\texttt{def}} keyword introduces a function \textbf{\textit{definition}}.
+            \large
+            \inputminted[firstline=14, lastline=16, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
+            \inputminted[firstline=18, lastline=20, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
+        \end{frame}
+
+        \begin{frame}{Functions}
+            \LARGE
+            \textit{Defining} a \texttt{function} only makes it available.\\
+            \pause 
+            You should \textit{call} the \texttt{function} to execute it.\\    
+            \pause
+            \\
+            \large
+            \textbf{Menemen \textit{without} Onions}
+            \inputminted[firstline=32, lastline=33, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
+            \pause
+            \textbf{Menemen \textit{with} Onions}
+            \inputminted[firstline=35, lastline=38, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
+            \begin{center}
+            Defining a function = writing down the recipe\\
+            Calling a function = executing the recipe
+            \end{center}
+        \end{frame}
+    
+        \begin{frame}{Functions}
+            \LARGE
+            You \textbf{can} call a function inside another function.\\
+            \pause 
+            \large
+            \inputminted[firstline=22, lastline=24, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
+            \pause
+            \inputminted[firstline=26, lastline=30, frame=single,framesep=2pt]{python3}{code-examples/menemen.py}
+        \end{frame}
 \end{document}
