@@ -19,11 +19,11 @@ def cook():
     print("Cook the vegetables until they soften")
     print("Crack and cook the eggs")
 
-def menemen_with_onions():
+def menemen_without_onions():
     prepare_base_vegetables()
     cook()
 
-def menemen_without_onions():
+def menemen_with_onions():
     print("Slice the onions")
     prepare_base_vegetables()
     print("Cook the onions until they soften")
