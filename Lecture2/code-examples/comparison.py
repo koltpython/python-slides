@@ -2,8 +2,8 @@
 3.0 >= 3  # => True
 # Small-case characters
 # have bigger ASCII value
-'Aa' > 'aa' # => False
+'Aa' > 'aa'  # => False
 'hi' == 'hi'  # => True
-'a' == None  # => True
+'a' == None  # => False
 3 > 'a'  # => TypeError
 3 == 'a'  # => False
