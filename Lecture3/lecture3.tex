@@ -1,3 +1,5 @@
+% !TeX root = ./Lecture3.tex
+
 \input{../KU-Beamer-Template/style/template.tex}
 \usepackage{../KU-Beamer-Template/style/koc} 
 \usepackage{minted}
@@ -5,14 +7,14 @@
 \usepackage{graphicx}
 
 \title{KOLT Python} 
-\subtitle{Strings, Loops \& Lists} 
-\newdate{date}{07}{10}{2019}
+\subtitle{Branching, While Loops, Turtle Graphics \& Strings} 
+\newdate{date}{10}{02}{2020}
 \date{\displaydate{date}}
-\author{Ahmet Uysal}
+\author{Necla Mutlu}
 
 % pdflatex --shell-escape lecture3.tex & pdflatex --shell-escape lecture3.tex
 
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
+\titlegraphic{\includegraphics[scale=0.18]{../KU-Beamer-Template/style/images/kolt_logo.png}}
 
 \setbeamercovered{invisible} % transparent
 
@@ -27,10 +29,10 @@
             \vspace{-3mm}
             \begin{columns}
                 \column{0.5\textwidth}
-                \inputminted[firstline=1, lastline=4, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
-                \inputminted[firstline=6, lastline=13, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+                \inputminted[firstline=1, lastline=4, frame=single,framesep=2pt]{python3}{code-examples/branching.py}
+                \inputminted[firstline=6, lastline=13, frame=single,framesep=2pt]{python3}{code-examples/branching.py}
                 \column{0.5\textwidth}
-                \inputminted[firstline=15, lastline=27, frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/branching.py}
+                \inputminted[firstline=15, lastline=27, frame=single,framesep=2pt]{python3}{code-examples/branching.py}
             \end{columns}
             \begin{itemize}
                 \item \texttt{<condition>} has a \textbf{\texttt{bool}} value (\texttt{True} or \texttt{False})
@@ -62,7 +64,7 @@
                     \end{itemize}
                 \end{column}
                 \begin{column}{0.6\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{../Lecture2/code-examples/comparison.py}
+                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/comparison.py}
                 \end{column}
             \end{columns}
         \end{frame}
@@ -152,8 +154,13 @@
         \end{frame}
 
         \begin{frame}{Example: Evil Laughter}
-            \centering
-            \includegraphics[height=0.8\textheight]{images/evil_laugh.jpg}
+             \url{https://github.com/koltpython/python-slides/blob/master/Lecture3/evil_laughter.md}
+             \newline
+             \newline
+             \pause
+             \centering
+            \includegraphics[height=0.6\textheight]{images/evil_laugh.jpg}
+           
         \end{frame}
 
     \section{While Loops}
@@ -182,223 +189,86 @@
             \includegraphics[height=0.8\textheight]{images/evil_laugh.jpg}
         \end{frame}
 
-    \section{Lists}
-        \begin{frame}{Lists}
-            \pause
-            \begin{center}
-                \includegraphics[width=0.6\textwidth]{../Lecture1/images/box_many.jpg}                
-            \end{center}
-            \pause
-            \LARGE
-            Imagine variables, but with limitless capacity$\dots$\\
-            \pause
-            \textbf{\texttt{sunnyside = [\textquotesingle Mr. Potato Head\textquotesingle, \textquotesingle Hamm\textquotesingle,
-            \textquotesingle Buzz Lightyear\textquotesingle, \textquotesingle Slinky Dog\textquotesingle]}}
-        \end{frame}
+   
 
-        \begin{frame}{Lists}
-            \huge
-            \pause  
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/intro_lists.py}
-            \pause  
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/mixed_list.py}
-        \end{frame}
-
-        \begin{frame}{Accessing Elements}
-            \pause
-            \LARGE
-            \texttt{\textbf{values = [1, \textquotesingle hello\textquotesingle, None, [3], True]}}\\
-            \pause
-            \begin{center}
-                \huge
-                \begin{table}[]
-                    \begingroup
-                    \setlength{\tabcolsep}{2pt} % Default value: 6pt
-                    \begin{tabular}{rcccccl}
-                     & {\color[HTML]{c4122e} 0}  & {\color[HTML]{c4122e} 1}  & {\color[HTML]{c4122e} 2}  & {\color[HTML]{c4122e} 3}\  & {\color[HTML]{c4122e} 4} &  \\
-                     $[$ & 1,  & \textquotesingle hello\textquotesingle,  & \texttt{None},  & \texttt{[3]},  & \texttt{True} & $]$ \\
-                     \pause
-                    & {\color[HTML]{A0A0A0} -5} & {\color[HTML]{A0A0A0} -4} & {\color[HTML]{A0A0A0} -3} & {\color[HTML]{A0A0A0} -2} & {\color[HTML]{A0A0A0} -1} & 
-                    \end{tabular}
-                    \endgroup
-                    \end{table}
-            \end{center}
-            \pause
-            Use \textbf{indexing} to access and \textbf{update} elements inside list.\\
-            \pause
-            \textbf{\texttt{print(values[2])}}\\
-            \pause
-            \textbf{\texttt{values[2] = \textquotesingle new value\textquotesingle}} 
-
-        \end{frame}
-
-        \begin{frame}{Adding New Elements}
-            \LARGE
-            Append elements at the end of a list by \textbf{append()}
-            \bigskip
-            \pause
-            \normalsize
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/append_list.py}
-            \pause  
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/append_list2.py}
-        \end{frame}
-        
-        \begin{frame}{Inspecting List Elements}
-            \pause
-            \LARGE
-            Slice lists by using \texttt{\textbf{[start:stop:step]}}
-            \pause
-            \normalsize
-            \begin{columns}
-                \begin{column}{0.35\textwidth}
-                \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing.py} 
-                \end{column}
-               \pause 
-                \begin{column}{0.65\textwidth}
-                 \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing2.py}
-                \end{column} 
-             \end{columns}
-        \end{frame}
-
-        \begin{frame}{Inspecting List Elements}
-            \LARGE
-            \pause
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing3.py}
-            \pause 
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/slicing4.py}
-        \end{frame}
-        
-        \begin{frame}{Removing An Element}
-            \pause
-            \LARGE
-            Remove elements in a list by \textbf{remove()}
-            \pause              
-            \bigskip
-            \normalsize
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/remove.py}
-            \pause
-            \LARGE
-            How to avoid \texttt{ValueError}? \pause (Hint: \textbf{Branching})
-        \end{frame}
-
-        \begin{frame}{in Operator}
-            \pause
-            \LARGE
-            Search an operand in the specified sequence by using \textbf{in}
-            \pause
-            \bigskip
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/in_operator.py}
-            \pause
-            \begin{itemize}
-                \item Works with both lists and strings
+    \section{Turtle}
+        \begin{frame}{Turtle Module}
+                \begin{center}
+                    \includegraphics[width=0.3\textwidth]{images/turtle.jpg}                
+                \end{center}
                 \pause
-                \item Works with ranges
-            \end{itemize}
-        \end{frame}
-
-        \begin{frame}{len() Function}
+                \LARGE
+                a Python feature like a drawing board, which lets us command a turtle to draw all over it$\dots$\\
+            \end{frame}
+        \begin{frame}{Turtle Functions}
             \pause
             \LARGE
-            \texttt{len()} is an operator to determine the size of lists, strings, etc.
+            \texttt{forward(distance)} \newline
+            moves the turtle forward by the specified distance \newline
+            \newline
             \pause
+             \texttt{backward(distance)} \newline
+             moves the turtle backward by the specified distance\newline\newline
+            \pause
+            \texttt{pos()} \newline returns the turtle's position\newline\newline
+           
+            
+            
             \bigskip
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/length.py}
-        \end{frame}
-
-        \begin{frame}{List Slicing}
-            \Large
-            Access collection of elements with \textbf{\texttt{[start:stop:step]}}\\
-            Gives a list, even when number of elements is not bigger than 1.
-            \inputminted[frame=single,framesep=2pt,firstline=10]{python3}{../Review1/code-examples/slicing.py}                                
+            \end{frame}
+        \begin{frame}{Turtle Functions}
             \LARGE
-            Slices with \texttt{step} = 1 are called \textbf{Basic Slice}.\\
-            Slices with \texttt{step != 1} are called \textbf{Extended Slice}.
-        \end{frame}
-
-        \begin{frame}{List Mutation}
-            \Large
-            \textbf{\texttt{list.append(x)}}: Append x to end of the sequence\\
-            \textbf{\texttt{list.insert(i, x)}}: Insert x to index i\\
-            \textbf{\texttt{list.pop(i=-1)}}: Remove and return element at index i\\
-            \textbf{\texttt{list.remove(x)}}: Remove first occurrence of x\\
-            \textbf{\texttt{list.extend(iterable)}}: Add all elements in iterable to end of list\\
-            \textbf{\texttt{list[i] = new\_value}}: Update value of index i with new value\\
-            \textbf{\texttt{list[basic\_slice] = iterable}}: Change elements in basic slice with elements in iterable, sizes can be different: \texttt{numbers[:] = []}\\
-            \textbf{\texttt{list[extended\_slice] = iterable}}: Change elements in extended slice with elements in iterable 1-1, sizes must be equal.\\
-        \end{frame}
-
-        \begin{frame}{Some Other List Operations}
-            \Large
-            \textbf{\texttt{in}} operator: Check whether an element is in list.\\
-            \texttt{3 in numbers} $\Rightarrow$ \texttt{True}\\
-            \textbf{\texttt{len(list)}}: Returns the length of list(and other collections).\\
-            \textbf{\texttt{list.index(value, start=0, stop=len(list))}}:\\
-            Return first index of value.\\
-            \textbf{\texttt{list.count(value)}}: Count number of occurrences of value.\\
-            \textbf{\texttt{list.reverse()}}: Reverse the list (in-place)\\
-            \textbf{\texttt{list.sort()}}: Sort list elements (in-place)\\
-            \\ 
-            For more, type \texttt{help(list)} in your interactive interpreter.
-        \end{frame}
-
-
-    \section{For Loops}
-      
-        \begin{frame}{range() Function}
+            \texttt{setpos(x,y)} \newline
+            sets the turtle's position to specified x, y coordinates\newline \newline
+            \pause 
+            \texttt{right(angle)} \newline  
+            turns the turtle right by angle units\newline\newline
             \pause
-            \LARGE
-            \texttt{range(\textbf{start, stop, step})} is a function to create ranges
+            \texttt{left(angle)} \newline  
+            turns the turtle left by angle units\newline\newline
+           
             \bigskip
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/range.py}
-        \end{frame}
-      
-        \begin{frame}{For Loops}
+            \end{frame}
+        \begin{frame}{Turtle Functions}
+         \LARGE
+            \texttt{setx(x)} \newline
+            sets the turtle's x coordinate to specified x\newline\newline
             \pause
-            \begin{columns}
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for1.py}
-                \end{column}
-               \pause 
-                \begin{column}{0.5\textwidth}
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for2.py}
-                    \pause
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for3.py}
-                    \pause
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/for4.py}
-                \end{column} 
-            \end{columns}
-        \end{frame}
-        
-        \begin{frame}{Break, Continue \& Pass}
-            \begin{columns}
-                \begin{column}{0.5\textwidth}
-                    \textbf{\texttt{break}} immidiately terminates the closest loop
-                    \bigskip  
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/break1.py}
-                    \pause
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/break2.py}
-                \end{column}
-               \pause 
-                \begin{column}{0.5\textwidth}
-                    \textbf{\texttt{continue}} skips to the next iteration of the loop
-                    \bigskip  
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/continue1.py}
-                    \pause
-                    \inputminted[frame=single,framesep=2pt]{python3}{code-examples/continue2.py}
-                \end{column} 
-            \end{columns}
-        \end{frame}
-        
-        \begin{frame}{Break, Continue \& Pass}
+            \texttt{sety(y)} \newline
+            sets the turtle's y coordinate to specified y\newline\newline
             \pause
-            \LARGE
-            \textbf{\texttt{pass}} does not have an effect
-            \bigskip  
-            \inputminted[frame=single,framesep=2pt]{python3}{code-examples/pass.py}
+            \texttt{xcor()}   \newline   
+            returns the turtle's x coordinate\newline\newline
+            \bigskip
+            \end{frame}
+        \begin{frame}{Turtle Functions}
+        \LARGE
+        \texttt{ycor()} \newline
+            sets the turtle's y coordinate to specified y\newline\newline
             \pause
-            \begin{itemize}
-                \item Loops, conditional statements, functions etc. cannot be empty 
-            \end{itemize}
+            \texttt{pendown()} \newline
+            pulls the pen down – drawing when moving.\newline\newline
+            \pause
+            \texttt{penup()}\newline
+            pulls the pen down – drawing when moving.\newline\newline
+            
         \end{frame}
-
+    \begin{frame}{Let's draw!}
+            \large
+            Make the turtle draw 9 squares side by side.
+            \pause
+             \newline Decompose the task! What about writing a function that draws only one square?
+            \pause
+            \inputminted[frame=single,framesep=2pt, lastline=10]{python3}{code-examples/draw.py}
+            \pause
+        \end{frame}
+     \begin{frame}{Let's draw!}
+            \large
+            How will we make it draw 9 squares by using this function and while loops?
+            \pause
+            \inputminted[frame=single,framesep=2pt, firstline=12]{python3}{code-examples/draw.py}
+            \pause
+        \end{frame}
+       
+   
 \end{document}
