@@ -1,19 +1,20 @@
+% !TeX root = ./Lecture4.tex
+
 \input{../KU-Beamer-Template/style/template.tex}
 \usepackage{../KU-Beamer-Template/style/koc} 
 \usepackage{minted}
 \usepackage{upquote}
 \usepackage{graphicx}
 
+\title{KOLT Python} 
+\subtitle{Lists \& For Loops} 
+\newdate{date}{18}{02}{2020}
+\date{\displaydate{date}}
+\author{Fırat Tamur}
+
 % pdflatex --shell-escape lecture4.tex & pdflatex --shell-escape lecture4.tex
 
-\title{KOLT Python}
-% https://www.geeksforgeeks.org/difference-method-function-python/
-\subtitle{Lists \& For Loops} 
-\newdate{date}{14}{10}{2019}
-\date{\displaydate{date}}
-\author{Ahmet Uysal}
-
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
+\titlegraphic{\includegraphics[scale=0.18]{../KU-Beamer-Template/style/images/kolt_logo.png}}
 
 \setbeamercovered{invisible} % transparent
 \makeatletter
@@ -79,6 +80,7 @@
             \texttt{<condition>} is only checked \textbf{\underline{before}} each execution.
         \end{frame}
 
+    \section{Lists}
         \begin{frame}{Lists}
             \begin{center}
                 \includegraphics[width=0.6\textwidth]{../Lecture1/images/box_many.jpg}                
@@ -145,8 +147,8 @@
             \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/slicing3.py}
             \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/slicing4.py}
         \end{frame}
-
-    \section{Lists(Cont.)}
+   
+    
         \begin{frame}{Removing An Element}
             \pause
             \LARGE
@@ -184,16 +186,6 @@
             \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/length.py}
         \end{frame}
 
-        \begin{frame}{List Slicing}
-            \Large
-            Access collection of elements with \textbf{\texttt{[start:stop:step]}}\\
-            Gives a list, even when number of elements is not bigger than 1.
-            \inputminted[frame=single,framesep=2pt,firstline=10]{python3}{../Review1/code-examples/slicing.py}                                
-            \LARGE
-            Slices with \texttt{step} = 1 are called \textbf{Basic Slice}.\\
-            Slices with \texttt{step != 1} are called \textbf{Extended Slice}.
-        \end{frame}
-
         \begin{frame}{List Mutation}
             \Large
             \textbf{\texttt{list.append(x)}}: Append x to end of the sequence\\
@@ -220,6 +212,11 @@
             For more, type \texttt{help(list)} in your interactive interpreter.
         \end{frame}
 
+        \begin{frame}{KAHOOT TIME}
+            \LARGE{To play visit the \href{https://kahoot.it/}{https://kahoot.it/}}
+            
+        \end{frame}
+
         \section{For Loops}
       
         \begin{frame}{range() Function}
@@ -229,7 +226,7 @@
             \bigskip
             \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/range.py}
         \end{frame}
-      
+        
         \begin{frame}{For Loops}
             \pause
             \begin{columns}
@@ -250,11 +247,13 @@
         \begin{frame}{Example: Mail Sender}
             \pause
             \LARGE
-            Fill out the attendance form: \href{https://tiny.cc/kolt-python}{\underline{\textit{tiny.cc/kolt-python}}} 
-            \begin{center}
-                \includegraphics[height=0.65\textheight]{images/unicorn.jpg}                
-            \end{center}
-        
+            Fill out the attendance form:
+            \newline
+            \newline
+            \href{https://tiny.cc/koltpython}{\underline{\textit{tiny.cc/koltpython}}}
+            \newline
+            \newline
+            Keyword: Gentlemen
         \end{frame}
 
         \begin{frame}{Break, Continue \& Pass}
@@ -283,9 +282,10 @@
             \textbf{\texttt{pass}} does not have an effect
             \bigskip  
             \inputminted[frame=single,framesep=2pt]{python3}{../Lecture3/code-examples/pass.py}
+            \inputminted[frame=single,framesep=2pt,lastline=2]{python3}{code-examples/pass_class.py}
             \pause
             \begin{itemize}
-                \item Loops, conditional statements, functions etc. cannot be empty 
+                \item Loops, conditional statements, functions, classes etc. cannot be empty 
             \end{itemize}
         \end{frame}
 \end{document}
