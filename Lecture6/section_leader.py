@@ -1,4 +1,4 @@
-ceren = ['şeref', 'oya', 'ata', 'simge', 'deniz']
+ceren = ['şeref', 'şeref','oya', 'ata', 'simge', 'deniz']
 haluk = ['matteo', 'hakan', 'tuan', 'mehmet', 'waseem']
 ahmet = ['kutay', 'mine', 'fatma', 'nergis']
 necla = ['göktuğ', 'beste', 'ilke']
@@ -9,6 +9,12 @@ firat = ['ata', 'ömer', 'lara']
 sections = [ceren, haluk, ahmet, necla, ayse, eralp, hasan, firat]
 
 # number of unique names
+all_students = set()
+for section in sections:
+    all_students = all_students | set(section)
+
+
+print(all_students)
 
 
 def find_section_leader_list(student_name):
