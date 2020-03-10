@@ -1,7 +1,7 @@
 % !TeX root = ./Lecture7.tex
-% pdflatex --shell-escape lecture7.tex & pdflatex --shell-escape lecture7.tex  
+% pdflatex --shell-escape lecture7.tex & pdflatex --shell-escape lecture7.tex
 \input{../KU-Beamer-Template/style/template.tex}
-\usepackage{../KU-Beamer-Template/style/koc} 
+\usepackage{../KU-Beamer-Template/style/koc}
 \usepackage{minted}
 \usepackage{upquote}
 \usepackage{graphicx}
@@ -9,7 +9,7 @@
 \usetikzlibrary{shapes.symbols,positioning, chains}
 
 \title{KOLT Python}
-\subtitle{Error Handling, File Input \& Output} 
+\subtitle{Error Handling, File Input \& Output}
 \newdate{date}{10}{03}{2020}
 \date{\displaydate{date}}
 \author{Ceren Kocaoğullar}
@@ -37,25 +37,25 @@
             \item Such an object cannot be altered
             \item A new object has to be created if a different value has to be stored
         \end{itemize}
-       
+
 \end{frame}
-    
+
     \begin{frame}{Python Data Model}
        \begin{columns}
             \begin{column}[c]{0.5\textwidth}
-            
+
                 \large
                 \texttt{my\_secret\_box = [0, 1, 2]}\\
                 \texttt{other\_box = my\_secret\_box}\\
                 \texttt{other\_box.remove(2)}\\
                 \texttt{print(my\_secret\_box)}
                 \newline
-                
+
             \end{column}
             \begin{column}[c]{0.5\textwidth}
                 \begin{tikzpicture}%[node distance=-0.15mm]
                     \node[signal, draw, signal from=west, fill=cyan!20] (var1) {my\_secret\_box};
-                    
+
                     \begin{scope}[start chain, right of= var1, node distance=-.5pt, shift={(1,0)}]
                             \def\index{2}
                             \foreach \x in {0,1,2} {
@@ -64,9 +64,9 @@
                                 \else
                                 \node [draw,on chain] (arr\x) {\x};
                                 \fi
-                            } 
+                            }
                     \end{scope}
-                    
+
                     \draw[->] (var1.east) -- (arr0.west);
                     \node[signal, draw, signal from=west, fill=cyan!20, below of=var1] (var2) {other\_box};
                     \draw[->] (var2.east) -- (arr0.west);
@@ -84,13 +84,13 @@
         \textbf{Everything} is an object in Python.
          Even though variables \textbf{do not} have \texttt{types}, each object has a \textbf{fixed} \texttt{type}.\\
         $\hookrightarrow$ Values at the right side of our label analogy are objects!
-        
+
         \begin{columns}
             \begin{column}[c]{0.5\textwidth}
                 \LARGE
                 \texttt{a = 5}\\
                 \texttt{a = 10}\\
-                
+
             \end{column}
             \begin{column}[c]{0.5\textwidth}
                 \begin{tikzpicture}%[node distance=-0.15mm]
@@ -98,7 +98,7 @@
                     \node[circle, draw, right of=var1, shift={(1,0)}] (val1) {5};
                     \node[circle, draw, below of=val1] (val2) {10};
                     \draw[->] (var1.east) -- (val2.west);
-                    
+
                 \end{tikzpicture}
            \end{column}
        \end{columns}
@@ -108,7 +108,7 @@
         \LARGE
         Each object has an \texttt{identity},
          this value can be obtained by using \texttt{\textbf{id()}} function.\\
-        \textbf{==} operator compares values, \textbf{\texttt{is}} operator compares identities. 
+        \textbf{==} operator compares values, \textbf{\texttt{is}} operator compares identities.
         \bigskip
         \inputminted[frame=single,framesep=2pt,lastline=4]{python3}{../Lecture6/code-examples/identity.py}
         Almost always use \textbf{==} to compare values!
@@ -130,7 +130,7 @@
                 \includegraphics[width=0.9\textwidth]{../Lecture6/images/aliasing.png}
             \end{column}
         \end{columns}
-        \texttt{copy.copy(x)}: shallow copy, \texttt{copy.deepcopy(x)}: deepcopy   
+        \texttt{copy.copy(x)}: shallow copy, \texttt{copy.deepcopy(x)}: deepcopy
     \end{frame}
 
     \subsection{Data Structures}
@@ -138,20 +138,20 @@
         \LARGE
         \begin{itemize}
             \item \textbf{Immutable} sequence(ordered) of elements.
-           
+
             \item Similar to \texttt{list}s, you can use \textbf{indexing}, \textbf{slicing}, and iterate over using \texttt{for} loops.
-            
+
             \item Elements cannot be added/removed/changed once the tuple is created.
-            
+
             \item How to create tuples?
-            
+
              \textbf{\texttt{my\_tuple = (1, [1, 2], \textquotesingle a\textquotesingle )}}
-            
+
             \item \textbf{\texttt{len(my\_tuple)}} $\Rightarrow$
-           
+
              3
             \item \textbf{\texttt{my\_tuple.append(3)}} $\Rightarrow$
-           
+
              \textbf{\texttt{AttributeError:}} \texttt{\textquotesingle tuple\textquotesingle \ object has no attribute \textquotesingle append\textquotesingle}
         \end{itemize}
     \end{frame}
@@ -170,42 +170,42 @@
         \LARGE
         \begin{itemize}
             \item \textbf{Unordered} \underline{sequence} of \textbf{unique} elements.
-           
+
             \item \underline{\textbf{Cannot}} use \textbf{indexing/slicing}, \textbf{can} iterate with \texttt{for} loops.
-            
+
             \item \textbf{Mutable}, \texttt{add(element)}, \texttt{remove(element)} methods.
-            
+
             \item Python also has \textbf{immutable} sets: \texttt{frozenset}
-            
-            \item How to create sets? 
-           
+
+            \item How to create sets?
+
              \texttt{my\_set = \{1, 2, 3, 4, 2\}}
             \item How to create empty sets?
-           
+
              \texttt{set()} (\{\ \} is reserved for \texttt{dict})
-            
+
             \item Can compute set operations: \textbf{union}, \textbf{intersection}, \textbf{difference}, \textbf{symmetric difference}.
         \end{itemize}
     \end{frame}
-    
+
     \begin{frame}{Sets}
         \centering
         \includegraphics[width=\textwidth]{../Lecture6/images/sections_venn.png}
     \end{frame}
-    
+
     \begin{frame}{Sets}
         \inputminted[frame=single,framesep=2pt]{python3}{../Lecture6/code-examples/sets.py}
     \end{frame}
-    
+
     \section{Dictionaries}
     \begin{frame}{Dictionaries}
         \Large
         \begin{itemize}
             \item Collection of \textbf{key$-$value} \underline{pairs}.
             \pause
-            \item \underline{\textbf{Cannot}} use \textbf{indexing/slicing}, \textbf{can} iterate with \texttt{for} loops. 
+            \item \underline{\textbf{Cannot}} use \textbf{indexing/slicing}, \textbf{can} iterate with \texttt{for} loops.
             \pause
-            \item In general, they are not \textbf{ordered}. 
+            \item In general, they are not \textbf{ordered}.
             \pause
             \item However, in Python 3.7 pairs are guaranteed to be in insertion order.
             \pause
@@ -217,12 +217,12 @@
             \pause
             \item \texttt{d = \{\textquotesingle one\textquotesingle : 1, \textquotesingle two\textquotesingle : 2, \textquotesingle three\textquotesingle : 3, \textquotesingle four\textquotesingle : 4\}}
             \pause
-            \item How to access values? 
+            \item How to access values?
             \pause
              \texttt{print(d[\textquotesingle one\textquotesingle ])} \# $\Rightarrow$ 1
         \end{itemize}
     \end{frame}
-    
+
     \begin{frame}{Attendance}
         \Huge
         Fill out the attendance form: \href{http://tiny.cc/kolt-hackathon}{\underline{\textit{tiny.cc/kolt-hackathon}}}
@@ -292,7 +292,7 @@
                 \Large
                 \pause
                 \item Save experiment results to a file.
-            \end{itemize} 
+            \end{itemize}
             \pause
             \item Keep logs for large systems.
             \pause
@@ -302,12 +302,12 @@
 
     \begin{frame}{Files In Python}
         \LARGE
-        Access to a \texttt{file object} using \texttt{\textbf{open(filename, mode=\textquotesingle r\textquotesingle )}} function        
+        Access to a \texttt{file object} using \texttt{\textbf{open(filename, mode=\textquotesingle r\textquotesingle )}} function
         \begin{itemize}
             \Large
             \item \texttt{\textbf{filename}}: File name including the \textbf{file extension}. Ex: \textquotesingle data.txt\textquotesingle
             \pause
-            \item If you want to access/create a file outside of current \textbf{working directory}, you also need to include path. Ex: \textquotesingle ./FolderName/data.txt\textquotesingle , \textquotesingle C:/Users/AUYSAL16/Desktop/data.txt\textquotesingle 
+            \item If you want to access/create a file outside of current \textbf{working directory}, you also need to include path. Ex: \textquotesingle ./FolderName/data.txt\textquotesingle , \textquotesingle C:/Users/AUYSAL16/Desktop/data.txt\textquotesingle
             \pause
             \item \textbf{\texttt{mode}} denotes how the file will be used:
             \pause
@@ -340,7 +340,7 @@
             \item \texttt{list(f)}/\texttt{f.readlines()}: read file lines to a list
             \pause
             \item \textbf{Always} close the file when you are done: \texttt{f.close()}
-        \end{itemize}        
+        \end{itemize}
     \end{frame}
 
     \begin{frame}{File Methods}
@@ -359,6 +359,13 @@
             \pause
             \item \texttt{f.close()}
         \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Lecture In-Class Exercises}
+        \large
+        You can find the in-class exercises' starter codes here:
+        \normalsize
+        \href{http://tiny.cc/kolt-hackathon}{\underline{\textit{https://github.com/koltpython/python-slides/tree/master/Lecture7/lecture-examples}}}
     \end{frame}
 
 \end{document}
