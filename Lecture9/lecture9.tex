@@ -7,11 +7,11 @@
 
 \title{KOLT Python}
 \subtitle{Third-Party Packages} 
-\newdate{date}{25}{11}{2019}
+\newdate{date}{31}{03}{2020}
 \date{\displaydate{date}}
-\author{Ahmet Uysal}
+\author{Halil Eralp Koçaş}
 
-\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/logo_kolt.pdf}}
+\titlegraphic{\includegraphics[scale=0.2]{../KU-Beamer-Template/style/images/kolt_logo.png}}
 
 \setbeamercovered{invisible} % transparent
 
@@ -20,54 +20,34 @@
 
     \frame{\frametitle{Agenda}\tableofcontents}
 
-
-    \section{Installations}
-    \begin{frame}{Installing Python}
+    \section{Python Modules and Libraries}
+    \begin{frame}{Using Python Modules and Libraries}
         \LARGE
         \begin{itemize}
-            \item Go to \href{https://www.python.org/downloads/}{\underline{\textit{python.org/downloads}}}
+            \item Modules are files that contains Python statements and definitions
             \pause
-            \item Install the latest version of Python for your operating system
+            \item Modules help you to organize your code since you can split it to multiple files
             \pause
-            \item (Windows only) Make sure to add python to the \texttt{environment variables} by checking the corresponding permission on the installation or by hand
-            \pause
-            \item Check the installation by running \textbf{\texttt{python}}(Windows)/\textbf{\texttt{python3}}(macOS/Linux) in terminal.
+            \item To use definitions in modules, modules are needed to be \textbf{imported}.
         \end{itemize}
-        \includegraphics[width=\textwidth]{images/cmd_helloworld.PNG}
     \end{frame}
      
-    \begin{frame}[t]{Installing an Editor/IDE(Integrated Development Environment)}
-        \vspace{-4mm}
-        \begin{columns}[t] 
-            \begin{column}[t]{0.66\linewidth}
-                \LARGE
-                \begin{itemize}
-                    \item Having a specialized editor/IDE can help a lot. 
-                    \item We will use Visual Studio Code but you are free to use any editor/IDE of your choice.
-                    \item Get Visual Studio Code from \href{https://code.visualstudio.com/download}{\underline{\textit{code.visualstudio.com/download}}}
-                \end{itemize}
-            \end{column}
-            
-            \begin{column}{0.33\linewidth}
-                \begin{center}
-                    \includegraphics[width=0.8\linewidth]{images/vscode_icon.png}						
-                \end{center}
-            \end{column}
-        \end{columns}
-     \end{frame}
-
-     \begin{frame}{Configuring Visual Studio Code for Python}
+    \begin{frame}
+        \frametitle{Importing Modules}
         \LARGE
-        \begin{itemize}
-            \item Install Python extension for VS Code.
-            \pause
-            \item Select the Python(3.8.0) Interpreter in VS Code.
-            \pause
-            \item For more information, visit \href{https://code.visualstudio.com/docs/python/python-tutorial}{\underline{\textit{VS Code Python Tutorial}}}.
-        \end{itemize}
-        \centering
-        \includegraphics[width=0.75\linewidth]{images/python_extension.PNG}						
-     \end{frame}
+        \pause
+        \textbf{Import a module:}\\
+        \pause
+        \texttt{\textbf{import} module\_name}  \# all definitions \\
+        \pause
+        \texttt{\textbf{import} module\_name as name}  \# module can be used with "name" \\
+         \pause
+        \texttt{\textbf{from} module\_name \textbf{import} func1}  \# only specified names, func1 \\
+        \pause
+        \texttt{\textbf{from} module\_name \textbf{import} func1 as function}  \# func1 will be used by calling "function" \\
+        \pause
+        \texttt{\textbf{from} module\_name \textbf{import} *}  \# all names in module \\
+    \end{frame}
 
     \section{Package Management}
 
@@ -99,13 +79,10 @@
         \end{itemize}
         \pause
         \texttt{\$ pip -V}\\
-        \texttt{pip 19.2.3 from --PATH\_TO\_PIP-- (python 3.8)}\\
+        \texttt{pip 20.0.2 from --PATH\_TO\_PIP-- (python 3.5)}\\
         \pause
-        \begin{center}
-            \huge
-            \textbf{Any problems?}            
-        \end{center}
-        
+        \texttt{\$ python -m pip -V}\\
+        \texttt{pip 20.0.2 from --PATH\_TO\_PIP-- (python version)}\\
     \end{frame}
 
     \begin{frame}
@@ -169,30 +146,6 @@
         \pause
         \textbf{Deactivating a virtual environment:}\\
         \texttt{\$ \textbf{deactivate}}
-    \end{frame}
-
-    \section{Example: Telegram Bot}
-    
-    \begin{frame}{Example: Telegram Bot}
-        \LARGE
-        \pause
-        \begin{itemize}
-            \item Create a virtual environment.
-            \pause
-            \item Activate the virtual environment you just created.
-            \pause
-            \item \texttt{\$ \textbf{pip install python-telegram-bot}} 
-        \end{itemize}
-    \end{frame}
-
-    \begin{frame}{Create an API Token}
-        \pause
-        \LARGE
-        \href{https://telegram.me/botfather}{\underline{\textit{t.me/botfather}}}\\
-
-        \begin{center}
-            \includegraphics[height=0.6\textheight]{images/bot_father.PNG}
-        \end{center}
     \end{frame}
     
 \end{document}
