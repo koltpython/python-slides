@@ -6,8 +6,8 @@
 \usepackage{graphicx}
 
 \title{KOLT Python}
-\subtitle{Third-Party Packages} 
-\newdate{date}{31}{03}{2020}
+\subtitle{Python Modules and Third-Party Packages} 
+\newdate{date}{05}{04}{2020}
 \date{\displaydate{date}}
 \author{Halil Eralp Koçaş}
 
@@ -20,18 +20,37 @@
 
     \frame{\frametitle{Agenda}\tableofcontents}
 
-    \section{Python Modules and Libraries}
-    \begin{frame}{Using Python Modules and Libraries}
+    \section{Python Modules and Packages}
+    
+    \begin{frame}{Python Modules}
         \LARGE
         \begin{itemize}
             \item Modules are files that contains Python statements and definitions
             \pause
-            \item Modules help you to organize your code since you can split it to multiple files
+            \item Modules help you to break down large programs into small manageable and organized files
             \pause
-            \item To use definitions in modules, modules are needed to be \textbf{imported}.
+            \item Modules provides reusability of a code
+            \pause
+            \item Most used functions can be defined in Modules and can be used in other programs without copying the definitions into every program
+            \pause
+            \item To use definitions in modules, modules are needed to be \textbf{imported}
         \end{itemize}
     \end{frame}
      
+    \begin{frame}{Python Packages}
+        \LARGE
+        \begin{itemize}
+            \item Packages can be thought at directories in which multiple modules are present
+            \pause
+            \item Packages are organized hierarchically
+            \pause
+            \item Packages can contain subpackages as well as regular modules
+            \pause
+            \item All packages are modules but not all modules are packages
+            
+        \end{itemize}
+    \end{frame}
+
     \begin{frame}
         \frametitle{Importing Modules}
         \LARGE
@@ -40,11 +59,11 @@
         \pause
         \texttt{\textbf{import} module\_name}  \# all definitions \\
         \pause
-        \texttt{\textbf{import} module\_name as name}  \# module can be used with "name" \\
+        \texttt{\textbf{import} module\_name \textbf{as} name}  \# module can be used with "name" \\
          \pause
         \texttt{\textbf{from} module\_name \textbf{import} func1}  \# only specified names, func1 \\
         \pause
-        \texttt{\textbf{from} module\_name \textbf{import} func1 as function}  \# func1 will be used by calling "function" \\
+        \texttt{\textbf{from} module\_name \textbf{import} func1 \textbf{as} function}  \# func1 will be used by calling "function" \\
         \pause
         \texttt{\textbf{from} module\_name \textbf{import} *}  \# all names in module \\
     \end{frame}
